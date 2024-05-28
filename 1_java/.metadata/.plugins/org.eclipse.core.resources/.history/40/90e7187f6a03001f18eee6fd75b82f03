@@ -1,0 +1,17 @@
+package edu.kh.oop.cls.model.vo;
+
+public class User {
+
+	// 속성(== 필드)
+	
+	// 아이디, 비밀번호, 이름, 나이, 성별 (추상화)
+	String UserId;
+	String UserPw;
+	String UserName;
+	int userAge;
+	char userGender;
+	
+	
+	
+	// 기능(== 생성자 + 메소드)
+}

@@ -1,0 +1,148 @@
+package example;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+
+
+public class forExam {
+	public static void main(String[] args) {
+		forExam run = new forExam();
+		run.practice10();
+	}
+
+	Scanner sc= new Scanner(System.in);
+
+	public void practice1() {
+
+		System.out.println("1이상의 숫자를 입력하세요 : ");
+		int input = sc.nextInt();
+
+		if(1>input) {
+			System.out.println("1 이상의 숫자를 입력해주세요.");
+		}else {
+
+			for(int i=1 ; i<input+1 ; i++) {
+				System.out.print(i+" ");
+			}
+		}
+	}
+
+	public void practice2() {
+
+		System.out.println("1이상의 숫자를 입력하세요");
+		int input = sc.nextInt();
+		if(input<1) {
+			System.out.println("1 이상의 숫자를 입력해주세요.");
+		}else {
+
+			for(int i=input ; i>0; i--) {
+				System.out.print(i + " ");
+			}
+
+		}
+
+
+	}
+
+
+	public void practice3() {
+		System.out.println("정수를 하나 입력하세요 : ");
+		int input = sc.nextInt();
+		int sum=0;
+		for(int i=1; i<input+1; i++) {
+			sum+=i;
+			if(input==i) {
+				System.out.println(i+ " = "+ sum);
+			} else {
+				System.out.print(i+" + ");
+			}
+		}
+
+
+	}
+
+	public void practice4() {
+		System.out.print("첫 번째 숫자 : ");
+		int one = sc.nextInt();
+		System.out.print("두 번째 숫자 : ");
+		int two = sc.nextInt();
+
+		if(one <1 || two<1) {
+			System.out.println("1이상의 숫자를 입력해주세요.");
+		} else if (one<two){
+
+			for(int i = one ; i<two+1 ; i++) {
+				System.out.print(i + " ");
+			}
+
+		} else {
+
+			for(int i= two; i<one+1 ; i++) {
+				System.out.print(i+ " ");
+			}
+
+		}
+	}
+
+	public void practice5() {
+
+		System.out.print("숫자 : ");
+		int input = sc.nextInt();
+
+		System.out.println("==== "+input+"단 ====");
+		for(int i=1 ; i<10 ; i++) {
+			System.out.println(input + "* "+ i + " = " + input*i);
+		}
+	}
+
+	public void practice6() {
+		System.out.print("숫자 : ");
+		int input = sc.nextInt();
+		if(input>=2 && input <=9 ) {
+			for(int i=input ; i < 10 ; i++) {
+
+				System.out.println("==== "+ i+"단 ====");
+
+				for(int j=1 ; j<10 ; j++) {
+					System.out.println(i + "* "+ j + " = " + i*j);
+				}
+
+			}
+		} else {
+			System.out.println("2~9사이 숫자만 입력해주세요.");
+		}
+	}
+
+	public void practice7() {
+
+		System.out.println("정수 입력 : ");
+		int input = sc.nextInt();
+
+		for(int i=1; i<input+1 ; i++) {
+			System.out.print("\n");
+			for (int j=1 ; j <i+1; j++) {
+				System.out.print("*");
+			}
+		}
+	}
+	// 8/9번 안함
+	
+	public void practice10() {
+		
+		List<Student> k = new ArrayList<Student>();
+		String a = "";
+		k.add(new Student("일길동"));
+		k.add(new Student("이길동"));
+		k.add(new Student("삼길동"));
+		k.add(new Student("사길동"));
+		
+		Student[] arr = new Student[5];
+		
+		System.out.println(k);
+		
+	}
+	
+	
+}

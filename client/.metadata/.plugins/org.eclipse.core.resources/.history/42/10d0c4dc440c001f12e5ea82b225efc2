@@ -1,0 +1,7 @@
+package edu.kh.network.run;
+
+public class ClientRun {
+	public static void main(String[] args) {
+		System.out.println("test");
+	}
+}

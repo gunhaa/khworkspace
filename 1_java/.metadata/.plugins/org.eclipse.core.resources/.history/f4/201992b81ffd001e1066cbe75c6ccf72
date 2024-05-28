@@ -1,0 +1,10 @@
+package edu.kh.control.practice;
+
+public class LoopPracticerun {
+
+	public static void main(String [] args) {
+		LoopPractice lp = new LoopPractice();
+		lp.practice1();
+		
+	}
+}

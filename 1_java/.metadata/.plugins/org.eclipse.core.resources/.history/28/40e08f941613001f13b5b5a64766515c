@@ -1,0 +1,13 @@
+package example;
+
+public class control {
+	public static void main(String[] args) {
+		
+		control run = new control();
+		run.answer1();
+	}
+	
+	public void answer1() {
+		System.out.println();
+	}
+}

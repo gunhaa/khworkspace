@@ -1,0 +1,16 @@
+package edu.kh.control.loop;
+
+import java.util.Scanner;
+
+public class ForExample2 {
+
+	public void practice1() {
+		
+		for(int i = 1; i < 10; i++) {
+			System.outprintln(i + "출력");
+			
+		}
+	
+	}
+	
+}

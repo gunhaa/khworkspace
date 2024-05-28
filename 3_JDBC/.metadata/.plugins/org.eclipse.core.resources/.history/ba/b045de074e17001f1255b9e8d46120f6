@@ -1,0 +1,39 @@
+package note.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import note.vo.Employee;
+
+public class EmployeeDAO {
+
+	public List<Employee> selectAll() {
+		
+		List<Employee> empList = new ArrayList<>();
+		
+		Connection conn = null;
+		
+		Statement stmt = null;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rs = null;
+		
+		try {
+			
+			
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return empList;
+	}
+
+}

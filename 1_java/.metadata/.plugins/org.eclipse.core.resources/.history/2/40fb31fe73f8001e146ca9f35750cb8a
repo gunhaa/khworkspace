@@ -1,0 +1,56 @@
+package edu.kh.variable;
+
+public class VariableExample2 {
+	
+	public static void main(String[] args) {
+		/* 자바 기본 자료형 8가지
+		 * 
+		 *  논리형 : boolean(1byte) 발음 : 부울리언
+		 *  정수형 : byte(1byte), short(2byte), int(4byte), long(8byte)
+		 *  실수형 : float(4byte), double(8byte)
+		 *  문자형 : char(2byte, 유니코드)
+		 *  
+		 * */
+		
+		// 변수 선언 : 메모리에 값을 저장할 공간을 할당 하는 것
+		// 변수 값 대입(집어넣기) : 변수에 값을 집어 넣는 것
+		
+		// * 카멜(낙타) 표기법
+		// 연결되는 두 단어 중 후속 단어의 첫 문자를 대문자로 표기
+		
+		boolean booleanData;
+		// 메모리에 논리값(t/f)을 저장할 공간을 1byte 할당하고
+		// 할당된 공간을 booleanData라고 부르겠다.
+		
+		booleanData = true;
+		System.out.println("booleanData : " + booleanData);
+		
+		byte byteNumber = 127;
+		// 메모리에 정수값을 저장할 공간을 1byte 할당하고
+		// 할당된 공간을 byteNumber라고 부르겠다.
+		// 선언된 byteNumber 변수에 처음으로 127을 집어 넣음
+		// --> 초기화 : 처음 변수에 값을 대입
+		
+		short shortNumber = 32767; // 변수 선언 및 초기화
+	//	자료형 변수명		  = 리터럴 
+	
+		// ** 리터럴 : 변수에 대입되거나 작성 되어지는 값 자체
+		
+		// 정수 자료형의 기본형!
+		int intNumber = 2147483647;
+				
+		long longNumber;
+		
+		
+		float floatNumber;
+		
+		double doubleNumber;
+		
+		char ch;
+		
+		
+		
+		
+		
+	}
+}

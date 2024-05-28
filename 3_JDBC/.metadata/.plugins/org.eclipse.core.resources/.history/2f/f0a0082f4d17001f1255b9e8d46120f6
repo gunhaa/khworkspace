@@ -1,0 +1,5 @@
+package note.service;
+
+public class EmployeeService {
+
+}

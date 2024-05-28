@@ -1,0 +1,25 @@
+package edu.kh.oop.cls.model.vo;
+
+public class User {
+
+	// 속성(== 필드)
+	
+	// 아이디, 비밀번호, 이름, 나이, 성별 (추상화)
+	private String UserId;
+	private String UserPw;
+	private String UserName;
+	private int userAge;
+	private char userGender;
+	
+	// 기능(== 생성자 + 메소드)
+	
+	// 캡슐화로 인한 간접 접근 기능(getter / setter)
+	
+	public String getUserId() { // userId의 getter
+		return userId;
+		
+	}
+	public void userId() { // userId의 setter
+		this.UserId = userId;
+	}
+}

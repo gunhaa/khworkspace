@@ -1,0 +1,11 @@
+package edu.kh.control.branch;
+
+public class BranchRun {
+	
+	BranchExample branchEx = new BranchExample();
+	
+	branch.ex1();
+	
+	
+
+}

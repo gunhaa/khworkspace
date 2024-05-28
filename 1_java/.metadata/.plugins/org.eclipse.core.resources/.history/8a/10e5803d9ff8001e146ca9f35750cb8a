@@ -1,0 +1,43 @@
+package edu.kh.variable.ex2;
+
+public class PrintExample {
+	
+	public static void main(String[] args) {
+		// System.out.print()		: 단순 출력 (출력 후 줄바꿈 X)
+		// System.out.println()		: 한 줄 출력 (출력 후 줄바꿈 O)
+		
+		// System.out.printf() : 출력될 문자열 형식을 패턴으로 지정하는 출력구문
+		
+		System.out.println("테스트1");
+		System.out.println("테스트2");
+		
+		System.out.print("테스트3");
+		System.out.println();	// 내용 없는 println(줄바꿈)
+		System.out.print("테스트4");
+		
+		System.out.println();
+		
+		int iNum1 = 10;
+		int iNum2 = 5;
+		
+		// 10 + 5 = 15
+		System.out.println( iNum1 + " + " + iNum2 + " = " + (iNum1 + iNum2));
+		
+		// System.out.prinf("패턴", 패턴에 들어갈 값);
+		System.out.printf("%d + %d = %d\n", iNum1, iNum2, iNum1+iNum2);
+		
+		// 10 + 10 * 5 / 2 = 35
+		
+		System.out.println(iNum1 + " + " + iNum1 + " * " + iNum2 + " / 2 = " + (iNum1 + iNum1 * 5 / 2) );
+
+		System.out.printf("%d + %d * %d / 2 = %d\n", iNum1, iNum1, iNum2, iNum1 + iNum1 * 5 / 2) ;
+		
+		// 패턴연습
+		int iNum3 = 3;
+		System.out.printf("%d\n", iNum3);
+		System.out.printf("%d\n", iNum3, args); // 7칸 공간 확보 후 오른쪽 정렬
+		
+		
+	}
+
+}

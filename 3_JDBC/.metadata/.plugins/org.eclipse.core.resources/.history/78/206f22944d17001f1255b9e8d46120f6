@@ -1,0 +1,17 @@
+package note.dao;
+
+import java.util.List;
+
+import note.vo.Employee;
+
+public class EmployeeDAO {
+
+	public List<Employee> selectAll() {
+		
+		List<Employee> empList = new ArrayList<>(;)
+		
+		
+		return empList;
+	}
+
+}

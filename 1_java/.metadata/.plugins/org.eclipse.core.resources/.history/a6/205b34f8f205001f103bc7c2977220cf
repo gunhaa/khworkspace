@@ -1,0 +1,52 @@
+package edu.kh.oop.practice.model.vo;
+
+public class Book {
+
+	// 1. 구현 클래스 다이어그램(Class Diagram)
+
+	private String title; // 도서명
+	private int price; // 가격
+	private double discountRate; // 할인율
+	private String author; // 저자명
+
+	public void book() {}
+	public void book(String title, int price, double discountRate, String author) {}
+	
+	this.title = "자바의 정석";
+	this.price = 30000;
+	this.discountRate = 0.2;
+	this.author = "남궁성"'
+			
+			
+	
+	
+	
+	
+	public String toSting() {}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public double getDiscountRate() {
+		return discountRate;
+	}
+	public void setDiscountRate(double discountRate) {
+		this.discountRate = discountRate;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	
+
+}

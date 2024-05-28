@@ -1,0 +1,169 @@
+package edu.kh.control.practice;
+
+import java.util.Scanner;
+
+public class Test {
+
+	public void method3() {
+		Scanner sc = new Scanner (System.in);
+		System.out.println("첫 번째 학생의 키 입력 : ");
+		double height1 = sc.nextDouble();
+		System.out.println("두 번째 학생의 키 입력 : ");
+		double height2 = sc.nextDouble();
+		System.out.println("세 번째 학생의 키 입력 : ");
+		double height3 = sc.nextDouble();
+
+		int avg = (int)(height1 + height2 + height3) / 3;
+
+		System.out.println("키의 평균 : " + avg);
+
+	}
+
+	public void method4() {
+		// 문제 4 문자열 입력받아 각각의 문자의 유니코드 출력
+		Scanner sc = new Scanner(System.in);
+		System.out.println("문자열 입력 : ");
+		String str = sc.nextLine();
+
+		char ch = str.charAt(0);
+		int num = ch; // char=->int로 자동 형변환
+		//System.out.println(ch + " : " + num);
+
+		// 한번에 출력
+		System.out.println(str.charAt(0) + " : " + (int)str.charAt(0));
+		System.out.println(str.charAt(1) + " : " + (int)str.charAt(1));
+		System.out.println(str.charAt(2) + " : " + (int)str.charAt(2));
+		System.out.println(str.charAt(3) + " : " + (int)str.charAt(3));
+		System.out.println(str.charAt(4) + " : " + (int)str.charAt(4));
+
+	}
+
+	public void operatorTest() {
+		// 증감 연산자 연습하기
+		// / = 나누기, %는 남고 남은 숫자(ex : 16/6 = 정수 2, 나머지 4 (/ : 2) (% : 4)
+		int a = 5;
+		int b = 10;
+
+		int c = (++a) + b; // a:6 b:10 c:16
+		int d = c / a; // d:2
+		int e = c % a; // e:4
+		int f = e++; // f:4 e:5
+		int g = (--b) + (d--);// b:9 g:11 d:1
+		int h = 2;
+		h *= e; // h : 10
+
+		System.out.println("a = " + a); // 6
+		System.out.println("b = " + b); // 9
+		System.out.println("c = " + c); // 16
+		System.out.println("d = " + d); // 11
+		System.out.println("e = " + e); // 5
+		System.out.println("f = " + f); // 4
+		System.out.println("g = " + g); // 11
+		System.out.println("h = " + h); // 10
+
+
+
+
+	}
+
+	public void practice4() {
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("키(m)를 단위로 입력하세요:");
+		double height = scanner.nextDouble();
+
+		System.out.println("몸무게(kg)를 입력해 주세요");
+		double weight = scanner.nextDouble();
+
+		double bmi = calculateBMI(height, weight);
+		String result = interpretBMI(bmi);
+
+		System.out.println("당신의 BMI 지수는 " + bmi + "이며, " + result + "입니다.");
+
+		scanner.close();
+	}
+
+	public static double calculateBMI(double height, double weight) {
+		return weight / (height * height);
+	}
+
+	public static String interpretBMI(double bmi) {
+		if (bmi < 18.5) {
+			return "저체중";
+		} else if (bmi >= 18.5 && bmi < 23) {
+			return "정상체중";
+		} else if (bmi >= 23 && bmi < 25) {
+			return "과체중";
+		} else if (bmi >= 25 && bmi < 30) {
+			return "비만";
+		} else {
+			return "고도 비만";
+		}
+	}
+	
+	
+	/*public void practice5() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("중간 고사 점수 : "); // 20%
+		double a = sc.nextDouble() ;
+		System.out.println("기말 고사 점수 : "); // 30%
+		double b = sc.nextDouble() ;
+		System.out.println("과제점수 : "); // 30%
+		double c = sc.nextDouble() ;
+		System.out.println("출석횟수 : "); // 20%
+		double d = sc.nextDouble() ;
+		
+		a = 100 * 0.2;
+		b = 100 * 0.3;
+		c = 100 * 0.3;
+		d = 100 * 0.2;
+		
+		double flaot = d;
+		double sum = (a + b + c + d);
+	
+		if (d => 30%);
+		
+		if (sum < 70) {
+			System.out.println("pass");
+		} else if (sum > 70) {
+	}*/
+	public void practice6() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("중간 고사 점수 : ");
+		double midTerm = sc.nextDouble();
+		
+		System.out.print("기말 고사 점수 : ");
+		double finalTerm = sc.nextDouble();
+		
+		System.out.print("과제 점수 : ");
+		double homework = sc.nextDouble();
+				
+		System.out.print("출석 횟수 : ");
+		double attendance = sc.nextDouble();
+		
+		System.out.println("================== 결과 ==================");
+		
+		if(attendance <= 20 * (1 - 0.3)) { // 30% 이상 결석 <-> 70% 미만 출석
+			System.out.println("Fail [출석 횟수 부족 (" + attendance + " /20)]");
+			
+		}else {
+			midTerm *= 0.2;
+			finalTerm *=0.3;
+			homework *=0.3;
+			attendance *= 5 * 0.2;
+			
+			// 합계
+			double sum = midTerm + finalTerm + homework + attendance;
+			
+			System.out.printf("중간 고사 점수(20) : %.1f\n", midTerm);
+			System.out.printf("기말 고사 점수(30) : %.1f\n", finalTerm);
+			System.out.printf("과제 점수(30) : %.1f\n", homework);
+			System.out.printf("출석 점수(20) : %.1f\n", attendance);
+			System.out.printf("총점 : %.1f\n", sum); 
+			
+		}
+	}
+}
+
+

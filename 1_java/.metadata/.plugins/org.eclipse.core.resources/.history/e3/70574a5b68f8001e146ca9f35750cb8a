@@ -1,0 +1,13 @@
+package edu.kh.variable;
+
+public class VariableExample1 {
+	// 생성된 .Java 파일과 class 오른쪽에 작성된 이름은 같아야 한다.
+	
+	public static void main(String[] args) {
+		
+		System.out.println(2 * 3.141592653589793 * 10);
+		System.out.println(3.141592653589793 * 10 * 10);
+		System.out.println(3.141592653589793 * 10 * 10 * 20);
+		System.out.println(4 * 3.141592653589793 * 10 * 10);
+	}
+}

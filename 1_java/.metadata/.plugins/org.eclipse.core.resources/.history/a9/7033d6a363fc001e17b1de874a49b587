@@ -1,0 +1,21 @@
+package edu.kh.control.loop;
+
+public class LoopRun {
+	
+	public static void main(String[] args) {
+		
+		// 메인 메소드 자동완성
+		// main -> ctrl + space -> enter
+		
+		ForExample forEx = new ForExample();
+		//forEx.ex1();
+		//forEx.ex2();
+		//forEx.ex3();
+		//forEx.ex4();
+		//forEx.ex5();
+		//forEx.ex6();
+		forEx.ex7();
+		
+		
+	}
+}

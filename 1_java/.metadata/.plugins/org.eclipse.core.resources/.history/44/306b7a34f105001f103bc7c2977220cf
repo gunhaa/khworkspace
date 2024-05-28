@@ -1,0 +1,17 @@
+package edu.kh.oop.practice.model.vo;
+
+public class Book {
+
+	// 1. 구현 클래스 다이어그램(Class Diagram)
+
+	private String title; // 도서명
+	private int price; // 가격
+	private double discountRate; // 할인율
+	private String author; // 저자명
+
+	public void book() {}
+	public void book(String title, int price, double discountRate, String author) {}
+
+	public String toSting() {}
+
+}

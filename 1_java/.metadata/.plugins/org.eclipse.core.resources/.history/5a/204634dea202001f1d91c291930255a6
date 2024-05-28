@@ -1,0 +1,31 @@
+package edu.kh.oop.abstraction.model.vo;
+
+// VO(Velue Object) : 값 저장용 객체를 만들기 위한 클래스를 모아두는 패키지
+
+
+public class People { // 국민(사람) 클래스
+
+	// 클래스란? 객체의 특성(속성, 기능)을 정의한 것
+	// == 객체를 만들기 위한 설계도
+
+	// 속성 == 값 == data
+	// 값을 저장하기 위한 변수를 선언
+	// -> 국민이라면 공통적으로 가지고 있는 속성만 작성(추상화)
+	public String name;
+	public char gender;
+	public String pNo; // 001212-1234567 (주민번호를 숫자로하면 '-'가 빼기로 반영됨)
+	public String address;
+	public String phone;
+	public int age;
+
+	// 기능 == 행동 == method
+	public void tax() {
+		System.out.println("세금을 냅니다.");
+	}
+
+	public void vote() {
+		System.out.println("투표를 합니다.");
+
+	}
+
+}

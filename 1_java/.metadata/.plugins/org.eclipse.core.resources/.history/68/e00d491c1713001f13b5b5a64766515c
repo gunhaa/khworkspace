@@ -1,0 +1,27 @@
+package example;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class control {
+	public static void main(String[] args) {
+		
+		control run = new control();
+		run.Run1();
+	}
+	
+	public void Run1() {
+		Scanner sc= new Scanner(System.in);
+		System.out.println("숫자를 입력하세요.");
+		int input = sc.nextInt();
+
+		if(input%2==1) {
+			System.out.println("홀수 입니다.");
+		}else {
+			System.out.println("짝수 입니다.");
+		}
+		
+		sc.close();
+
+	}
+}

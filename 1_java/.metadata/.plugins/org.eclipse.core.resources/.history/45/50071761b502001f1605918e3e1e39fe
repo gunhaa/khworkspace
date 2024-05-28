@@ -1,0 +1,7 @@
+package edu.kh.oop.cls.model.vo;
+
+public class Student { // 클래스 선언문
+	
+//
+
+}

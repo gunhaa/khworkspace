@@ -1,0 +1,19 @@
+package edu.kh.control.practice;
+
+import edu.kh.control.condition.ConditionExample;
+
+public class Run1 {
+
+	public static void main(String[] args) {
+		
+		ConditionPractice condition = new ConditionPractice();
+		practice1();
+		
+		
+		
+		
+		
+	}
+			
+
+}

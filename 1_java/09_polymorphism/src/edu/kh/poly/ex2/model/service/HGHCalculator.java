@@ -1,0 +1,33 @@
+package edu.kh.poly.ex2.model.service;
+
+public class HGHCalculator implements Calculator {
+							//클래스 ,인터페이스는 동시 상속 가능
+							//인터페이스는 다중 상속 가능
+	
+	@Override
+	public int plus(int num1, int num2) {
+		return num1+num2;
+	}
+
+	@Override
+	public int minus(int num1, int num2) {
+		return num1-num2;
+	}
+
+	@Override
+	public int multiple(int num1, int num2) {
+		return num1*num2;
+	}
+
+	@Override
+	public int divide(int num1, int num2) {
+		// TODO Auto-generated method stub
+		return num1/num2;
+	}
+
+	//extends : 확장하다, implements : 구현하다.
+		
+	//(부)클래스 - (자)클래스 상속시에는 extends (추상 클래스도 포함)
+	
+	//(부)인터페이스 - (자)클래스 상속 시 implements
+}

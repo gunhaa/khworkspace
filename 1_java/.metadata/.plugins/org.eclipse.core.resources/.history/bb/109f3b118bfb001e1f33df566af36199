@@ -1,0 +1,12 @@
+package edu.kh.control.condition;
+
+public class ConditionRun {
+	
+	public static void main(String[] arsg ) {
+		
+		ConditionExample conditon = new ConditionExample();
+		
+		condition.ex1();
+	}
+
+}

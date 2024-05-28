@@ -1,0 +1,21 @@
+package edu.kh.control.loop;
+
+import java.util.Scanner;
+
+public class ForExample2 {
+
+	public void practice1() {
+		
+		Scanner sc = new Scanner(System.in);
+			int input = sc.nextInt();
+			
+			for(int i = 1 ; i <= input ; input) {
+				System.out.print(false);
+			}
+			
+			
+		
+	}
+	
+	
+}

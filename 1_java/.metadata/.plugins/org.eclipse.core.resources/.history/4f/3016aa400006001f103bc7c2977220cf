@@ -1,0 +1,18 @@
+package edu.kh.oop.practice.run;
+
+public class PracticeRun {
+
+	public static void main(String[] args) {
+		BookService service = new BookService();
+		
+			service.pratice();
+			
+			
+		
+			
+		//ArrayExample1 arrEx = new ArrayExample1();
+//		arrEx.ex1();
+//		arrEx.ex2();
+		
+	}
+}

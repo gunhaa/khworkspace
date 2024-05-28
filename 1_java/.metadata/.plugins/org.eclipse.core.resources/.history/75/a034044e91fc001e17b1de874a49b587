@@ -1,0 +1,9 @@
+package edu.kh.control.loop;
+
+import java.util.Scanner;
+
+public class ForExample2 {
+
+	public void practice1() {
+		
+	}

@@ -1,0 +1,23 @@
+package edu.kh.control.loop;
+
+import java.util.Scanner;
+
+public class ForExample2 {
+
+	public void practice1() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+			System.out.,print("1이상의 숫자를 입력하세요 :")
+			int input = sc.nextInt();
+			
+			for(int i = 1 ; i <= input ; input) {
+				System.out.print(false); 
+			}
+			
+			
+		
+	}
+	
+	
+}

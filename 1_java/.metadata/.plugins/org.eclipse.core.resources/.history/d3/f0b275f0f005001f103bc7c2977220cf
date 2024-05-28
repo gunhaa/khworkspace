@@ -1,0 +1,39 @@
+package edu.kh.oop.practice.model.vo;
+
+public class Book {
+
+	// 1. 구현 클래스 다이어그램(Class Diagram)
+	
+	private String title; // 도서명
+	private int price; // 가격
+	private double discountRate; // 할인율
+	private String author; // 저자명
+	
+	public book() {}
+	public book(String title, int price, double discountRate, String author);
+	
+	
+}
+//1) 메소드(생성자 포함)의 이름이 동일
+	// 2) 매개변수의 개수, 타입, 순서 중 1개라도 달라야 함!!
+
+	// public User() {} // 기본 생성자가 이미 작성되어 있어서 중복
+	
+	public User(String userId) {} //매개변수의 개수가 같은 생성자 없음
+								  // -> 오버로딩 성립
+	
+	public User(int userAge) {} // 매개변수의 개수는 같지만 타입이 다름
+								// -> 오버로딩 성립
+	
+	public User(int userAge, String userId) {}
+	// 매개 변수의 개수는 같지만 타입이 다름 -> 오버로딩 성립
+	
+	public User(String userId, int userAge) {}
+	// 매개 변수의 개수, 타입은 같지만 순서가 다름 -> 오버로딩 성립
+	
+	public User(String userId, String userPw, String userName) {}
+	
+	// public User(String userName, String userId, String userPw) {} // 에러
+	// 매개변수의 개수, 타입, 순서가 모두 같아서 오버로딩 불가
+	// -> 변수명은 신경쓰지 않는다!!!!
+	

@@ -1,0 +1,8 @@
+package edu.kh.oop.abstraction.model.vo;
+
+// VO(Velue Object) : 값 저장용 객체를 만들기 위한 클래스를 모아두는 패키지
+
+
+public class People {
+
+}

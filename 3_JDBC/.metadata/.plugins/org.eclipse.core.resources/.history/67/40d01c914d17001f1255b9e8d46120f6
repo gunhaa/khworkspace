@@ -1,0 +1,10 @@
+package note.dao;
+
+public class EmployeeDAO {
+
+	public List<Employee> selectAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

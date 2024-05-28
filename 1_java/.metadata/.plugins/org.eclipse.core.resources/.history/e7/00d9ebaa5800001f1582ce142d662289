@@ -1,0 +1,12 @@
+package edu.kh.array.practice;
+
+public class PracticeRun {
+
+	public static void main(String[] args) {
+		ArrayPractice arrPr = new ArrayPractice();
+		///arrPr.practice7();
+		//arrPr.practice8();
+		arrPr.practice9();
+		arrPr.practice10();
+	}
+}

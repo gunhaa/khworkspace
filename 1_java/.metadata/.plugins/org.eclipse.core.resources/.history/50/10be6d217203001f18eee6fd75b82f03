@@ -1,0 +1,89 @@
+package edu.kh.oop.cls.model.vo;
+
+public class User {
+
+	// 속성(== 필드)
+	
+	// 아이디, 비밀번호, 이름, 나이, 성별 (추상화)
+	private String userId;
+	private String userPw;
+	private String userName;
+	private int userAge;
+	private char userGender;
+	
+	// 기능(== 생성자 + 메소드)
+	
+	// 생성자 : new 연산자를 통해서 객체가 생성될 때
+	// 		  생성된 객체의 필드 값 초기화 + 기능 수행 역활
+	
+	// 기본 생성자
+	public User() {
+		// 기능
+		System.out.println("기본 생성자로 User 객체 생성");
+		System.out.println(userId + " / " + userPw);
+		
+		// 필드 초기화
+		
+		userId = "user01";
+		userPw = "pass01";
+		userName = "박서준";
+		userAge = 33;
+		userGender = '남';
+	
+	}
+	// 매개변수 생성자
+	// ** 사용되는 기술, 변수 : 매개변수, 오버로딩(OberLoading), this
+		
+	// ** 매개변수 : 생성자나 메소드 호출 시()안에 작성되어
+	//            전달 되어지는 값을 저장하는 변수
+	// -> 전달 받은 값을 저장하고 있는 매개체(지니고 있는) 역활의 변수
+		
+	public User(String userID, String userPw) {
+					// 매개변수
+		
+		System.out.println("매개변수 생성자를 이용해서 User 객체 생성");
+		System.out.println(userId + " / " + userPw);
+	}
+		
+	
+	
+	
+	// 캡슐화로 인한 간접 접근 기능(getter / setter)
+	
+	public String getUserId() { // userId의 getter
+		return userId;
+		
+	}
+	public void userId() { // userId의 setter
+		this.userId = userId;
+		
+		
+	}
+	public String getUserPw() {
+		return userPw;
+	}
+	public void setUserPw(String userPw) {
+		this.userPw = userPw;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public int getUserAge() {
+		return userAge;
+	}
+	public void setUserAge(int userAge) {
+		this.userAge = userAge;
+	}
+	public char getUserGender() {
+		return userGender;
+	}
+	public void setUserGender(char userGender) {
+		this.userGender = userGender;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+}

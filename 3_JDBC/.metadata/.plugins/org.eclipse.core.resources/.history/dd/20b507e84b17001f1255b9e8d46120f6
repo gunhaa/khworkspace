@@ -1,0 +1,10 @@
+package note.run;
+
+public class run {
+	public static void main(String[] args) {
+		
+		EmployeeView start = new EmployeeView();
+		Start.menu();
+		
+	}
+}

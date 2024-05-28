@@ -1,0 +1,25 @@
+package edu.kh.variable.ex2;
+
+import java.util.Scanner;
+
+import.java.util.Scanner'
+
+public class ScannerExample5 {
+	
+	public static void main(String[] args) {
+		
+		
+		Scanner sc = new Scanner(System.in);
+		
+		// 1) next() : 한 단어 (띄어쓰기, 엔터를 만나면 입력 종료)
+		// 	  nextline() : 한 문장 (엔터를 만나면 입력 종료)
+		
+		System.out.print("입력 : ");
+		String str = sc.next();
+		
+		System.out.println(str);
+		
+		
+	}
+
+}

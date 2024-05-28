@@ -1,0 +1,19 @@
+package note.service;
+
+import java.util.List;
+
+import note.dao.EmployeeDAO;
+import note.vo.Employee;
+
+public class EmployeeService {
+
+	private EmployeeDAO dao =new EmployeeDao();
+	
+	public List<Employee> selectAll() {
+		
+		
+		
+		return empList;
+	}
+
+}
