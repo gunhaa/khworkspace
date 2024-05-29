@@ -16,7 +16,7 @@ CREATE TABLE DEPARTMENT3 AS SELECT * FROM DEPARTMENT;
 --테이블에 새로운 행을 추가하는 구문
 SELECT * FROM EMPLOYEE2;
 SELECT COUNT(*) FROM EMPLOYEE2;
-
+rollback;
 -- 1) INSERT INTO 테이블명 VALUES(데이터, 데이터, ...)
 -- 테이블에 모든 컬럼에 대한 값을 INSERT할 때 사용
 -- INSERT하고자 하는 컬럼이 모든 컬럼인 경우 컬럼명 생략 가능
