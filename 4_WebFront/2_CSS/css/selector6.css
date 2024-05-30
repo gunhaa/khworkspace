@@ -1,0 +1,25 @@
+/* 5순위 태그 선택자*/
+
+div {
+    width:200px;
+    height: 200px;
+    background-color:darkseagreen!important; /* 1순위 */
+}
+
+/* 4순위 클래스 선택자 */
+
+.cls1 {
+    background-color: aqua;
+    /* 배경 색은 변경 되지만, 겹치지 않는 width/height는 그대로 반영됨 */
+}
+
+.cls1 {
+    background-color: blueviolet;
+    /* 동일한 우선순위에서는 마지막에 작성도니 설정값이 적용된다. */
+}
+
+#test1 {
+    height: 100px;
+    background-color: yellowgreen;
+    color: white;
+}

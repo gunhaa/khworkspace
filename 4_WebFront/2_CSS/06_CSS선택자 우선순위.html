@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06_CSS선택자 우선순위</title>
+    <link rel="stylesheet" href="/2_CSS/css/selector6.css">
+</head>
+<body>
+    <h1>CSS 선택자 우선 순위</h1>
+
+    <pre>
+        기본적으로 css 속성은 style 태그 또는 css 파일에
+        작성된 순서(위 -> 아래)
+
+        같은 요소에 여러 css 속성이 설정되는 경우 우선 순위가 적용된다.
+
+        *알아둬야 될 것
+        1) 동일한 우선순위로 속성이 설정된 경우
+            -> 제일 마지막에 작성된 css속성이 반영된다.(덮어 씌워진다.)
+
+        2) 여러 선택자를 이용해서 같은 요소를 선택하더라도
+            지정되는 css 속성이 다르면 모두 반영된다.
+
+        1순위 : css속성 : 속성값 !important;
+        2순위 : inline-style 속성(요소에 직접 작성되는 style 속성) 
+        <!-- <div class="cls1" id="test1">우선 순위 테스트</div>가 전부 요소임 -->
+        3순위 : 아이디 선택자(#아이디 속성명)
+        4순위 : 클래스 선택자(.class 속성명)
+        5순위 : 태그 선택자(태그명)
+
+    </pre>
+                                      <!-- 2순위 : inline-style -->
+    <div class="cls1" id="test1" style="background-color: violet;">우선 순위 테스트</div>
+
+</body>
+</html>
