@@ -1,6 +1,8 @@
 /* CSS 파일 : 파일 전체가 <style>태그 내부라고 생각 */
 
         /*기본 속성 선택자*/
+
+
 div[name="name-1"]{
     background-color: aqua;
     }

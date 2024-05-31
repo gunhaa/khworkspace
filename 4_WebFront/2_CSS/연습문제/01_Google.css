@@ -1,0 +1,126 @@
+*{
+    font-size: 14px;
+}
+.a{
+    height: 50px;
+    width: 100%;
+    position:relative;
+}
+
+.b{
+    height: 50px;
+    width: 100%;
+    position:relative;
+    background-color: rgb(242, 242, 242);
+}
+
+.c{
+    height: 50px;
+    width: 100%;
+    position: relative;
+    background-color: rgb(242, 242, 242);
+}
+.main{
+    height: 790px;
+    width: 100%;
+    position: relative;
+}
+.country{
+    top:15px;
+    position: absolute;
+    left:20px;
+    
+}
+
+.left{
+    left:20px;
+    top:15px;
+    position: absolute;
+}
+
+.divide1_2{
+    float:left;
+    width: 50%;
+    height: 100%;
+}
+
+.right{
+    top:15px;
+    right:20px;
+    position: absolute;
+}
+
+.Google{
+    top:210px;
+    left:780px;
+    position: absolute;
+}
+.search{
+    top:355px;
+    left:670px;
+    position: absolute;
+}
+
+#search{
+    width: 500px;
+    height: 50px;
+    border-radius: 24px;
+    border-color: rgb(237, 235, 240);
+}
+#search:hover{
+    box-shadow: 3px 3px 4px rgb(192, 192, 192);
+}
+
+.icon2{
+    right:170px;
+    position: relative;
+    float: right;
+}
+
+.icon{
+
+    top : 365px;
+    left : 1040px;
+    position: absolute;
+}
+
+#btn{
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 15%;
+    background-color: rgb(248, 249,250);
+}
+#btn:hover{
+    border: 1px solid rgb(214, 207, 207);
+}
+.search2{
+    top:430px;
+    left:790px;
+    position: absolute;
+}
+
+.feelingLucky{
+    top:430px;
+    left:940px;
+    position: absolute;
+    width: 120px;
+    height: 10px;
+}
+.btn3{
+    color:white;
+    background-color: rgb(26,115,232);
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10%;
+}
+
+.line{
+    border: 1px solid rgb(190, 190, 190);
+}
+
+.icon3{
+    top:370px;
+    left:680px;
+    position: relative;
+}
