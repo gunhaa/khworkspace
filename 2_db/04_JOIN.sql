@@ -50,7 +50,7 @@ JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID);
 -- DEPT_CODE 컬럼과 DEPT_ID 컬럼이 같은 값을 가지고 있으므로
 -- 해당 컬럼들을 기준으로 연결
 
--- 1. 내부 조인(INNTER JOIN) (== 등가 조인(EQUAL JOIN))
+-- 1. 내부 조인(INNER JOIN) (== 등가 조인(EQUAL JOIN))
 --> 연결되는 컬럼의 값이 일치하는 행들만 조인됨. (== 일치하는 값이 없는 행은 조인에서 제외됨)
 
 
@@ -69,6 +69,8 @@ SELECT EMP_ID, EMP_NAME , DEPT_CODE , DEPT_TITLE
 FROM DEPARTMENT
 JOIN EMPLOYEE ON (DEPT_CODE = DEPT_ID);
 
+SELECT * FROM DEPARTMENT;
+SELECT * FROM EMPLOYEE;
 -- 오라클
 SELECT EMP_ID, EMP_NAME, DEPT_CODE, DEPT_TITLE
 FROM EMPLOYEE, DEPARTMENT -- FROM절에 사용할 테이블을 모두 작성
