@@ -1,0 +1,356 @@
+*{
+    box-sizing: border-box;
+}
+/* 
+div{
+    border: 1px solid black;
+} */
+
+.container{
+    width:1500px;
+    margin: auto;
+    position: relative;
+
+}
+
+
+/* header */
+.header{
+
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top:0;
+    background-color: rgb(246,245,239);
+}
+
+#headerBox{
+    position: relative;
+    width: 1200px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+#headerBox >div{
+    width: auto;
+    height: 50px;
+    padding: 13px;
+    margin: 0;
+    font-size: 12px;
+}
+#headerBox> #box{
+    width: 100px;
+}
+#headerBox >#header-btn{
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+    background-color: white;
+    cursor: pointer;
+    border: 0.5px solid gray;
+    border-radius: 6px;
+
+}
+
+
+/* nav */
+.nav{
+    height: 150px;
+    display:flex;
+    position: sticky;
+    top:100px;
+    background-color: rgb(246,245,239);
+    
+}
+
+.logo-left{
+    flex-basis: 20%;
+}
+.logo-right{
+    flex-basis: 80%;
+}
+
+.logo{
+    position: fixed;
+    z-index: 4;
+    width: 200px;
+    height: 200px;
+    left: 60px;
+    top:30px;
+}
+
+.logo-right > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    list-style: none;
+}
+
+.logo-right > ul >li{
+    width: auto;
+    margin-top: 40px;
+    margin-right:40px;
+    padding: 0;
+    font-size: 21px;
+}
+
+/* content */
+.content{
+    height: 600px;
+    background-color: rgb(71, 131, 185);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-1{
+    background-color: rgb(176, 216, 238);
+    width: 1410px;
+    height: 550px;
+    border-radius: 5px;
+    border:none;
+}
+
+#yoursummer{
+    width: 350px;
+    height: 300px;
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 100px;
+}
+
+#coffee{
+    width: 550px;
+    height: 300px;
+    position: absolute;
+    margin-left: 650px;
+    margin-top: 100px;
+    display : flex;
+}
+
+#tklogo{
+    width:380px;
+    margin-top: 40px;
+}
+
+#detail{
+    background-color: rgb(176, 216, 238);
+    width: 90px;
+    height: 40px;
+    border-radius: 8px;
+    margin-top: 35px;
+    margin-left: 135px;
+    cursor: pointer;
+}
+
+#coffee{
+    width : 140px;
+    height :300px;
+}
+
+#event1-btn{
+    position: fixed;
+    top:25%;
+    right: 70px;
+    width: 140px;
+    height: 100px;
+    border-radius: 15px;
+    background-color: rgb(238, 239, 241);
+    cursor: pointer;
+    border: none;
+}
+
+#event1-img{
+    width: 135px;
+    height: 100px;
+}
+#event2-img{
+    width: 135px;
+    height: 100px;
+}
+
+#event2-btn{
+    position: fixed;
+    top:35%;
+    right: 70px;
+    width: 140px;
+    height: 100px;
+    border-radius: 15px;
+    background-color: rgb(227, 242, 239);
+    cursor: pointer;
+    border: none;
+}
+
+
+
+/* footer */
+.footer{
+    height: 380px;
+    display:flex;
+    flex-direction: column;
+}
+
+.footer > div:nth-child(1){
+    flex-basis: 25%;
+    display: flex;
+}
+
+.footer > div:nth-child(2){
+    flex-basis: 75%;
+    display:flex;
+}
+
+#notice {
+    flex-basis: 60%;
+    background-color: black;
+    position: relative;
+}
+
+#plus-btn{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top:20px;
+    right:30px;
+    border-radius: 100%; 
+    font-size: 1.5em;
+    color: white;
+    background-color: black;
+    border-color: gray;
+    border: 3px solid white;
+    cursor: pointer;
+}
+
+#noticeText{
+    margin-left: 170px;
+    margin-top: 25px;
+}
+th{
+    font-size: 28px;
+    color: white;
+}
+td{
+    font-size: 20px;
+    color: white;
+}
+
+#promotion{
+    flex-basis: 40%;
+    position: relative;
+    background-color: rgb(246,245,239); 
+}
+
+#promotionText{
+    font-size: 30px;
+    margin-top:25px;
+    margin-left: 110px;
+    color: black;
+}
+
+#slash-btn{
+    position: absolute;
+    right: 30px;
+    bottom: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    font-size: 1.5em;
+    color: black;
+    background-color: rgb(246,245,239);
+    border: 3px solid black;
+    cursor: pointer;
+}
+
+.footer> div{
+    background-color:rgb(30, 57, 50);
+}
+
+.footer > div:nth-child(2) >div:nth-child(1){
+    flex-basis: 25%;
+}
+
+#footer-logo{
+    margin-top:25px;
+    margin-left:70px;
+}
+
+.footer > div:nth-child(2) >div:nth-child(2){
+    flex-basis: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+#reward {
+    flex-basis : 60%;
+    position: relative;
+    border-bottom: 3px solid rgb(75,97,91);
+}
+#present {
+    flex-basis: 40%;
+    position: relative;
+}
+p {
+color: white;
+}
+
+p.head{
+    font-size: 24pt;
+}
+p.body{
+    font-size: 16pt;
+    line-height:36px;
+}
+p.foot {
+    font-size:12pt;
+    line-height: 24px;
+}
+
+#presentCard {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    width: 240px;
+    height: 50px;
+    font-size: 16px;
+    background-color:rgb(30, 57, 50);
+    color: white;
+    border: 3px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#signIn{
+    position: absolute;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+#logIn{
+    position: absolute;
+    border: 3px solid white;
+    border-radius: 5px;    
+    font-size: 16px;
+    background-color:rgb(30, 57, 50);
+    color: white;
+    bottom:20px;
+    right:20px;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+}
+
+#signIn{
+    position: absolute;
+    border: none;
+    border-radius: 5px;    
+    font-size: 16px;
+    background-color:rgb(0, 112, 74);
+    height: 50px;
+    width: 130px;
+    color: white;
+    bottom: 20px;
+    right: 133px;
+    cursor: pointer;
+}
