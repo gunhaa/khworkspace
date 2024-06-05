@@ -1,0 +1,337 @@
+/* div{
+    border: 1px solid black;
+    box-sizing: border-box;
+} */
+
+.wall{
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 1170px;
+    height: 1170px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* search */
+
+#search {
+    flex-basis:13%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+#search fieldset{
+    width: 540px;
+    height: 35px;
+    margin-top: 0px;
+    border: 2.3px solid #455ba8;
+    border-radius: 35px;
+    display:flex;
+    position: relative;
+}
+#query {
+    padding : 10px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 84%;
+    border: none;
+    outline: none; /* none도 가능 */
+    /* outline : input태그에 포커스가 맞춰졌을 때
+                 이를 표현하기 위한 바깥선
+                 (테두리보다 바깥에 존재) */
+}
+#keyboard-btn{
+    width: 8%;
+    cursor: pointer;
+    font-size: 1.5em;
+    color:#455ba8;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+#search-btn{
+    width: 8%;
+    cursor: pointer;
+    font-size: 1.5em;
+    color:#455ba8;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#logo_daum{
+    width: 60px;
+    height: 70px;
+    top:-10px;
+    position: absolute;
+    cursor: pointer;
+}
+/* icons */
+
+#icons{
+    flex-basis:6%;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.icon1-btn{
+    width: 85px;
+    height: 45px;
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+    border: none;
+    box-shadow: 3px 3px 32px rgb(218, 215, 215);
+    cursor: pointer;
+}
+.icon2-btn{
+    width: 45px;
+    height: 45px;
+    border-radius: 30px;  
+    background-color: white;
+    box-shadow: 3px 3px 32px rgb(218, 215, 215);
+    cursor: pointer;
+    border: none;
+  
+}
+.icon1{
+    width: 25px;
+    height: 25px;
+}
+
+.icon-text{
+    font-size: 13pt;
+}
+/* content */
+
+
+
+#content{
+    flex-basis:81%;
+    display:flex;
+    background-color: rgb(242, 244, 247);
+}
+
+#left{
+    flex-basis:65%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#left-item1{
+    flex-basis: 17%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(242, 244, 247);
+}
+
+#left-item1-box{
+    width: 97%;
+    height: 85%;
+    border-radius: 14px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#banner1{
+    width: 700px;
+    height: 95px;
+
+}
+
+#left-item2{
+    flex-basis: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#left-item2-box{
+    width: 97%;
+    height: 96%;
+    border-radius: 14px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#left-item2-box-header{
+    height: 13%;
+    position: relative;
+}
+
+#left-item2-box-header-itembox{
+    position: absolute;
+    width: 650px;
+    height: 50px;
+    left: 10px;
+    top:10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#left-2-2{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#left-2-3{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#left-2-4{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#left-2-5{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#left-2-6{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#left-2-7{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#left-2-8{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-2-btn{
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: auto;
+    height: 25px;
+}
+
+
+#left-item2-box-body{
+    height: 70%;
+}
+
+#left-item2-box-footer{
+    height:13%;
+}
+
+#left-item3{
+    flex-basis: 17%;
+}
+#right{
+    flex-basis: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#right-item1{
+    flex-basis: 17%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#right-item1-box{
+    width: 97%;
+    height: 85%;
+    border-radius: 14px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#r-1-b-1{
+    position: absolute;
+    top:20px;
+    left:10px;
+    color:rgb(133,133,133);
+    font-size: 14px;
+}
+
+#login-button{
+    position: absolute;
+    bottom:10px;
+}
+
+#i-button{
+    position: absolute;
+    right:17px;
+    top:17px;
+    width: 30px;
+    height: 30px;
+}
+
+
+#right-item2{
+    flex-basis: 16%;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+}
+
+#right-item2-box{
+    width: 97%;
+    height: 75%;
+    border-radius: 14px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+
+#right-item3{
+    flex-basis: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#right-item3-box{
+    width: 97%;
+    height: 120%;
+    border-radius: 14px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#right-item4{
+    flex-basis: 34%;
+    position: relative;
+}
+#right-item4-box{
+    width: 97%;
+    height: 85%;
+    border-radius: 14px;
+    background-color: white;
+    position: absolute;
+    bottom: 10px;
+    left:8px;
+}

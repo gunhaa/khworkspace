@@ -75,7 +75,7 @@ CREATE TABLE TB_TEST(
 GRANT CREATE TABLE TO hgh_sample; --Grant을(를) 성공했습니다.
 
 ALTER USER hgh_sample DEFAULT TABLESPACE SYSTEM QUOTA UNLIMITED ON SYSTEM;
-
+alter user sample default tablespace system quota unlimited on system;
 -- 7. [SAMPLE 계정] 다시 테이블 계정
 
 CREATE TABLE TB_TEST(

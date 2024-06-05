@@ -135,14 +135,21 @@ div{
     margin-top: 40px;
 }
 
-#detail{
+#detail-btn{
     background-color: rgb(176, 216, 238);
-    width: 90px;
-    height: 40px;
+    width: 100px;
+    height: 50px;
     border-radius: 8px;
     margin-top: 35px;
-    margin-left: 135px;
+    margin-left: 145px;
     cursor: pointer;
+}
+
+#detail-btn:hover{
+    background-color:#13362d;
+    transition:0.7s;
+    color: white;
+    text-decoration: underline;
 }
 
 #coffee{
@@ -182,6 +189,7 @@ div{
     cursor: pointer;
     border: none;
 }
+
 
 
 
@@ -321,10 +329,8 @@ p.foot {
     cursor: pointer;
 }
 
-#signIn{
-    position: absolute;
-    border: 3px solid white;
-    border-radius: 5px;
+#presentCard:hover{
+    text-decoration: underline;
 }
 
 #logIn{
@@ -340,6 +346,9 @@ p.foot {
     height: 50px;
     cursor: pointer;
 }
+#logIn:hover{
+    text-decoration: underline;
+}
 
 #signIn{
     position: absolute;
@@ -353,4 +362,8 @@ p.foot {
     bottom: 20px;
     right: 133px;
     cursor: pointer;
+}
+
+#signIn:hover{
+    text-decoration: underline;
 }

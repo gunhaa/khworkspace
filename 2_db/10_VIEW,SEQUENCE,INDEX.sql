@@ -1,5 +1,5 @@
 /*  VIEW
-
+ALTER USER SAMPLE DEFAULT TABLESPACE
     - SELECT문의 실행 결과(RESULT SET)를 저장하는 객체
     - 논리적 가상 테이블
         -> 테이블 모양을 하고는 있지만, 실제 값을 저장하고 있진 않음.
