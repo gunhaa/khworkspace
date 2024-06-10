@@ -1,0 +1,295 @@
+// **** Fullpage **** //
+var fullpageItem = "";
+(function($){
+	$(document).ready(function(){
+		fullpageItem = $('#wrap').fullpage({
+			anchors: ['firstPage'],
+			menu:false,
+			slidesNavigation: false,
+			licenseKey: '9123D5AF-1F444BF8-AE5D6283-103772B3',
+			scrollingSpeed:800,
+			scrollHorizontally: true,
+			scrollHorizontallyKey: 'QU5ZX0dHQ2MyTnliMnhzU0c5eWFYcHZiblJoYkd4NVkxZg==', //see https://goo.gl/xkUmHS
+			autoScrolling: true,
+			navigation: false,
+			css3:false,
+			loopHorizontal: false,
+			controlArrows: false,
+			responsive: 980, // 980 이하부터 반응형려
+			onSlideLeave: function(section, origin, destination, direction, trigger){
+				var dst = destination.anchor;
+				if($(window).width() >= 980){
+					switch(dst){
+						case "slide1":
+							$(".video_control").show();
+							break;
+						default:
+							$(".video_control").hide();
+							$(".playBtn").eq(0).trigger("click");
+					}
+				}
+			}
+		});
+
+		$('#moveSectionUp').click(function(e){
+			e.preventDefault();
+			$.fn.fullpage.moveSectionUp();
+		});
+
+		$('.moveSectionDown').click(function(e){
+			e.preventDefault();
+			$.fn.fullpage.moveSectionDown();
+		});
+
+		// move top 
+		$('.topBtn > a').click(function () {
+			$.fn.fullpage.moveTo(1, 1);
+		});
+
+		setInterval(function(){
+			$('.section.active').addClass("action");
+			$('.slide.active').addClass("action");
+		});
+
+		var brandTop = $("#brand").offset().top;
+		var scrollTimeout = "";
+		
+		$(window).scroll(function(){
+			handleScroll();
+		});
+
+		function handleScroll(){
+			clearTimeout(scrollTimeout);
+
+			scrollTimeout = setTimeout(function(){
+				scroll_catch();
+			}, 500);
+		}
+
+		function scroll_catch(){
+			if($(window).scrollTop() >= brandTop){
+				$(".video_control").hide();
+				$(".playBtn").eq(0).trigger("click");
+			} else {
+				$(".video_control").show();
+			}
+		}
+	});
+})(jQuery);
+// **** Fullpage **** //
+
+
+$(document).ready(function(){
+			
+	// 메인비주얼 영상
+	/*$('.jarallax').jarallax({
+		speed:0,
+		videoStartTime:0,
+		videoVolume:100,
+		videoLoop:true,
+		videoPlayOnlyVisible:false,
+		videoLazyLoading:false,
+	});*/
+
+	// 메인비주얼 롤링
+	/*$('.visual_roll2').slick({
+			infinite: true,
+			speed: 500,
+			fade: true,
+			dots: true,
+			arrows:false,
+			cssEase: 'linear',       
+			pauseOnFocus: false,
+			pauseOnHover: false,         
+			zIndex:20,
+			autoplay: false,
+			autoplaySpeed: 6000,
+	});		
+	$('.visual_roll2 .slick-active').addClass('action'); 
+	$('.visual_roll2').on('afterChange', function(event, slick, currentSlide, nextSlide){
+			$('.slick-slide').removeClass('action');
+			setTimeout(function (){ 
+					$('.slick-active').addClass('action'); 
+			});
+	});
+	$('.visual_roll2').on('init', function(event,slick){
+			setTimeout(function(){ 
+					$('.slick-active').addClass('action'); 
+			});
+	});				*/				
+								
+	// 속도 각각 지정해주기
+	/*$('.visual_in').on('setPosition', function(event, slick, currentSlide){
+		var slideTime = $('div[data-slick-index="'+ slick.currentSlide + '"]').data("time");
+		$(".visual_in").slick("setOption", "autoplaySpeed", slideTime);
+		console.log(slideTime + '초');
+	});*/
+
+
+
+	// Destination 롤링
+	$('.destination_list').slick({
+		infinite: true,
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		dots: false,
+		arrows: true,
+		autoplay: true,
+		speed: 1000,
+		zIndex:20,
+		centerMode: true,
+		autoplaySpeed: 5000, // 슬라이드 속도
+		responsive: [
+			{
+				breakpoint: 981,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+				}
+			},
+			{
+				breakpoint: 481,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+				}
+			}
+		]
+	});
+
+
+
+	// prd 롤링
+	/*$('.prd_list').slick({
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		dots: false,
+		arrows: true,
+		autoplay: true,
+		fade: true,
+		zIndex:20,
+		speed: 1000,
+		autoplaySpeed: 5000 // 슬라이드 속도
+	});*/
+
+
+
+
+
+
+		$("#charter .charter_list li").eq(0).hover(function(){
+				$("#charter .charter_list li").removeClass("on");
+				$("#charter .charter_list li").removeClass("off");
+				$(this).addClass("on");
+				$("#charter .charter_list li").not($(this)).addClass("off");
+		});
+
+		$("#charter .charter_list li").eq(1).hover(function(){
+				$("#charter .charter_list li").removeClass("on");
+				$("#charter .charter_list li").removeClass("off");
+				$(this).addClass("on");
+				$("#charter .charter_list li").not($(this)).addClass("off");
+		});
+
+
+		$("#charter .charter_list li").eq(2).hover(function(){
+				$("#charter .charter_list li").removeClass("on");
+				$("#charter .charter_list li").removeClass("off");
+				$(this).addClass("on");
+				$("#charter .charter_list li").not($(this)).addClass("off");
+		});
+
+
+		$("#charter .charter_list li").eq(3).hover(function(){
+				$("#charter .charter_list li").removeClass("on");
+				$("#charter .charter_list li").removeClass("off");
+				$(this).addClass("on");
+				$("#charter .charter_list li").not($(this)).addClass("off");
+		});
+
+
+
+	$(".slider_wrap .prd_wrap").hide().eq(0).show();
+	$(".cateTab li").click(function(){
+			var target = $(this);
+			var index = target.index();
+			$(".cateTab li").removeClass('up');
+			target.addClass('up');
+			$(".slider_wrap .prd_wrap").css("display" , "none");
+			$(".slider_wrap .prd_wrap").eq(index).css("display" , "block");
+
+			$('.prd_list').slick('setPosition');
+			$('.sideBg_list').slick('setPosition');
+	});
+
+
+	function sliderSet(slickfor,slicknav){
+		slickfor.slick({
+		  infinite: true,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			dots: false,
+			arrows: true,
+			autoplay: true,
+			fade: true,
+			zIndex:20,
+			speed: 1000,
+			autoplaySpeed: 5000 ,
+		  asNavFor:slicknav
+		});
+		slicknav.slick({
+		  infinite: true,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			dots: false,
+			arrows: false,
+			autoplay: true,
+			fade: true,
+			zIndex:20,
+			speed: 1000,
+			autoplaySpeed: 5000,
+		  asNavFor: slickfor
+		});
+	}
+
+	$('.prd_wrap').each(function(i,el){ //.slide-box -> slick-slider 감싸고 있는 부모 클래스명
+		i+=1;	
+		var slickfor = $(el).find('.prd_list').addClass('for'+ i) //.slider-for -> slider-for로 사용할 클래스 넣어주기 , for -> 카운팅할 클래스명
+		var slicknav = $(el).find('.sideBg_list').addClass('nav'+ i) //.slider-nav -> slider-nav로 사용할 클래스 넣어주기 , nav -> 카운팅할 클래스명
+		sliderSet(slickfor,slicknav);
+	})
+
+
+});
+
+
+
+// 스크롤에 따른 효과
+(function($){
+	$(window).on('scroll', function() {
+		$('.slide').each(function(index, elem) {
+			if ($(window).scrollTop() > $(elem).offset().top - ($(window).height() / 1.2)) {
+				var $this = $(this);
+				$this.addClass("action");
+			}	
+			if ($(window).scrollTop() > $(elem).offset().top - ($(window).height() / 1.2)) {
+				var $this = $(this);
+				$this.addClass("action");
+			}else{
+				var $this = $(this);
+				//$this.removeClass("action");
+			}	
+		});
+
+		if ($(window).scrollTop() > $("#contact").offset().top - ($(window).height() / 1.2)) {
+			$("#wrap").addClass("fp-viewing-firstPage-slide8");
+			$(".scrollTop").on( "click", function() {
+				$("html, body").animate({scrollTop:0},600);
+				return false;
+			});
+		}else{
+			$("#wrap").removeClass("fp-viewing-firstPage-slide8");
+		}	
+	});
+})(jQuery);

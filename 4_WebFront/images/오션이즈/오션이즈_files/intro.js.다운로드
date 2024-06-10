@@ -1,0 +1,19 @@
+$(document).ready(function() {
+  
+  var counter = 0;
+  var c = 30;
+  var i = setInterval(function(){
+      $(".loading-page .counter h1").html(c + "%");
+      $(".loading-page .counter span").css("width", c + "%");
+
+    counter++;
+    c++;
+      
+    if(counter == 71) {
+        clearInterval(i);
+		$("#intro").delay(2000).addClass("end");
+		$("#visual").delay(3000).addClass("intro_end");
+    }
+  }, 30);
+
+});

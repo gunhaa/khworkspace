@@ -1,0 +1,109 @@
+th, td, table{font-size:1rem;}
+
+
+.search_con{}
+.search_con h4{font-size:1.5rem; font-weight: 700; color:var(--black); line-height: 150%; letter-spacing: -0.5pt; padding:0 0 10px;}
+.search_con h4 .thin{font-weight:400; line-height: 150%; letter-spacing: -0.5pt;}
+
+.search_word{ font-size:1rem; line-height: 140%; margin:0 0 20px; letter-spacing:-0.5pt; color:var(--basic); text-align:left;  word-break:keep-all;}
+.search_word .pointColor{font-weight:700;}
+
+
+.dep_tit.search ~ .dep_tit.search{margin:50px 0 0}
+
+.search_table {width:100%; border-collapse:separate; border-spacing:0; border-top:2px solid var(--black);}
+.search_table th {font-size:  0.937rem; font-weight: 600; letter-spacing: -0.028rem; color:var(--black); padding:20px 10px; box-sizing:border-box; background:var(--grayBg); border-bottom:1px solid var(--border);}
+.search_table td {padding:16px 0; text-align:center; border-bottom:1px solid var(--border); box-sizing:border-box;}
+.search_table td.left{text-align:left; padding:16px 17px;}
+.search_table td.left strong{color:var(--black);}
+.search_table td.left p.s02{color:#888; font-size: 0.8235rem; letter-spacing:-0.5pt;}
+.search_table td.search_cont{text-align:left; background-color:#f9f9f9; padding:12px 14px;}
+.search_table .mo_line{display:none}
+
+.search_table .viewmore {display:inline-block; padding:3px 12px; font-family:var(--eng); font-size:13px; border:1px solid rgba(34,34,34,0.5); color: var(--black); transition:all 0.3s;}
+.search_table .viewmore:hover {color:#fff; background:var(--black); border:1px solid var(--black); transition:all 0.3s;}
+
+
+
+
+
+/*******************************************************************************
+	@media ~1310px
+*******************************************************************************/
+@media all and (max-width:1310px){
+
+
+
+}
+
+
+
+
+
+/*******************************************************************************
+	@media ~980px			body,html{ font-size:14px;  }
+*******************************************************************************/
+@media all and (max-width:980px){
+
+.search_con{}
+.search_con h4{padding:0 0 8px;}
+.search_word{margin:0 0 15px; }
+
+}
+
+/*******************************************************************************
+	@media 481~680px
+*******************************************************************************/
+@media all and (max-width:680px){
+
+.search_con{}
+.search_con h4{padding:0 0 6px;}
+.search_word{margin:0 0 10px; }
+
+.search_table {}
+.search_table th {display:none}
+.search_table td.left {padding:14px 5px; border-right:none;}
+.search_table .pc_line{display:none}
+.search_table .mo_line{display:block}
+
+.search_table h6.mo_line{font-size:1.133rem; text-decoration:underline; font-weight:500; color:var(--black); margin:0 0 5px;}
+
+.search_table .mo_line .list_cate{color:#858585; letter-spacing:-0.55pt; line-height:20px; padding:0 0 3px}
+.search_table .mo_line .list_cate .notice{display:inline-block; width:36px; line-height:20px; margin:0 7px 0 0; text-align:Center;color:#fff; letter-spacing:-0.55pt; background:#f1001c; border-radius:20px}
+.search_table .mo_line .subject, .mo_line .subject a{font-weight:500; color:var(--black); letter-spacing:-0.55pt;}
+.search_table .mo_line .writer {overflow:hidden; clear:both; margin: 2px 0 0;}
+.search_table .mo_line .writer li{float:left; color:#a0a0a0; padding:0 6px; font-size:0.9333rem; background:url('/admin/bbs/skin/bbsBasic/image/bbs_list_line.gif') no-repeat left center;}
+.search_table .mo_line .writer li:first-child{padding-left:0;}
+.search_table .mo_line .img{vertical-align:middle; margin:0 0 3px}
+.search_table .mo_line .list{float:left; }
+.search_table .mo_line .commentBg{display:block; position:absolute; right:3px; top:30%; width:30px; height:30px; text-align:center; line-height:30px; background:url('image/comment_bg.gif') no-repeat center; color:#858585; font-weight:400; }
+.search_table .mo_line .recom{background:url('image/recom.gif') no-repeat left center; background-size:11px 10px; padding:0 0 0 13px;  font-size:10px; color:#858585;}
+
+
+}
+
+
+
+
+/*******************************************************************************
+	@media ~480px				body,html{ font-size:13px;  }
+*******************************************************************************/
+@media all and (max-width:480px){
+
+
+
+
+
+}
+
+
+
+/*******************************************************************************
+	@media ~360px
+*******************************************************************************/
+@media all and (max-width:360px){
+
+
+
+
+}

@@ -1,29 +1,29 @@
 *{box-sizing: border-box;}
 /* 
-div{
+section{
     border: 1px solid black;
 } */
 
-.container{
+main{
     width:1140px;
     margin: auto;  
 }
 /* header */
-.header{
+header{
     height: 200px;
     display:flex;
 }
 
-.header>div:nth-child(1){
+header>section:nth-child(1){
     flex-basis:15%;
 }
-.header>div:nth-child(2){
+header>section:nth-child(2){
     flex-basis:70%;
 }
-.header>div:nth-child(3){
+header>section:nth-child(3){
     flex-basis:15%;
 }
-.header > div:nth-child(1){
+header > section:nth-child(1){
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,7 +36,7 @@ div{
 
 /* 검색 스타일 */
 
-.header>div:nth-child(2){
+header>section:nth-child(2){
     display:flex;
     align-items: center;
     justify-content: center;
@@ -75,7 +75,7 @@ div{
 }
 
 /* nav */
-.nav{
+nav{
     height:50px;
 
     position: sticky;
@@ -92,7 +92,7 @@ div{
     border-bottom: 2px solid black;
 }
 
-.nav > ul {
+nav > ul {
     display:flex;
     list-style: none;
     padding : 0;
@@ -100,12 +100,12 @@ div{
     height: 100%;
 }
 
-.nav >ul> li {
+nav >ul> li {
     flex: 0 1 150px;
     /*  팽창 수축 기본값 */
 }
 
-.nav a{
+nav a{
     display:block;
     height: 100%;
 
@@ -123,7 +123,7 @@ div{
     border-radius: 5px;
 }
 
-.nav a:hover{
+nav a:hover{
     background-color: #455ba8;
     color: white;
 }
@@ -156,7 +156,7 @@ div{
             border: 1px solid #ddd;
         }
         /* id/pw input 담긴 영역 */
-        #id-pw-area > div:first-child{
+        #id-pw-area > section:first-child{
             flex-basis: 75%;
             display: flex;
             flex-direction: column;
@@ -164,7 +164,7 @@ div{
             
         }
 
-        #id-pw-area > div:last-child{
+        #id-pw-area > section:last-child{
             flex-basis: 25%;
             display: flex;
             justify-content: center;
@@ -218,7 +218,7 @@ div{
         }
 /* footer */
 
-.footer{
+footer{
     height: 200px;
     background-color: #a3add342;
     display: flex;
@@ -234,7 +234,7 @@ div{
     align-items: center;
 }
 
-#footer-box > div:first-child{
+#footer-box > p{
     font-weight: 900;
     margin-bottom: 20px;
     font-size: 14pt;
@@ -244,7 +244,7 @@ div{
     
 }
 
-#footer-box >div:last-child{
+#footer-box >article:last-child{
 
     border: 1px solid black;
     width: 470px;
@@ -254,7 +254,7 @@ div{
     margin: 0 10px;
 }
 
-#footer-box>div>a{
+#footer-box>article>a{
     color: black;
     text-decoration: none;
 }

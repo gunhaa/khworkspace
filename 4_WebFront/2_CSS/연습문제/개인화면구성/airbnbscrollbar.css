@@ -1,0 +1,803 @@
+/* div,main,header,nav,#main,ul,li{
+    border: 1px solid black;
+} */
+
+main{
+    width: 1890px;
+    height: 3000px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+    background-color: red;
+}
+/* header */
+header{
+    z-index: 1;
+    background-color: white;
+    position: sticky;
+    top: 0px;
+    flex-basis: 7%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgb(235,235,235);
+}
+
+#login-modal-menu-container{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+}
+/* js용 class */
+.login-modal-menu-container{
+    display: none!important;
+}
+
+/* modal 시작 */
+#login-modal-menu{
+    width: 570px;
+    height:740px;
+    background-color: white;
+    z-index: 3;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-modal-menu-box{
+    height: 98%;
+    width: 95%;
+}
+
+#login-modal-menu-nav{
+    width: 100%;
+    height: 70px;
+    position: relative;
+}
+
+#login-modal-menu-nav-x{
+
+    position: absolute;
+    left:20px;
+    top:25px;
+    font-size: 14pt;
+    cursor: pointer;
+}
+
+#login-modal-menu-nav-text{
+    position: absolute;
+    top:25px;
+    left:170px;
+    font-size: 14pt;
+    color: rgb(34,34,34);
+    font-weight: 600;
+}
+
+
+#login-modal-menu-title{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20pt;
+    margin-left: 20px;
+}
+
+#login-modal-menu-body{
+
+    width: 100%;
+    height: 550px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.login-modal-menu-body-textbox{
+    width: 500px;
+    height: 50px;
+    border: 1px solid rgb(140,140,140);
+    border-radius: 5px;
+    font-size: 14pt;
+}
+.login-modal-menu-body-textbox:focus{
+
+    outline:none;
+    border:2px solid rgb(136,168,167)
+}
+
+
+#login-modal-menu-body-textbox-email{
+    position: absolute;
+    right: 45px;
+    top:28px;
+    z-index: 1000;
+    width: 10px;
+    height: 10px;
+    font-size: 15pt;
+}
+
+#login-modal-menu-body-textbox-user1{
+    position: absolute;
+    right: 45px;
+    top:95px;
+    z-index: 1000;
+    width: 10px;
+    height: 10px;
+    font-size: 15pt;   
+}
+
+#login-modal-menu-body-textbox-user2{
+    position: absolute;
+    right: 45px;
+    top:160px;
+    z-index: 1000;
+    width: 10px;
+    height: 10px;
+    font-size: 15pt;
+}
+
+#login-modal-menu-body-textbox-pw{
+    position: absolute;
+    right: 45px;
+    top:225px;
+    z-index: 1000;
+    width: 10px;
+    height: 10px;
+    font-size: 15pt;
+}
+
+
+#login-modal-menu-body-birth-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 500px;
+    height: 50px;
+    margin-top: -10px;
+}
+
+#login-modal-menu-body-birth-text>div:first-child{
+    font-weight: 700;
+    font-size: 14pt;
+    height: 10px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+#login-modal-menu-body-birth-text>div:last-child{
+    font-size: 9pt;
+    color: rgb(154,154,154);
+    height: 30px;
+    width: 100%;
+}
+
+#login-modal-menu-body-birth-inputbox{
+    width: 500px;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 15px;
+}
+
+#login-modal-menu-body-birth-inputbox-month{
+    height: 95%;
+    width: 250px;
+    font-size: 14pt;
+}
+
+#login-modal-menu-body-birth-inputbox-day{
+    height: 95%;
+    margin-left: 15px;
+    width: 100px;
+    font-size: 14pt;
+
+}
+
+#login-modal-menu-body-birth-inputbox-year{
+    height: 95%;
+    margin-left: 15px;
+    width: 150px;
+    font-size: 14pt;
+
+}
+#login-modal-menu-body-checkbox{
+    width: 500px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#login-modal-menu-body-checkbox > input{
+    accent-color: rgb(0,132,137);
+}
+
+#modal-box{
+    font-size: 10pt;
+    color: rgb(154,154,154);
+}
+
+#login-modal-menu-body-clickbox{
+    width: 500px;
+    height: 40px;
+    position: relative;
+}
+
+#captchabox{
+    position: absolute;
+    left:-53px;
+    top:-18px;
+}
+
+#login-modal-menu-body-buttonbox{
+    width: 500px;
+    height: 45px;
+}
+
+#login-modal-menu-body-buttonbox-btn{
+    width: 500px;
+    height: 45px;
+    background-color: rgb(255,90,96);
+    border-radius: 10px;
+
+    border: none;
+}
+#login-modal-menu-body-buttonbox-btn:hover{
+box-shadow: 1px 5px 10px 1px rgb(212, 210, 210);
+}
+#login-modal-menu-body-buttonbox-btn > span{
+    color:white;
+    font-size: 16pt;
+    font-weight: 700;
+}
+
+#login-modal-menu-body-buttonbox-btn:hover{
+    cursor: pointer;
+}
+
+
+#header-event-menu{
+    position: absolute;
+    border: none;
+    box-shadow: 1px 5px 10px 1px rgb(123,123,123);
+    width: 240px;
+    height: 245px;
+    right: 80px;
+    top:80px;
+    z-index: 2;
+    border-radius: 15px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 15px;
+
+}
+
+.displaynonejs{
+    display:none !important;
+}
+
+#event-top{
+    border-bottom: 1px solid rgb(221,221,221);
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#event-bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+#event-bottom > div:first-child{
+    margin-top: 15px;
+}
+
+.header-event-menu1{
+    width: 100%;
+    height: 60px;
+    font-size: 12pt;
+    display: flex;
+    align-items: center;
+}
+
+.header-event-menu1:hover{
+    cursor: pointer;
+    background-color: rgb(245,245,245);
+}
+
+header #header-top{
+    flex-basis: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.header-btn{
+    border-radius: 30px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    cursor: pointer;  
+}
+
+.header-btn:hover{
+    background-color: rgb(240,240,240);
+}
+
+#header-top > div:nth-child(2){
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    left:790px;
+}
+
+#header-top > div:nth-child(3){
+    position: absolute;
+    left:845px;
+}
+
+#header-top > div:nth-child(4){
+    position: absolute;
+    left:920px;
+}
+#header-top > div:nth-child(5){
+    position: absolute;
+    right:250px;
+    font-weight: 550;
+}
+#header-top > img:last-of-type{
+    position: absolute;
+    right:200px;
+    width: 20px;
+    height: 20px;
+}
+#header-top > div:nth-child(7){
+    position: absolute;
+    right:80px;
+}
+
+#airbnb_logo{
+    width: auto;
+    height: 30px;
+    position: absolute;
+    left:60px;
+    top:40px;
+}
+header #header-bottom{
+    flex-basis: 55%;
+}
+
+#login-menu{
+    width: 90px;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid rgb(221,221,221);
+    border-radius: 30px;
+    align-items: center;  
+    cursor: pointer;  
+}
+
+#login-menu:hover{
+    box-shadow: 1px 1px 4px 1px rgb(230, 226, 226);
+}
+
+#header-users{
+    font-size: 18pt;
+}
+
+#header-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#header-bottom > div {
+    width: 800px;
+    height: 60px;
+    border-radius: 50px;
+    border: 1.8px solid rgb(221,221,221);
+    display: flex;
+}
+
+#header-bottom>div>div:nth-child(1){
+    flex-basis: 40%;
+}
+
+#header-bottom>div>div:nth-child(2){
+    flex-basis: 15%;
+}
+#header-bottom>div>div:nth-child(3){
+    flex-basis: 15%;
+}
+#header-bottom>div>div:nth-child(4){
+    flex-basis: 30%;
+}
+
+.header-bottom-btn:hover{
+    background-color: rgb(235,235,235);
+    border-radius: 50px;
+}
+.header-bottom-btn:hover::after{
+    display: none;
+}
+
+
+.header-bottom-btn2:hover{
+    background-color: rgb(235,235,235);
+    border-radius: 50px;
+}
+
+.header-bottom-btn{
+    position: relative;
+}
+
+.header-bottom-btn2{
+    position: relative;
+}
+
+.header-bottom-btn::after {
+    content: "";
+    position: absolute;
+    top: 23%;
+    right: 0;
+    width: 1px;
+    height: 60%;
+    background-color: rgb(235,235,235);
+  }
+
+
+
+.header-bottom-btn-text1{
+    font-size: 8pt;
+    font-weight: bold;
+
+}
+
+.header-bottom-btn-text2{
+    color: rgb(106,106,106);
+    font-size: 12pt;
+}
+
+.header-bottom-btn>div:first-child{
+
+    position: absolute;
+    top:10px;
+    left:22px;
+}
+.header-bottom-btn2>div:first-child{
+
+    position: absolute;
+    top:10px;
+    left:22px;
+}
+.header-bottom-btn>div:last-child{
+
+    position: absolute;
+    top:26px;
+    left:20px;
+
+}
+.header-bottom-btn2>div:last-child{
+
+    position: absolute;
+    top:26px;
+    left:20px;
+
+}
+#search-p{
+    position: relative;
+}
+#search-btn{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-color: rgb(255, 56,92);
+    right:10px;
+    top:5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    cursor: pointer;
+
+}
+
+#search-btn:hover{
+    background-color: rgb(219,12,99);
+}
+
+
+
+#search-icon{
+    color:white;
+    font-size: 12pt;
+}
+
+
+/* nav */
+nav{
+    background-color: white;
+    flex-basis: 4%;
+    position: sticky;
+    top:200px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+#nav-container{
+    width: 90%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.nav-menu-select{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 2px solid black;
+}
+
+.nav-menu-text-select{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10pt;
+    font-weight: 700;
+}
+
+.nav-menu-item-select{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-menu-item-select>div{
+    font-size: 16pt;
+}
+.nav-menu-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10pt;
+    font-weight: 700;
+}
+
+.nav-menu{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.nav-menu-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10pt;
+    font-weight: 700;
+    color: rgb(140,140,140);
+}
+
+.nav-menu-item{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-menu-item>div{
+    font-size: 16pt;
+    color: rgb(140,140,140);
+}
+
+.nav-menu:hover{
+
+    cursor: pointer;
+    border-bottom: 2px solid rgb(221,221,221);
+}
+
+.nav-menu:hover > div:first-child>div{
+    color: rgb(14,14,14);
+}
+.nav-menu:hover > div:last-child{
+    color: rgb(14,14,14);
+}
+
+.nav-menu-last{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-menu-item-last{
+    font-size:16;
+    border-radius: 100%;
+    border: 1px solid rgb(187,187,187);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-menu-item-last:hover{
+    box-shadow: 5px 5px 15px 3px rgb(225, 223, 223);
+}
+
+/* nav mov 관련 css */
+
+.nav-move{
+    background-color:blue;
+    position: fixed;
+    top:120px;
+    width: 100%;
+}
+
+#header-top-hidden{
+    position: fixed;
+    top:30px;
+    left:680px;
+    height: 70px;
+    width: 450px;
+    border: 1px solid black;
+    border-radius: 45px;
+    box-shadow: 1px 5px 15px 5px rgb(240, 238, 238);
+    background-color: white;
+    z-index: 3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#header-top-hidden-1{
+    font-size: 14pt;
+    font-weight: 900;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+#header-top-hidden-2{
+    font-size: 14pt;
+    font-weight: 900;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#header-top-hidden-3{
+    font-size: 16pt;
+    margin-left:10px;
+
+}
+
+#search-btn-hidden{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-color: rgb(255, 56,92);
+    right:10px;
+    top:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+
+
+/* div id="header-bottom에 class="displaynonejs추가 시킬것 */
+
+/* <div id="header-top-hidden">에 class displaynonejs 를 넣어놓고 스크롤시 제거해야함 */
+
+
+/* 로직
+
+0. 스크롤이 n px이상 되었을때
+1. div id="header-bottom에 class="displaynonejs"추가
+
+2. nav에 nav-move 클래스 추가
+
+3.<div id="header-top-hidden">에 class displaynonejs 를 넣어놓고 스크롤시 제거해야함 header의 자식으로 존재해야함 
+
+가져가야 할것 html 부분
+            <div id="header-top-hidden">
+                <div id="header-top-hidden-1">&nbsp;어디든지</div>
+                <div id="header-top-hidden-2">언제든 일주일</div>
+                <div id="header-top-hidden-3">게스트 추가</div>
+                <div id="search-btn-hidden">
+                    <div id="search-icon" class="fa-solid fa-magnifying-glass"></div>
+                </div>
+            </div>
+css부분
+
+.nav-move{
+    background-color:blue;
+    position: fixed;
+    top:120px;
+    width: 100%;
+}
+
+#header-top-hidden{
+    position: fixed;
+    top:30px;
+    left:680px;
+    height: 70px;
+    width: 450px;
+    border: 1px solid black;
+    border-radius: 45px;
+    box-shadow: 1px 5px 15px 5px rgb(240, 238, 238);
+    background-color: white;
+    z-index: 3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#header-top-hidden-1{
+    font-size: 14pt;
+    font-weight: 900;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+#header-top-hidden-2{
+    font-size: 14pt;
+    font-weight: 900;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#header-top-hidden-3{
+    font-size: 16pt;
+    margin-left:10px;
+
+}
+
+#search-btn-hidden{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-color: rgb(255, 56,92);
+    right:10px;
+    top:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+
+*/
