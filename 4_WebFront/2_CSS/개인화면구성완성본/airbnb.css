@@ -10,7 +10,6 @@ main{
     flex-direction: column;
     box-sizing: border-box;
     position: relative;
-    background-color: red;
 }
 /* header */
 header{
@@ -268,7 +267,7 @@ box-shadow: 1px 5px 10px 1px rgb(212, 210, 210);
 
 
 #header-event-menu{
-    position: absolute;
+    position: fixed;
     border: none;
     box-shadow: 1px 5px 10px 1px rgb(123,123,123);
     width: 240px;
@@ -541,6 +540,7 @@ nav{
     justify-content: center;
     align-items: center;
     z-index: 1;
+    box-shadow: 0px 1px 10px 2px rgb(200,200,200);
 }
 
 #nav-container{
@@ -550,7 +550,6 @@ nav{
     justify-content: space-between;
     align-items: center;
 }
-
 
 
 .nav-menu-select{
@@ -655,11 +654,308 @@ nav{
 .nav-menu-item-last:hover{
     box-shadow: 5px 5px 15px 3px rgb(225, 223, 223);
 }
+/* main */
+#main{
+    flex-basis: 61%;
+    display:flex;
+    justify-content: center;
+}
 
-/* nav mov 관련 css */
+#main-container{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.item-box{
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.item-img{
+    border-radius: 15px;
+    width: 400px;
+    height: 400px;
+}
+
+.item-text-1{
+    margin-top: 20px;
+    color: rgb(34,34,34);
+    font-size: 14pt;
+    font-weight: 700;
+}
+
+.item-text-2{
+    color:rgb(106,106,106);
+    margin: 3px;
+}
+
+.item-text-3>span{
+    font-weight: 700;
+}
+
+#item-box-btn1{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-color: rgb(218,223,225);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 15px;
+    top:15px;
+    font-size: 14pt;
+    border: none;
+}
+
+#item-box-btn1:hover{
+    background-color: white;
+}
+
+.item-box-btn2{
+    width: 95px;
+    height: 40px;
+    position: absolute;
+    background-color: rgb(218,223,225);
+    border-radius: 30px;
+    left: 15px;
+    top:15px;
+    font-size: 12pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight:bold;
+    border: none;
+}
+
+#item-box-btn3{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-color: rgb(233,239,239);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 15px;
+    top:180px;
+    font-size: 14pt;
+    border: none;
+    display:none;
+}
+
+#item-box-btn3:hover{
+    background-color: white;
+}
+
+.item-box:hover{
+    cursor: pointer;
+}
+
+.item-box:hover #item-box-btn3{
+    display:flex;
+}
+
+/* footer */
+footer{
+    flex-basis: 28%;
+    background-color: rgb(247,247,247);
+    display: flex;
+    justify-content: center;
+}
+
+#footer-container{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#footer-item-1{
+    margin-top: 50px;
+    height: 50px;
+    width: 100%;
+    font-size: 20pt;
+    font-weight: 700;
+}
+
+#footer-item-2{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgb(200,200,200);
+
+}
+
+.footer-item-2-1-selected{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-bottom: 2px solid rgb(34,34,34);
+    font-size: 14pt;
+    color: rgb(34,34,34);
+    
+}
+
+.footer-item-2-1{
+    margin-left: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12pt;
+    font-weight: 800;
+    color: rgb(123,123,123);
+    cursor: pointer;
+}
+
+#footer-item-3{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 250px;
+    border-bottom: 1px solid rgb(200,200,200);
+}
+
+.footer-item-3-1{
+    width: 250px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.footer-item-3-1-text1{
+    
+    color: rgb(34,34,34);
+    font-weight: 800;
+    font-size: 13pt;
+}
+
+.footer-item-3-1-text2{
+    color: rgb(106,106,106);
+    font-size: 13pt;
+}
+
+#footer-greater{
+    display: inline-block; /* transform 사용 시 요소를 블록으로 설정 */
+    transform: rotate(90deg) scaleX(0.5);
+}
+
+#footer-item-4{
+    border-bottom: 1px solid rgb(200,200,200);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+#footer-item-4-box{
+    height: 270px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-item-4-1-text1{
+    font-weight: 700;
+    width: 500px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    color: rgb(60,60,60);
+    cursor: pointer;
+}
+
+.footer-item-4-1-text2{
+    width: 500px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    color: rgb(80,80,80);
+    cursor: pointer;
+}
+
+.footer-item-4-1-text2:hover{
+    text-decoration: underline;
+}
+
+#footer-item-5{
+    border-bottom: 1px solid rgb(200,200,200);
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#footer-item-5-box{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#footer-item-5-box2{
+    width: 450px;
+    height: 40px;
+    position: absolute;
+    right:-40px;
+    top:20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#footer-item-5-box2 > div{
+    margin-right: 25px;
+    font-weight: 600;
+    font-size: 14pt;
+    cursor: pointer;
+}
+
+#footer-item-5-box2 > div:nth-child(2){
+    margin-bottom: 2px;
+}
+
+
+#footer-item-5-box2 > div:nth-child(3){
+    margin-bottom: 2px;   
+}
+
+#footer-item-6{
+    position: relative;
+}
+
+
+#footer-item-6-text{
+    margin-top: 5pt;
+    font-size: 8pt;
+    color: rgb(106,106,106);
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+li{
+    list-style: none;
+    font-size: 12pt;
+    cursor: pointer;
+}
+
 
 .nav-move{
-    background-color:blue;
+    background-color:white;
     position: fixed;
     top:120px;
     width: 100%;
@@ -669,9 +965,9 @@ nav{
     position: fixed;
     top:30px;
     left:680px;
-    height: 70px;
+    height: 60px;
     width: 450px;
-    border: 1px solid black;
+    border: 1.8px solid rgb(221,221,221);
     border-radius: 45px;
     box-shadow: 1px 5px 15px 5px rgb(240, 238, 238);
     background-color: white;
@@ -682,21 +978,21 @@ nav{
 }
 
 #header-top-hidden-1{
-    font-size: 14pt;
+    font-size: 12pt;
     font-weight: 900;
     margin-right: 20px;
-    margin-left: 10px;
+    margin-left: 30px;
 }
 
 #header-top-hidden-2{
-    font-size: 14pt;
+    font-size: 12pt;
     font-weight: 900;
     margin-left: 10px;
     margin-right: 10px;
 }
 
 #header-top-hidden-3{
-    font-size: 16pt;
+    font-size: 12pt;
     margin-left:10px;
 
 }
@@ -707,97 +1003,10 @@ nav{
     position: absolute;
     background-color: rgb(255, 56,92);
     right:10px;
-    top:10px;
+    top:5px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 100%;
     cursor: pointer;
 }
-
-
-
-/* div id="header-bottom에 class="displaynonejs추가 시킬것 */
-
-/* <div id="header-top-hidden">에 class displaynonejs 를 넣어놓고 스크롤시 제거해야함 */
-
-
-/* 로직
-
-0. 스크롤이 n px이상 되었을때
-1. div id="header-bottom에 class="displaynonejs"추가
-
-2. nav에 nav-move 클래스 추가
-
-3.<div id="header-top-hidden">에 class displaynonejs 를 넣어놓고 스크롤시 제거해야함 header의 자식으로 존재해야함 
-
-가져가야 할것 html 부분
-            <div id="header-top-hidden">
-                <div id="header-top-hidden-1">&nbsp;어디든지</div>
-                <div id="header-top-hidden-2">언제든 일주일</div>
-                <div id="header-top-hidden-3">게스트 추가</div>
-                <div id="search-btn-hidden">
-                    <div id="search-icon" class="fa-solid fa-magnifying-glass"></div>
-                </div>
-            </div>
-css부분
-
-.nav-move{
-    background-color:blue;
-    position: fixed;
-    top:120px;
-    width: 100%;
-}
-
-#header-top-hidden{
-    position: fixed;
-    top:30px;
-    left:680px;
-    height: 70px;
-    width: 450px;
-    border: 1px solid black;
-    border-radius: 45px;
-    box-shadow: 1px 5px 15px 5px rgb(240, 238, 238);
-    background-color: white;
-    z-index: 3;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-#header-top-hidden-1{
-    font-size: 14pt;
-    font-weight: 900;
-    margin-right: 20px;
-    margin-left: 10px;
-}
-
-#header-top-hidden-2{
-    font-size: 14pt;
-    font-weight: 900;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-#header-top-hidden-3{
-    font-size: 16pt;
-    margin-left:10px;
-
-}
-
-#search-btn-hidden{
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    background-color: rgb(255, 56,92);
-    right:10px;
-    top:10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    cursor: pointer;
-}
-
-
-*/
