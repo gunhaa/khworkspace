@@ -83,7 +83,7 @@ function accessName() {
 
     let str = "";
 
-    let count =0;
+    let count = 0;
     for (let i = 0; i < hobbyList.length; i++) {
 
 
@@ -94,24 +94,24 @@ function accessName() {
 
             //str 변수에 값을 누적해준다.
             str += hobbyList[i].value + " ";
-            count +=1;
+            count += 1;
 
             // count++; 도 가능하다
         }
 
     }
 
-    const div = document.querySelector("#name-div").innerHTML=`${str} <br> 갯수 : ${count}`;
+    const div = document.querySelector("#name-div").innerHTML = `${str} <br> 갯수 : ${count}`;
 }
 
-function accessCSS(){
+function accessCSS() {
     // querySelector() : 요소 1개 선택 시 사용
     //                   (여러 요소가 선택되면 첫 번째 요소만 선택)
 
     // 1개만 있는 요소 선택
-    const cssdiv=document.querySelector("#css-div");
+    const cssdiv = document.querySelector("#css-div");
 
-    cssdiv.style.border = "2px solid red";    
+    cssdiv.style.border = "2px solid red";
 
     // 여러개 있는 요소 선택(첫번째 요소 선택 확인)
 
@@ -123,8 +123,51 @@ function accessCSS(){
 
     // 배경 색을 원하는 색상으로 바꾸고 실행
 
-    for(let i=0 ; i<arr.length ; i++ ){
-        arr[i].style.backgroundColor="red";
+    for (let i = 0; i < arr.length; i++) {
+        arr[i].style.backgroundColor = "red";
+    }
+
+}
+
+// 카카오톡 채팅 만들기
+
+
+
+function chatting() {
+    // 채팅 입력에 사용되는 모든 요소 얻어오기
+    const input = document.querySelector("#chatting-input");
+    const bg = document.querySelector("#chatting-bg");
+    const chattinglog = input.value;
+    const height=bg.scrollHeight;
+
+
+    // input에 입력된 값이 있을 경우
+    if (input.value.trim().length > 0){
+
+        // 문자열 .trim() : 문자열 양 끝에 공백을 모두 제거
+        // ex) "      K    H      ".trim() ->  "K      H"
+        
+        // input에 입력된 값을 얻어와 bg에 추가(누적)
+        bg.innerHTML += `<p><span>${chattinglog}</span></p>`;
+        bg.scrollTop=height;
+        }
+
+    // input에 작성된 값 변경
+    input.value = "";
+    input.focus();
+
+    
+
+}
+// input 태그 키가 눌러졌을 때 엔터인 경우를 검사하는 함수
+function inputEnter(event){
+
+    // console.log(event.key); // 현재 눌러진 키를 반환
+
+    if(event.key==='Enter'){ //눌러진 key가 Enter인 경우
+
+        chatting();
+
     }
 
 }
