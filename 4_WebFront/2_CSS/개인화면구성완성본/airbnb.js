@@ -64,4 +64,24 @@ function changenavbar(){
     }
 }
 
+// 회원가입 조건 검사
+
+document.querySelector(".login-modal-menu-body-textbox").addEventListener("keyup", function(){
+
+    const regExp = /^\w{3,12}@\w{3,10}.(com|net|kr)$/;
+
+    
+    const result = document.querySelector("#login-modal-result-box-email");
+    if(regExp.exec(this.value)){
+        result.innerText = "올바른 형식입니다.";   
+        result.style.color = "green";
+    } else {
+        result.innerText = "이메일이 올바르지 않습니다.";
+        result.style.color = "red";
+    }
+    if(this.value.length==0){
+        result.innerText = "이메일을 입력해주세요.";
+    }
+
+})
 

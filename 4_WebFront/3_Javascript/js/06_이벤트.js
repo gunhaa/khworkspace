@@ -96,3 +96,52 @@ document.querySelector("#input1").addEventListener("change", function(){
     div1.style.backgroundColor = bgColor;
     this.value = "";
 })
+
+
+// a태그 기본 이벤트 제거
+
+const alink = document.querySelector("#moveNaver");
+
+alink.addEventListener("click", function(e){
+
+    // 매개변수 e 또는 event = 이벤트 발생 객체(이벤트와 관련된 정보가 담겨있는 객체)
+    e.preventDefault(); // 해당 요소가 가지고 있는 기본 이벤트를 막음(제거)
+    // prevent : 막다, 방지하다 ,예방하다
+    // Default : 기본 / 기본값
+});
+
+// form 태그 기본 이벤트 제거
+// 방법 1. submit 버튼을 사용 안하는 방법
+const btn1 = document.querySelector("#testBtn1");
+
+btn1.addEventListener("click", function(){
+
+    // #in1에 입력된 값 얻어오기
+
+    const in1 = document.getElementById("in1").value;
+
+    // #in1에 작성된 값이 "제출"일 경우 testForm을 submit
+
+    if(in1 == "제출"){
+
+        // **form 태그의 name 속성이 있을 경우 직접 선택 가능
+        //document.form태그의 name 속성 값
+
+        // **form요소.submit() : form요소 제출 함수
+        document.testForm1.submit();
+
+    }
+})
+
+// 방법 2. onsubmit을 이용해서 form태그 제출되는 것을 막는 방법
+function checkIn2(){
+    // #in2에 "제출"이 입력 된 경우에만 submit
+    const in2 = document.getElementById("in2").value;
+    
+    if(in2 == "제출"){
+        return true;
+    } else {
+        return false;
+    }
+
+}

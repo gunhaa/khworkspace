@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>note</title>
     <style>
-        #div1{
+        #div1 {
             width: 200px;
             height: 200px;
             border: 1px solid black;
@@ -14,11 +15,109 @@
             align-items: center;
             justify-content: center;
         }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        #slideShow {
+            width: 500px;
+            height: 300px;
+            position: relative;
+            margin: 50px auto;
+            overflow: hidden;
+            border: 1px solid black;
+        }
+
+        .slides {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2500px;
+            transition: left 0.5s ease-out;
+        }
+
+        .slides li:first-child {
+            margin-left: 100px;
+        }
+
+        .slides li:not(:last-child) {
+            float: left;
+            margin-right: 100px;
+        }
+
+        .slides li {
+            float: left;
+        }
+
+        .controller span {
+            position: absolute;
+            background-color: transparent;
+            color: black;
+            text-align: center;
+            border-radius: 50%;
+            padding: 10px 20px;
+            top: 50%;
+            font-size: 1.3em;
+            cursor: pointer;
+        }
+
+        /* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
+        .controller span:hover {
+            background-color: rgba(128, 128, 128, 0.11);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        /* 이전 화살표에 마우스 커서가 올라가 있을때 
+이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
+        .prev:hover {
+            transform: translateX(-10px);
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        /* 다음 화살표에 마우스 커서가 올라가 있을때 
+이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+        .next:hover {
+            transform: translateX(10px);
+        }
+
     </style>
 </head>
+
 <body>
     <div id="div1">asd</div>
     <button id="btn">버튼</button>
+    
+
+    <hr>
+    <h1>슬라이더 구현</h1>
+
+    <div id="slideShow">
+        <ul class="slides">
+            <li><img src="img/img1.jpg" alt=""></li>
+            <li><img src="img/img2.jpg"></li>
+            <li><img src="img/img3.jpg"></li>
+            <li><img src="img/"></li>
+        </ul>
+        <p class="controller">
+            <span class="prev">&lang;</span>
+            <span class="next">&rang;</span>
+        </p>
+    </div>
+
     <script src="js/note.js"></script>
 </body>
+
 </html>

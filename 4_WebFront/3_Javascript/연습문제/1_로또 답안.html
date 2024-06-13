@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 답안</title>
+    <style>
+        div {
+            border: 1px solid black;
+        }
+
+        #container {
+            display: flex;
+            width: 400px;
+            justify-content: space-around;
+            margin: 100px auto 50px;
+        }
+
+        #container>div {
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #createLotto {
+            width: 300px;
+            height: 30px;
+
+            margin: auto;
+            display: block;
+            /* 확인하기 */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+    <button id="createLotto">로또번호생성</button>
+    <script>
+        document.getElementById("createLotto").addEventListener("click", function () {
+            // #container 자식 div 6개 선택
+
+            const numbers = document.querySelectorAll("#container > div");
+
+
+            //로또 번호를 저장할 배열 선언
+
+            const lotto = [];
+
+            while (lotto.length < 6) { //lotto 배열에 저장된 값이 6개가 안되면 반복
+
+                // 로또 번호 생성 시 1~45 난수 생성
+                const random = Math.floor(Math.random() * 45 + 1);
+
+                // 생성된 난수가 배열에 있는지 검사
+
+                if (lotto.indexOf(random) == -1) { //중복 X
+
+                    //배열에 난수 추가
+                    lotto.push(random);
+                }
+
+            }
+
+
+            // lotto에 저장도니 난수 오름차순 정렬
+            lotto.sort(function (a, b) { return a - b; });
+
+
+            // numbers의 인덱스 별로 lotto 인덱스에 저장된 값 출력
+            for (let a = 0; a < lotto.length ; a++) {
+                numbers[a].innerHTML = lotto[a];
+            }
+        })
+    </script>
+</body>
+
+</html>

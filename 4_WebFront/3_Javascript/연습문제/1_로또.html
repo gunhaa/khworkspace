@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 번호 생성기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            display : flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 300px;
+        }
+        div {
+            display: flex;
+            height: 30px;
+            width: 500px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+    
+        }
+
+        div>div {
+            border: 1px solid black;
+            border-radius: 100%;
+            width: 60px;
+            height: 60px;
+            margin: 10px;
+            font-weight: 700;
+        }
+        button{
+            margin-top: 50px;
+            width: 300px;
+            height: 50px;
+        }
+    </style>
+    <link rel="icon" href="../img/img1.jpg">
+</head>
+
+<body>
+    <div>
+        <div id="div1"></div>
+        <div id="div2"></div>
+        <div id="div3"></div>
+        <div id="div4"></div>
+        <div id="div5"></div>
+        <div id="div6"></div>
+        <button id="btn">로또 번호 생성</button>
+    </div>
+    <script>
+        // 로또 번호 생성시 1~45 난수 생성
+
+        //lotto에 저장된 난수 오름차순 정렬
+
+        // + 로또 번호 중복X
+
+        document.querySelector("#btn").addEventListener("click", function(){
+            const arr = []
+            // const div1 = document.querySelector("#div1")
+            // const div2 = document.querySelector("#div2")
+            // const div3 = document.querySelector("#div3")
+            // const div4 = document.querySelector("#div4")
+            // const div5 = document.querySelector("#div5")
+            // const div6 = document.querySelector("#div6")
+
+
+            for(let i=0; i<6; i++){
+                const ball = Math.floor(Math.random()*45+1);
+                arr[i]=ball;
+                for(let j=0; j<arr.length-1; j++){
+                    if(arr[i]==arr[j]){
+                        i--;
+                    }
+                }
+            }
+
+            arr.sort(function(a,b){return a-b;})
+            // div1.innerText = arr[0]
+            // div2.innerText = arr[1]
+            // div3.innerText = arr[2]
+            // div4.innerText = arr[3]
+            // div5.innerText = arr[4]
+            // div6.innerText = arr[5]
+            
+            for(let i=0; i<6; i++){
+                document.querySelectorAll("div>div")[i].innerText = arr[i];
+            }
+
+
+        })
+
+    
+    </script>
+</body>
+
+</html>

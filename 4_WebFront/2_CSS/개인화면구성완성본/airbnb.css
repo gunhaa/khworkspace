@@ -49,6 +49,13 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+#login-modal-result-box-email{
+    position: absolute;
+    top:26px;
+    right: 70px;
 }
 
 #login-modal-menu-box{
