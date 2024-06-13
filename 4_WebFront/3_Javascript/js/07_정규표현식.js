@@ -132,6 +132,9 @@ document.querySelector("#inputPno").addEventListener("keyup" ,function(){
     // () : 포획 괄호, 괄호 내부에 대응되는 부분을 찾아서 기억함
     // |  : 또는
 
+    //  비밀번호 8글자 이상 16글자 이하 ,숫자 영어 혼합의 조건
+    // ^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$
+
 
     // 월
     // 01 ~ 09 -> 0[1-9]

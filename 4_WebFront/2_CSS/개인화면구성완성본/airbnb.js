@@ -85,3 +85,20 @@ document.querySelector(".login-modal-menu-body-textbox").addEventListener("keyup
 
 })
 
+document.querySelector("#login-modal-result-box-pw1").addEventListener("keyup", function(){
+    const regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/;
+
+    const result = document.querySelector("#login-modal-result-box-pw");
+
+    if(regExp.exec(this.value)){
+        result.innerText = '올바른 형식 입니다.'
+        result.style.color= 'green';
+    } else {
+        result.innerText = '올바르지 않은 형식입니다.'
+        result.style.color = "red";
+    }
+
+    if(this.value.length==0){
+        result.innerText = "비밀 번호를 입력해주세요.";
+    }
+})

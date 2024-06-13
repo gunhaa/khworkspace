@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slide</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        div {
+            border: 1px black solid;
+        }
+
+        #container {
+            position: relative;
+            height: 500px;
+            width: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #left {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+        }
+        #left:hover {
+            cursor: pointer;
+        }
+
+        #right {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+        }
+
+        #right:hover{
+            cursor: pointer;
+        }
+
+        #contsin li {
+            list-style: none;
+        }
+
+        ul {
+            display: flex;
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <ul>
+            <li><img src="img/img1.jpg" alt=""></li>
+            <li><img src="img/img2.jpg" alt=""></li>
+            <li><img src="img/img3.jpg" alt=""></li>
+            <li><img src="img/img5.jpg" alt=""></li><!--  -->
+            <div id="left">왼</div>
+            <div id="right">오</div>
+        </ul>
+    </div>
+    <script src="js/slide.js"></script>
+</body>
+
+</html>
