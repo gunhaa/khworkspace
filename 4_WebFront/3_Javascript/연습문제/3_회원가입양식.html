@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3_회원가입양식</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        span {
+            width: 120px;
+            display: inline-block;
+            margin: 5px
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <form action="" id="login-form">
+            <fieldset>
+                <legend>회원 가입 양식</legend>
+                <span label="id">아이디</span><input type="text" id="id" name="id"> <button>중복확인</button><br>
+                <span label="pw1">비밀번호</span><input type="password" id="pw1" name="pw1"><span id="correct"></span><br>
+                <span label="pw2">비밀번호확인</span><input type="password" id="pw2" name="pw2"><br>
+                <span label="name">이름</span><input type="text" id="name" name="name"><span id="n-correct"
+                    style="font-size: 10pt;"></span><br>
+                <span label="gender">성별</span>남 <input type="radio" id="gender-1" value="gender-1" name="gender"> 여
+                <input type="radio" id="gender-2" value="gender-2" name="gender"><br>
+                <span label="tel">전화번호</span><input type="text" id="tel" name="tel"><br>
+                <span label="email">이메일</span><input type="text" id="email" name="email"><br>
+                <div>
+                    <button>초기화</button><button id="signin" type="submit">회원가입</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <script src="3_회원가입양식.js"></script>
+</body>
+
+</html>

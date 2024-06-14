@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2_로그인</title>
+    <style>
+        #login:hover {
+            color: white;
+            background-color: greenyellow !important;
+        }
+
+        #close:hover {
+            color: white;
+            background-color: greenyellow !important;
+        }
+
+        .btn {
+            background-color: green;
+            color: white;
+            border: none;
+            width: 100px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>로그인을 클릭하면 로그인 폼이 나타납니다.</h2>
+
+    <button class="open">로그인</button>
+    <div class="form-popup" id="myForm">
+
+        <form action="1_로또.html"></form>
+        <fieldset>
+            <legend>로그인</legend>
+            <h1>Login</h1>
+
+            <strong><label for="email">Email </label></strong><input type="text" placeholder="Enter Email" name="email"
+                id="email"><br>
+            <strong><label for="psw">Password </label></strong><input type="password" placeholder="Enter Password"
+                name="psw" id="psw">
+            <br>
+            <button class="btn" type="submit" id="login">login</button>
+            <button class="btn cancel" type="button" id="close">close</button>
+
+        </fieldset>
+        </form>
+
+    </div>
+
+
+    <script>
+        // 1. 이 문서를 처음 로드하면 로그인 화면은 보이지 않는다.
+
+        // 방법 1. innerHTML = ""; 다시 나타나게할려면 다시 만들어야함
+        // visibility : hidden; // 요소는 존재하지만 보이지 않는다. 영역을 차지하고 있음
+        // display : none; //요소는 존재하지만 보이지 않는다. 영역을 차지하지 않음
+        const fieldset = document.querySelector("fieldset");
+        const label = document.getElementsByTagName("label");
+        const login_btn = document.querySelector(".open");
+        const close_btn = document.querySelector("#close");
+        displaynone();
+        function displaynone() {
+            fieldset.style.display = 'none';
+            // 2. label 태그는 가로로 '80px' 크기를 갖는다.
+
+            // label.forEach(function (la) {
+            //     la.style.width = '80px';
+            //     la.style.display = 'inline-block';
+            //     console.log(la.style.width);
+            // })
+            console.log(label);
+            for(let i = 0; i<label.length; i++){
+                label[i].style.width = "80px";
+                label[i].style.display = 'inline-block';
+            }
+
+        }
+
+        // 3. 로그인 버튼을 클릭하면 로그인 화면이 화면에 나타난다.
+
+        login_btn.addEventListener("click", function () {
+
+            fieldset.style.display = 'block';
+        })
+
+        // 4. Close 버튼을 클릭하면 로그인 화면이 사라진다.
+
+        close_btn.addEventListener("click", function () {
+            fieldset.style.display = 'none';
+
+        })
+    </script>
+
+</body>
+
+</html>
