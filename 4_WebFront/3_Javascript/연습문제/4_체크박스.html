@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4_체크박스</title>
+    <style>
+        *{
+            padding: 0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        #result{
+            width: 100%;
+            height: 500px;
+            border: 1px solid black;
+        }
+        .submit{
+            border: 2px solid red !important;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" id="result-form">
+        <fieldset>
+            <legend>취미</legend>
+            <table>
+                <tr>
+                    <td><input type="checkbox" id="selectAll">전체선택</td>
+                    <td><input type="checkbox" name="hobby" value="종합">종합</td>
+                    <td><input type="checkbox" name="hobby" value="소설">소설</td>
+                    <td><input type="checkbox" name="hobby" value="시/에세이">시/에세이</td>
+                    <td><input type="checkbox" name="hobby" value="경제/경영">경제/경영</td>
+                    <td><input type="checkbox" name="hobby" value="자기계발">자기계발</td>
+                    <td><input type="checkbox" name="hobby" value="아동">아동</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox" name="hobby" value="여행">여행</td>
+                    <td><input type="checkbox" name="hobby" value="과학">과학</td>
+                    <td><input type="checkbox" name="hobby" value="역사/문화">역사/문화</td>
+                    <td><input type="checkbox" name="hobby" value="외국어">외국어</td>
+                    <td><input type="checkbox" name="hobby" value="컴퓨터">컴퓨터</td>
+                    <td><input type="checkbox" name="hobby" value="만화">만화</td>
+                </tr>
+            </table>
+        </fieldset>
+        <br>
+        <button id="btn">카테고리 선택</button>
+        <div id="result"></div>
+    </form>
+
+    <script src="4_체크박스.js"></script>
+</body>
+
+</html>

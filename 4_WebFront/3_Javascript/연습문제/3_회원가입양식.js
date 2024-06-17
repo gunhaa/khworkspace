@@ -12,12 +12,12 @@
 
 document.querySelector('#id').addEventListener('keyup', function () {
     const id = document.querySelector('#id');
-    const RegExp = /^[a-z]+[a-z0-9A-Z-_]{6,14}$/;
+    const RegExp = /^[a-z]+[a-z0-9A-Z-_]{5,13}$/;
 
     id.style.backgroundColor = 'red';
     id.style.color = 'white';
 
-    if (RegExp.exec(id.value)) {
+    if (RegExp.test(id.value)) {
         id.style.backgroundColor = 'green';
         id.style.color = 'black';
     } else {
@@ -25,6 +25,11 @@ document.querySelector('#id').addEventListener('keyup', function () {
         id.style.color = 'white';
     }
 
+// exec도 같은 역할을 수행한다.
+// exec 메소드가 배열을 반환한다는 점은 맞습니다. 
+// 하지만 자바스크립트에서는 배열을 포함한 모든 객체는 논리적으로 참(truthy)로 평가됩니다.
+//  따라서 조건문에서 배열이 반환될 경우, 이는 참(true)으로 평가되어 조건이 만족됩니다. 
+// 만약 exec 메소드가 일치하는 것을 찾지 못하면 null을 반환하며, null은 논리적으로 거짓(falsy)로 평가됩니다.
 })
 
 // ------------------------------------------------------------------
@@ -122,23 +127,40 @@ document.querySelector('#name').addEventListener('keyup', () => {
 /* 회원가입 버튼 클릭 시 : validate() 함수를 호출하여 
 성별이 선택 되었는지, 전화번호가 형식에 알맞게 작성되었는지 검사 */
 
+document.querySelector('#login-form').addEventListener('submit', validate)
+
 function validate(e) {
     const signin = document.querySelector('#signin');
     // const loginForm = document.querySelector('#login-form');
     // loginForm.addEventListener('submit', function (e) {
-    //     e.preventDefault();
+
+        console.log('prevent');
     // })
 
     /*- 성별이 선택되지 않은 경우 
     "성별을 선택해주세요." 경고창(==대화상자) 출력 후
     submit 기본 이벤트를 제거하여 회원가입이 진행되지 않게 함.*/
     const check = document.querySelectorAll('[name=gender]')
-
+    
+    const regExptel = /^[0][0-9]{2}-[0-9]{3,4}-[0-9]{4}$/;
+    const tel = document.querySelector('#tel');
+    
     if (check[0].checked || check[1].checked) {
-
+        
+        if(regExptel.exec(tel.value)){
+            alert('회원 가입이 완료되었습니다.');
+            
+        } else {
+            alert('전화번호 형식이 올바르지 않습니다.');
+            alert('전화번호를 입력해주세요')
+            e.preventDefault();
+            // return false; 도 사용 가능하다
+        }
+     
+        
     } else {
         alert('성별을 선택해주세요');
-        signin.removeAttribute('type', 'submit');
+        e.preventDefault();
     }
     /*
     - 전화번호 형식이 올바르지 않을 경우 
@@ -146,20 +168,8 @@ function validate(e) {
     submit 기본 이벤트를 제거하여 회원가입이 진행되지 않게 함.
     */
 
-    const regExptel = /^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/;
-    const tel = document.querySelector('#tel');
-
-    if(regExptel.exec(tel.value)){
-    } else {
-        alert('전화번호 형식이 올바르지 않습니다.');
-        signin.removeAttribute('type', 'submit');
-    }
-
-    signin.setAttribute('type', 'submit')
-    alert('회원 가입이 완료되었습니다.');
 }
 
 
 
 
-document.querySelector('#signin').addEventListener('click', validate)

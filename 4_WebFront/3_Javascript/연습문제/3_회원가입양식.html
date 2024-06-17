@@ -34,10 +34,12 @@
                     style="font-size: 10pt;"></span><br>
                 <span label="gender">성별</span>남 <input type="radio" id="gender-1" value="gender-1" name="gender"> 여
                 <input type="radio" id="gender-2" value="gender-2" name="gender"><br>
-                <span label="tel">전화번호</span><input type="text" id="tel" name="tel"><br>
+                <span label="tel">전화번호</span><input type="text" id="tel" name="tel" placeholder="(-포함)"><br>
                 <span label="email">이메일</span><input type="text" id="email" name="email"><br>
+                <!-- form 태그는 name값이 있는 값만 가지고 온다. -->
+                <!-- table을 이용해서 만드는 것이 더 편할 수 있음 -->
                 <div>
-                    <button>초기화</button><button id="signin" type="submit">회원가입</button>
+                    <button type="reset">초기화</button><button id="signin" type="submit">회원가입</button>
                 </div>
             </fieldset>
         </form>
