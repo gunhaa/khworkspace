@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제2(색변경) jQuery ver</title>
+    <style>
+        .area {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .inputColor {
+            box-sizing: border-box;
+            width: 100px;
+            padding: 0;
+            margin: 0;
+            outline: none;
+
+        }
+
+        .div2 {
+            display: inline-block;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="area" id="box1"></div>
+
+    <input type="text" class="inputColor" id="input1"><br>
+
+    <button type="button" id="btn1">색 변경</button>
+
+
+    <hr>
+
+    <div class="area div2"></div>
+    <div class="area div2"></div>
+    <div class="area div2"></div>
+    <div class="area div2"></div>
+    <div class="area div2"></div>
+    <div class="area div2"></div>
+    <div>
+        <input type="text" class="inputColor input2">
+        <input type="text" class="inputColor input2">
+        <input type="text" class="inputColor input2">
+        <input type="text" class="inputColor input2">
+        <input type="text" class="inputColor input2">
+        <input type="text" class="inputColor input2">
+    </div>
+    <button type="button" id="btn2">색변경</button>
+
+    <hr>
+
+    <div class="box">
+        <div class="area div3"></div>
+        <input type="text" class="inputColor input3">
+    </div>
+    <div class="box">
+        <div class="area div3"></div>
+        <input type="text" class="inputColor input3">
+    </div>
+    <div class="box">
+        <div class="area div3"></div>
+        <input type="text" class="inputColor input3">
+    </div>
+    <div class="box">
+        <div class="area div3"></div>
+        <input type="text" class="inputColor input3">
+    </div>
+    <div class="box">
+        <div class="area div3"></div>
+        <input type="text" class="inputColor input3">
+    </div>
+    <div class="box">
+        <div class="area div3"></div>
+        <input type="text" class="inputColor input3">
+    </div>
+
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        $('#btn1').on('click', () => {
+            let color = $('#input1').val();
+            $('#input1').val('');
+            $('#box1').css('backgroundColor', color);
+        });
+
+        $('#btn2').on('click', () => {
+            $('.div2:eq(0)').css('backgroundColor', ($('.input2:eq(0)').val()))
+            $('.div2:eq(1)').css('backgroundColor', ($('.input2:eq(1)').val()))
+            $('.div2:eq(2)').css('backgroundColor', ($('.input2:eq(2)').val()))
+            $('.div2:eq(3)').css('backgroundColor', ($('.input2:eq(3)').val()))
+            $('.div2:eq(4)').css('backgroundColor', ($('.input2:eq(4)').val()))
+            $('.div2:eq(5)').css('backgroundColor', ($('.input2:eq(5)').val()))
+            // 다른 풀이
+
+            // const divArr = $('.div2');
+            // const inputArr = $('.input2');
+
+            // for (let i = 0; i < divArr.length; i++) {
+            //     $(divArr[i]).css('backgroundColor', '$(inputArr[i].val()'))
+            // }
+
+
+        });
+
+        // 3. 입력한 색으로 div3 배경색, input3의 테두리 변경
+
+        const divArr3 = $('.div3');
+        const inputArr3 = $('.input3');
+
+
+        $('.input3').on('input', function () {
+            // for (let i = 0; i < divArr3.length; i++) {
+            //     $(divArr3[i]).css('backgroundColor', ($(inputArr3[i]).val()));
+            //     $(inputArr3[i]).css('border',  '1px solid '+ $(inputArr3[i]).val() );
+            // }
+
+            // 다른 방법
+            $(this).css('borderColor', $(this).val());
+            $(this).prev().css('backgroundColor', $(this).val());
+        })
+
+    </script>
+</body>
+
+</html>

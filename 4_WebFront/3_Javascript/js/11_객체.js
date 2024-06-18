@@ -37,7 +37,7 @@ document.querySelector("#btn1").addEventListener("click", function(){
         }
 
     };
-
+    
     // 결과 출력
     console.log(product);
     div1.innerHTML = "product.pName : " + product.pName + "<br>"
