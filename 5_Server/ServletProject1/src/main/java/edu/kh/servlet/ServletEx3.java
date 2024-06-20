@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class ServletEx3 extends HttpServlet{
 
@@ -25,7 +26,7 @@ public class ServletEx3 extends HttpServlet{
 		
 		// Dynamic Web Project(동적 웹 프로젝트)
 		// - 요청에 따라 응답화면 (HTML)을 실시간으로 만드는 것 (동적)
-		
+		 
 		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 		
@@ -37,6 +38,7 @@ public class ServletEx3 extends HttpServlet{
 			out.println("</HEAD>");
 			out.println("<BODY>");
 			out.println("<ul>");
+
 			out.println("<li> 아이디 : " + id + "</li>");
 			out.println("<li> 이름 : " + name + "</li>");
 			out.println("<li> 이메일 : " + mail + "</li>");

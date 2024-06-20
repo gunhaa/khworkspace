@@ -25,7 +25,6 @@
 		<url-pattern>/example1.do</url-pattern>
 	</servlet-mapping>
 	
-	
 	<servlet>
 		<servlet-name>example2</servlet-name>
 		<servlet-class>edu.kh.servlet.ServletEx2</servlet-class>
@@ -36,16 +35,16 @@
 		<servlet-name>example2</servlet-name>
 		<url-pattern>/example2.do</url-pattern>
 	</servlet-mapping>
+		
+	<servlet-mapping>
+		<servlet-name>example3</servlet-name>
+		<url-pattern>/example3.do</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>example3</servlet-name>
 		<servlet-class>edu.kh.servlet.ServletEx3</servlet-class>
 	</servlet>
 	
-	
-	<servlet-mapping>
-		<servlet-name>example3</servlet-name>
-		<url-pattern>/example3.do</url-pattern>
-	</servlet-mapping>
-	
+
 </web-app>
