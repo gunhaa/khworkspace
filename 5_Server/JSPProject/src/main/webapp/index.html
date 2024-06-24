@@ -69,6 +69,51 @@
         <button type="submit">주문하기</button>
     </form>
 
+	<hr>
+	
+    <h3>회원 가입</h3>
+
+    <!-- 요청주소 : /JSPProject/signUp -->
+    <!-- 요청 방식 -->
+
+    <form action="/JSPProject/signUp" method="post">
+        <table>
+            <tr>
+                <th>아이디 : </th>
+                <td>
+                    <input type="text" name="memberId">
+                </td>
+            </tr>
+            <tr>
+                <th>비밀번호 : </th>
+                <td>
+                    <input type="password" name="memberPw">
+                </td>
+            </tr>
+            <tr>
+                <th>이름 : </th>
+                <td>
+                    <input type="text" name="memberName">
+                </td>
+            </tr>
+            <tr>
+                <th>자기소개 : </th>
+                <td>
+                    <textarea name="intro" rows="3" cols="30"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><button type="submit">등록</button><button type="reset">초기화</button></td>
+            </tr>
+
+        </table>
+    </form>
+
+    <hr>
+
+
+
+
 </body>
 
 </html>
