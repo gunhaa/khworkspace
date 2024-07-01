@@ -34,7 +34,8 @@ public class LoginServlet extends HttpServlet {
 		String inputEmail = req.getParameter("inputEmail");
 		String inputPw = req.getParameter("inputPw");
 		
-		
+		System.out.println("inputEmail : "+ inputEmail);
+		System.out.println("inputPw : " + inputPw);
 		// 파라미터를 Vo에 세팅(롬복 확인)
 		
 		Member mem = new Member();

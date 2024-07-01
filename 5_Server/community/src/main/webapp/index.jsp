@@ -10,7 +10,6 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>커뮤니티</title>
             <link rel="stylesheet" href="resources/css/main-style.css">
-
             <script src="https://kit.fontawesome.com/5c3cbb6981.js" crossorigin="anonymous"></script>
         </head>
 
@@ -89,7 +88,16 @@
 
                                             <!-- 회원 가입 / ID/PW 찾기 영역 -->
                                             <article id="signup-find-area">
-                                                <a href="#">회원 가입</a>
+
+
+                                                <!-- WEB-INF폴더는 외부에서 직접적으로 요청할 수 없는 폴더!
+                                                    왜? 중요한 코드(자바, sql, 설정관련)가 위치하는 폴더로써
+                                                    외부로부터 접근을 차단하기 위해서  
+
+                                                    -> 대신 Servlet을 이용해서 내부접근(forward)은 가능함
+                                                -->
+                                                <!-- <a href="/community/WEB-INF/views/member/signUp.jsp">회원 가입</a> -->
+                                                <a href="/community/member/signUp">회원 가입</a>
                                                 <span>|</span>
                                                 <a href="#">ID/PW 찾기</a>
                                             </article>
@@ -145,6 +153,23 @@
 
             </footer>
 
+
+            <!-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 -->
+
+            <c:if test="${!empty sessionScope.message}">
+                <script>
+                    alert("${message}");
+
+                    // EL 작성 시 scope를 지정하지 않으면
+                    // page -> request -> session -> application 순서대로 검색하여
+                    // 일치하는 속성이 있으면 출력
+
+                </script>
+
+                <!-- message 1회 출력 후 session에서 제거 -->
+                <c:remove var="message" scope="session"></c:remove>
+
+            </c:if>
 
         </body>
 
