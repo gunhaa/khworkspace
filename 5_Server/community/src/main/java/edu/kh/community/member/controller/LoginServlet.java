@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 			Member loginMember = service.login(mem);
 			
 			//로그인 성공/실패에 따른 처리 코드
-			
+
 			// *** 로그인 ***
 			// ID/PW가 일치하는 회원의 정보를 Session Scope에 세팅하는 것
 			

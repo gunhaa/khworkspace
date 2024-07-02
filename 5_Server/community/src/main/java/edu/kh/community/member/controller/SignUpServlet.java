@@ -23,9 +23,8 @@ public class SignUpServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		// webapp 을 기준으로 경로를 작성해야 한다.
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/");
-//		/WEB-INF/views/member/signUp.jsp
-//		왜 루트로가면 css가 안나옴? css 경로를 절대로 바꿔야함? 그럼 루트가 어디임?
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/signUp.jsp");
+
 		dispatcher.forward(req, resp);
 	
 	}

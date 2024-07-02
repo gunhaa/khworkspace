@@ -119,4 +119,68 @@ public class MemberDAO {
 		return result;
 	}
 
+
+	public int update(Connection conn, Member mem) throws Exception {
+		int result = 0;
+		
+		try {
+			
+			
+			String sql = prop.getProperty("update");
+			
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mem.getMemberNickname());
+			pstmt.setString(2, mem.getMemberTel());
+			pstmt.setString(3, mem.getMemberAddress());
+			pstmt.setInt(4, mem.getMemberNo());
+			
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+
+	/**
+	 * @param mem
+	 * @param currentPw
+	 * @param newPw
+	 * @return result
+	 * @throws Exception
+	 */
+	public int changePw(Connection conn, Member mem, String currentPw, String newPw) throws Exception {
+		
+		int result =0;
+		
+		try {
+			
+			String sql = prop.getProperty("changePw");
+			
+			pstmt = conn.prepareStatement(sql);
+//			UPDATE MEMBER SET MEMBER_PW='암호화된 새 비밀번호' WHERE MEMBER_PW='암호화된 기존 비밀번호' AND MEMBER_NO='로그인한 회원 번호'
+			//세팅
+			
+			pstmt.setString(1, newPw);
+			pstmt.setString(2, currentPw);
+			pstmt.setInt(3, mem.getMemberNo());
+			
+			
+			result =pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
 }

@@ -33,6 +33,8 @@ public class EncryptWrapper extends HttpServletRequestWrapper {
 		switch(name) {
 			case "inputPw" :
 			case "memberPw" : 
+			case "currentPw" :
+			case "newPw" :
 				
 			value = getSha512(super.getParameter(name));
 			break;
@@ -47,7 +49,7 @@ public class EncryptWrapper extends HttpServletRequestWrapper {
 	// 암호화 메소드(SHA-512 해시 함수)
 	// 해시 함수 : 어떤 문자열이든 일정한 길이의 무작위한 문자열로 변환하는 함수(중복X)
 
-	private String getSha512(String pw) {
+	public String getSha512(String pw) {
 		
 		// 매개변수 pw는 암호화 되기 전 비밀번호
 		

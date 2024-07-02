@@ -55,4 +55,57 @@ public class MemberService {
 		return result;
 	}
 
+	
+	
+	/** 회원 정보 수정
+	 * @param mem
+	 * @return result
+	 * @throws Exception
+	 */
+	public int update(Member mem) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.update(conn, mem);
+		
+		if(result>0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/**
+	 * @param mem
+	 * @param currentPw
+	 * @param newPw
+	 * @return
+	 */
+	public int changePw(Member mem, String currentPw, String newPw) throws Exception {
+	
+		
+		Connection conn = getConnection();
+		
+		int result = dao.changePw(conn, mem,currentPw,newPw);
+		
+		
+		if(result>0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		
+		close(conn);
+		
+		
+		return result;
+	}
+
+
+
 }
