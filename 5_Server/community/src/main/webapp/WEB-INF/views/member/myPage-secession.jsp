@@ -23,33 +23,52 @@
 
             <!-- 오른쪽 마이페이지 주요 내용 부분 -->
             <section class="myPage-main">
-                <h1 class="myPage-title">비밀번호 변경</h1>
-                <span class="myPage-explanation">현재 비밀번호가 일치하는 경우 새 비밀번호로 변경할 수 있습니다.</span>
+                <h1 class="myPage-title">회원 탈퇴</h1>
+                <span class="myPage-explanation">현재 비밀번호가 일치하는 경우 탈퇴할 수 있습니다.</span>
 
 
 				
-                <form action="changePw" method="post" name="myPage-form" onsubmit="return pwValidate()">
+                <form action="secession" method="post" name="myPage-form" onsubmit="return secessionValidate()">
 
-                    <div class="myPage-row">
-                        <label style="width:40%;">현재 비밀번호</label>
-                        <input type="password" name="currentPw" id="currentPw" value="" maxlength="30">
+                    <div class="myPage-row" style="border-bottom: 3px solid grey">
+                        <label>비밀번호</label>
+                        <input type="password" name="memberPw" maxlength="30">
                     </div>
 
-                    <div class="myPage-row">
-                        <label style="width:40%;">새 비밀번호</label>
-                        <input type="password" name="newPw" value="" maxlength="30">
+                    <div class="myPage-row" style="border-bottom: none">
+                        <label>회원탈퇴 약관</label>
                     </div>
 					
-				    <div class="myPage-row">
-                        <label style="width:40%;">새 비밀번호 확인</label>
-                        <input type="password" name="newPwConfirm" value="" maxlength="30">
-                    </div>	
-
 					
-					
+					<div id="myPage-samplebox">
+						<pre id="myPage-sample">제1조
+이 약관은 샘플 약관입니다.
+
+① 약관 내용 1
+
+② 약관 내용 2
+
+③ 약관 내용 3
+
+④ 약관 내용 4
 
 
-                    <button id="info-update-btn">수정하기</button>
+제2조
+이 약관은 샘플 약관입니다.
+
+① 약관 내용 1
+
+② 약관 내용 2
+
+③ 약관 내용 3
+
+④ 약관 내용 4</pre>
+					</div>
+					<div id="chkbox">
+						<input type="checkbox" id="chk" name="agree">
+						<label for="agree">위 약관에 동의합니다.</label>
+					</div>
+                    <button id="info-update-btn">탈퇴</button>
 
                 </form>
 
@@ -58,6 +77,6 @@
         </section>
     </main>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-	<script src="${contextPath}/resources/js/mypage.js"></script>
+    <script src="${contextPath}/resources/js/mypage.js"></script>
 </body>
 </html>

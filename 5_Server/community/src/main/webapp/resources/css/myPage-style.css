@@ -143,3 +143,22 @@ form[name="myPage-form"]{
     color: white;
     cursor: pointer;
 }
+
+/* 회원 탈퇴하기 추가 */
+
+#myPage-samplebox{
+    border: 1px solid black;
+    width: 500px;
+    height: 300px;
+    overflow-y: auto;
+
+}
+
+#myPage-sample{
+    font-size: 12pt;
+}
+
+#chkbox{
+    
+    margin-top: 10px;
+}

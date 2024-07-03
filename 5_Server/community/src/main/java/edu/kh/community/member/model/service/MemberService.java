@@ -106,6 +106,21 @@ public class MemberService {
 		return result;
 	}
 
+	public int secession(Member mem, String inputPw) throws Exception{
+		
+		Connection conn = getConnection();
+		
+		int result = dao.secession(conn,mem,inputPw);
+		
+		if(result>0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
+
 
 
 }

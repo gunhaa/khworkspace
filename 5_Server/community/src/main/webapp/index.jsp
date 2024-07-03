@@ -47,7 +47,7 @@
                                     <c:when test="${empty sessionScope.loginMember}">
                                         <!-- 절대 경로 /community/member/login -->
                                         <!-- 상대 경로 (index.jsp) member/login 기준-->
-                                        <form action="member/login" name="login-form" method="post">
+                                        <form action="member/login" name="login-form" method="post" onsubmit="return loginValidate()">
 
                                             <!-- 아이디/비밀번호/로그인버튼 영역 -->
                                             <fieldset id="id-pw-area">
@@ -120,6 +120,7 @@
                 </section>
             </main>
 			<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+            <script src="${contextPath}/resources/js/main.js"></script>
         </body>
 
         </html>

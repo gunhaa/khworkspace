@@ -34,7 +34,7 @@ public class MyPageChangePwServlet extends HttpServlet{
 
 //		EncryptWrapper wrap = new EncryptWrapper(req);
 //		
-//		currentPw = wrap.getSha512(currentPw); 수동으로도 가능
+//		currentPw = wrap.getSha512(currentPw);
 		
 		// ** Service로 전달할 값이 많은데 VO로 해결할 수 없는 경우 **
 		// 1. 매개변수로 하나하나 따로 전달한다.

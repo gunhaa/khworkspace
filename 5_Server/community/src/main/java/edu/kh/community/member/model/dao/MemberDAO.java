@@ -165,7 +165,7 @@ public class MemberDAO {
 			String sql = prop.getProperty("changePw");
 			
 			pstmt = conn.prepareStatement(sql);
-//			UPDATE MEMBER SET MEMBER_PW='암호화된 새 비밀번호' WHERE MEMBER_PW='암호화된 기존 비밀번호' AND MEMBER_NO='로그인한 회원 번호'
+			//UPDATE MEMBER SET MEMBER_PW='암호화된 새 비밀번호' WHERE MEMBER_PW='암호화된 기존 비밀번호' AND MEMBER_NO='로그인한 회원 번호'
 			//세팅
 			
 			pstmt.setString(1, newPw);
@@ -176,6 +176,33 @@ public class MemberDAO {
 			result =pstmt.executeUpdate();
 			
 		} finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+
+	public int secession(Connection conn, Member mem, String inputPw) throws Exception {
+		
+		int result = 0;
+				
+		try {
+			
+			String sql = prop.getProperty("secession");
+			
+//			UPDATE MEMBER SET SECESSION_FL='Y' WHERE MEMBER_PW=? AND MEMBER_NO=?
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, inputPw);
+			pstmt.setInt(2, mem.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} finally{
 			close(pstmt);
 		}
 		

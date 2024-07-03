@@ -28,7 +28,7 @@
 
 
 				
-                <form action="info" method="post" name="myPage-form">
+                <form action="info" method="post" name="myPage-form" onsubmit="return formValidate()">
 
                     <div class="myPage-row">
                         <label>닉네임</label>
@@ -71,5 +71,6 @@
         </section>
     </main>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+    <script src="${contextPath}/resources/js/mypage.js"></script>
 </body>
 </html>
