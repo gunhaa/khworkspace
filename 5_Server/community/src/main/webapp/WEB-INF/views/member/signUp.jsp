@@ -31,7 +31,7 @@
                 현재 경로 : /community/member/signUp
                 상대 경로 : signUp 
             -->
-            <form action="signUp" method="post" name="signUp-form">
+            <form action="signUp" method="post" name="signUp-form" onsubmit="return signUpValidate()">
                 <label for="memberEmail">
                     <span class="required">*</span> 아이디(이메일)
                 </label>
@@ -57,7 +57,7 @@
                     <button type="button">인증하기</button>
                 </div>
 
-                <span class="signUp-message confirm">인증 되었습니다.</span>
+                <span class="signUp-message confirm" id="nicknameMessage">인증 되었습니다.</span>
 
 
                 <label for="memberPw">
@@ -74,7 +74,7 @@
                         placeholder="비밀번호확인" maxlength="30">
                 </div>
 
-                <span class="signUp-message error">비밀번호가 일치하지 않습니다.</span>
+                <span class="signUp-message error" id="pwMessage">영어, 숫자, 특수문자(!,@,#,-,_) 6~30글자 사이로 작성해주세요</span>
 
 
                 <label for="memberNickname">
@@ -86,7 +86,7 @@
                         placeholder="닉네임" maxlength="10">
                 </div>
 
-                <span class="signUp-message confirm">사용 가능한 닉네입 입니다.</span>
+                <span class="signUp-message confirm" id="nicknameMsg">영어/숫자/한글 2~10글자 사이로 작성해주세요.</span>
 
 
 
@@ -99,7 +99,7 @@
                         placeholder="(-없이 숫자만 입력)" maxlength="11">
                 </div>
 
-                <span class="signUp-message error">전화번호 형식이 올바르지 않습니다.</span>
+                <span class="signUp-message" id="telMessage">전화번호를 입력해주세요.(- 제외)</span>
 
 
                 <label for="memberAddress">
@@ -133,7 +133,7 @@
     </main>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-
+	<script src="${contextPath}/resources/js/signUp.js"></script>
 </body>
 
 </html>

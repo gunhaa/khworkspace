@@ -72,15 +72,15 @@ function pwValidate(){
 
 function secessionValidate(){
 
-    const pw=document.querySelector("input[name='memberPw']")
-    const chk=document.querySelector("input[name='agree']");
-    if(pw.value.trim().length==0){
-        return printAlert(pw, "비밀번호를 입력해 주세요");
+    const memberPw=document.querySelector("input[name='memberPw']")
+    const agree=document.querySelector("input[name='agree']");
+    if(memberPw.value.trim().length==0){
+        return printAlert(memberPw, "비밀번호를 입력해 주세요");
     }
-
-    if(!chk.checked){
-        alert("약관 동의 후 탈퇴 버튼을 클릭해주세요.")
-        return false;
+    // 약관 동의 체크 박스
+    // - 체크박스 요소.checked : 체크 시 true, 해제 시 false 반환
+    if(!agree.checked){
+        return printAlert(agree, "비밀번호를 입력해 주세요");
     }
 
     if(confirm("정말 탈퇴하시겠습니까?")){

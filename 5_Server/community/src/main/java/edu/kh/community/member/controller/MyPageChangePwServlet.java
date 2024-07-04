@@ -32,9 +32,7 @@ public class MyPageChangePwServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-//		EncryptWrapper wrap = new EncryptWrapper(req);
-//		
-//		currentPw = wrap.getSha512(currentPw);
+
 		
 		// ** Service로 전달할 값이 많은데 VO로 해결할 수 없는 경우 **
 		// 1. 매개변수로 하나하나 따로 전달한다.
@@ -51,6 +49,15 @@ public class MyPageChangePwServlet extends HttpServlet{
 		String newPw=req.getParameter("newPw");
 		HttpSession session = req.getSession();
 		Member mem = (Member)session.getAttribute("loginMember");
+		
+		
+		
+//		EncryptWrapper wrap = new EncryptWrapper(req);
+//		
+//		currentPw = wrap.getSha512(currentPw);
+		
+		
+		
 		
 		MemberService service = new MemberService();
 		
