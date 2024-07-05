@@ -53,8 +53,8 @@ public class MyPageChangePwServlet extends HttpServlet{
 		
 		
 //		EncryptWrapper wrap = new EncryptWrapper(req);
-//		
-//		currentPw = wrap.getSha512(currentPw);
+		
+//		currentPw = EncryptWrapper.getSha512(currentPw);
 		
 		
 		

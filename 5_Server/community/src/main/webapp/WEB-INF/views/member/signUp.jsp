@@ -133,7 +133,12 @@
     </main>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
+    <!-- jQuery 라이브러리 추가 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- signUp.js -->
 	<script src="${contextPath}/resources/js/signUp.js"></script>
+
+
 </body>
 
 </html>

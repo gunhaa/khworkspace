@@ -121,6 +121,52 @@ public class MemberService {
 		return result;
 	}
 
+	
+	
+	/** 이메일 중복 검사 Service
+	 * @param memberEmail
+	 * @return result
+	 * @throws Exception
+	 */
+	public int emailDupCheck(String memberEmail) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.emailDupCheck(memberEmail, conn);
+		
+		return result;
+	}
+
+	
+	/** 닉네임 중복 검사 서비스
+	 * @param nickname
+	 * @return result
+	 * @throws Exception
+	 */
+	public int nicknameDupCheck(String nickname) throws Exception {
+		
+		Connection conn =getConnection();
+		
+		int result = dao.nicknameDupCheck(nickname,conn);
+		
+		return result;
+	}
+
+	
+	
+	/** 회원 정보 조회
+	 * @param memberEmail
+	 * @return Member mem
+	 */
+	public Member selectOne(String memberEmail) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		Member mem = dao.selectOne(memberEmail,conn);
+		
+		return mem;
+	}
+
 
 
 }

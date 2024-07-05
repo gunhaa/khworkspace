@@ -210,4 +210,113 @@ public class MemberDAO {
 		return result;
 	}
 
+
+	/** 이메일 중복 검사
+	 * @param memberEmail
+	 * @param conn
+	 * @return result
+	 * @throws Exception
+	 */
+	public int emailDupCheck(String memberEmail, Connection conn) throws Exception {
+		int result = 0; 
+		
+		try {
+			
+			String sql = prop.getProperty("emailDupCheck");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memberEmail);
+			
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+//				result = rs.getInt("COUNT(*)");
+				result = rs.getInt(1); // 1번 컬럼 결과를 result에 대입
+			}
+			
+			
+		}finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		return result;
+	}
+
+
+	/** 닉네임 중복 검사 DAO
+	 * @param nickname
+	 * @param conn
+	 * @return result
+	 * @throws Exception
+	 */
+	public int nicknameDupCheck(String nickname, Connection conn) throws Exception {
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("nicknameDupCheck");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, nickname);
+			
+			rs= pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			
+			
+			
+		}finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		
+		return result;
+	}
+
+
+	public Member selectOne(String memberEmail, Connection conn) throws Exception {
+		
+		Member mem = null;
+		
+		try {
+			
+			String sql = prop.getProperty("selectOne");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memberEmail);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				mem = new Member();
+				mem.setMemberEmail(rs.getString("MEMBER_EMAIL"));
+//				mem.setMemberEmail(rs.getString(1)); 같은 것임
+				mem.setMemberNickname(rs.getString("MEMBER_NICK"));
+//				mem.setMemberNickname(rs.getString(2));
+				mem.setMemberTel(rs.getString("MEMBER_TEL"));
+				mem.setMemberAddress(rs.getString("MEMBER_ADDR"));
+				mem.setEnrollDate(rs.getString("ENROLL_DATE"));
+				
+				
+			}
+			
+			
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		return mem;
+	}
+
 }

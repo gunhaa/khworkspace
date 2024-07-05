@@ -28,13 +28,18 @@
                 
                 <section class="content">
                     <section class="content-1">
-                        loginMember : ${sessionScope.loginMember}
-
-                        <hr>
-
-                        message : ${sessionScope.message}
 
 
+                        <h3>회원 정보 조회(AJAX)</h3>
+
+                        <p>이메일을 입력 받아 일치하는 회원 정보를 출력</p>
+
+                        이메일 : <input type="text" id="input1">
+                        <button id="select1">조회</button>
+
+                        <div id="result1" style="height : 130px; ">
+
+                        </div>
 
                     </section>
                     <section class="content-2">
@@ -120,6 +125,7 @@
                 </section>
             </main>
 			<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+            <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
             <script src="${contextPath}/resources/js/main.js"></script>
         </body>
 

@@ -25,4 +25,16 @@
 	<entry key="secession">
 		UPDATE MEMBER SET SECESSION_FL='Y' WHERE MEMBER_PW=? AND MEMBER_NO=?
 	</entry>
+	
+	<entry key="emailDupCheck">
+		SELECT count(*) FROM MEMBER WHERE MEMBER_EMAIL=? AND SECESSION_FL='N'
+	</entry>
+
+	<entry key="nicknameDupCheck">
+			SELECT count(*) FROM MEMBER WHERE MEMBER_NICK=? AND SECESSION_FL='N'
+	</entry>
+	
+	<entry key="selectOne">
+		SELECT MEMBER_EMAIL, MEMBER_NICK, MEMBER_TEL, MEMBER_ADDR, TO_CHAR(ENROLL_DT, 'YYYY"년" MM"월" DD"일"') as ENROLL_DATE FROM MEMBER WHERE MEMBER_EMAIL=? AND SECESSION_FL='N'
+	</entry>
 </properties>

@@ -13,6 +13,8 @@ const checkObj = {
     "memberTel" : false 
 };
 
+console.log($("label"));
+
 
 // **input 이벤트 : 입력과 관련된 모든 동작(key 관련, mouse 관련, 붙여넣기)
 memberTel.addEventListener("input", ()=>{
@@ -69,10 +71,53 @@ memberEmail.addEventListener("input", ()=>{
         return;
     } 
     if(regEmail.test(memberEmail.value)){
-        emailMessage.innerText="유효한 이메일 입니다."
-        emailMessage.classList.add("confirm");
-        emailMessage.classList.remove("error");
-        checkObj.memberEmail=true;
+
+
+        // ***이메일 중복검사 (ajax) 진행 예정 ***
+
+        // $.ajax({ K:V, K:V }) //jQuery ajax 기본 형태
+        
+        
+        $.ajax({
+            url : "emailDupCheck", // 필수 속성 url
+            // 현재 주소 : /community/member/signUp
+            // 상대 주소 : /community/member/emailDupCheck
+            data : {"memberEmail" : memberEmail.value} ,
+            // data속성 : 비동기 통신 시 서버로 전달할 값을 작성(JS객체 형식)
+            // -> 비동기 통신 시 input에 입력된 값을
+            //    "memberEmail" 이라는 key 값(파라미터)으로 전달
+            type : "GET", // 데이터 전달 방식 
+            success : function(result){
+                //비동기 통신(ajax)가 오류없이 요청/응답 성공한 경우
+                
+                //매개변수 result : servlet에서 출력된 result 값이 담겨있음
+                console.log(result);
+
+                if(result==1){ //중복o
+
+                    emailMessage.innerText="이미 사용중인 이메일 입니다."
+                    emailMessage.classList.add("error");
+                    emailMessage.classList.remove("confirm");
+                    checkObj.memberEmail=false;
+
+                } else { //중복 x
+
+                    emailMessage.innerText="사용 가능한 이메일 입니다."
+                    emailMessage.classList.add("confirm");
+                    emailMessage.classList.remove("error");
+                    checkObj.memberEmail=true;
+                }
+
+            },
+            error : function(){
+                // 비동기 통신(ajax) 오류가 발생한 경우
+                console.log("에러 발생");
+            }
+        });
+
+
+
+
     }else{
         emailMessage.innerText="유효하지 않은 이메일 입니다."
         emailMessage.classList.add("error");
@@ -97,10 +142,35 @@ memberNickname.addEventListener("input", ()=>{
         return;
     } 
     if(regChk.test(memberNickname.value)){
-        nicknameMessage.innerText="유효한 닉네임 입니다."
-        nicknameMessage.classList.add("confirm");
-        nicknameMessage.classList.remove("error");
-        checkObj.memberNickname=true;
+
+
+    // 닉네임 중복검사 진행 예정
+
+    $.ajax({
+
+        url : "nicknameDupCheck",  // 필수 작성 속성
+        data: {"nickname" : memberNickname.value}, // 서버로 전달할 값
+        type: "GET" ,  // 데이터 전달 방식(기본값 GET)
+        success : (res) =>{
+            if(res==1){ //중복O
+                nicknameMessage.innerText="중복 된 닉네임 입니다."
+                nicknameMessage.classList.add("error");
+                nicknameMessage.classList.remove("confirm");
+                checkObj.memberNickname=false;
+            }else{ // 중복X
+                nicknameMessage.innerText="사용 가능한 닉네임 입니다."
+                nicknameMessage.classList.add("confirm");
+                nicknameMessage.classList.remove("error");
+                checkObj.memberNickname=true;
+            }
+            
+        },
+        error : () =>{
+            console.log("에러발생");
+        }
+
+    })
+
     }else{
         nicknameMessage.innerText="유효하지 않은 닉네임 입니다."
         nicknameMessage.classList.add("error");
