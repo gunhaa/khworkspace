@@ -151,3 +151,50 @@ document.querySelector("#select1").addEventListener("click", () => {
     });
 
 });
+
+// 일정 시간 마다 회원 목록 조회
+
+function selectAll(){ // 회원의 전체 조회
+
+    $.ajax({
+
+        // /community/member/selectAll
+        url : "member/selectAll" , 
+        dataType : "JSON" , // 응답 데이터 형식
+        success : (member)=>{
+            const tbody = document.querySelector("tbody");
+            tbody.innerHTML = "";
+            let str= "";
+            member.forEach((item)=>{
+
+                str +=
+                `<tr>
+                    <td>${item.memberNo}</td>
+                    <td>${item.memberEmail}</td>
+                    <td>${item.memberNickname}</td>
+                </tr>`
+                tbody.innerHTML=str;
+            });
+        }, 
+        error : () => {
+            console.log("회원 목록 조회 에러 발생");
+        }
+
+
+    })
+
+
+}
+
+
+// 즉시 실행 함수(속도가 빠르다, 변수명 중복 문제 해결)
+(function(){
+    selectAll(); // 함수호출 -> 회원 목록을 먼저 조회
+
+    // window.setInterval(함수, 딜레이(ms))
+    window.setInterval(selectAll, 10000); // 10초
+
+    // 함수 이름만 작성 -> 함수 코드가 대입
+    // -> 10초마다 selectAll 함수 수행
+
+})();

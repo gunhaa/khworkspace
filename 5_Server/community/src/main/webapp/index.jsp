@@ -41,6 +41,44 @@
 
                         </div>
 
+                        <h3>회원 목록 조회</h3>
+
+                        <p>일정 시간마다 비동기로 회원 목록(회원 번호, 이메일, 닉네임) 조회</p>
+
+                        <table border="1">
+
+                            <thead>
+                                <tr>
+                                    <th>회원번호</th>
+                                    <th>이메일</th>
+                                    <th>닉네임</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="memberList">
+                                <tr>
+                                    <td>1</td>
+                                    <td>user01@kh.or.kr</td>
+                                    <td>유저일</td>
+                                </tr>
+
+                                <tr>
+                                    <td>2</td>
+                                    <td>user02@kh.or.kr</td>
+                                    <td>유저이</td>
+                                </tr>
+
+                                <tr>
+                                    <td>3</td>
+                                    <td>user03@kh.or.kr</td>
+                                    <td>유저삼</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+                        
                     </section>
                     <section class="content-2">
 

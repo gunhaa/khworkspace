@@ -1,6 +1,8 @@
 package edu.kh.community.member.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import edu.kh.community.member.model.dao.MemberDAO;
 import edu.kh.community.member.model.vo.Member;
@@ -163,6 +165,22 @@ public class MemberService {
 		Connection conn = getConnection();
 		
 		Member mem = dao.selectOne(memberEmail,conn);
+		
+		return mem;
+	}
+
+	/** 회원 정보 조회
+	 * @return list
+	 * @throws Exception
+	 */
+	public List<Member> selectAll() throws Exception {
+		
+		List<Member> mem = new ArrayList<Member>();
+		
+		Connection conn = getConnection();
+		
+		mem = dao.selectAll(conn);
+		
 		
 		return mem;
 	}
