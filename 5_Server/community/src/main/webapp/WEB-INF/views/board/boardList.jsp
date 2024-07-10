@@ -28,6 +28,8 @@
 
                 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
+                
+
                 <section class="board-list">
                     <h1 class="board-name">${boardName}</h1>
                     <div class="list-wrapper">
@@ -69,7 +71,7 @@
                                             <tr>
                                                 <td>${board.boardNo}</td>
                                                 <td>
-                                                    <a href="#">${board.boardTitle}</a>
+                                                    <a href="detail?no=${board.boardNo}&cp=${pagination.currentPage}&type=${param.type}">${board.boardTitle}</a>
                                                 </td>
                                                 <td>${board.memberNickname}</td>
                                                 <td>${board.createDate}</td>

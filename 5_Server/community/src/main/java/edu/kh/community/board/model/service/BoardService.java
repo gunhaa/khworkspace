@@ -2,6 +2,8 @@ package edu.kh.community.board.model.service;
 
 import edu.kh.community.board.model.dao.BoardDAO;
 import edu.kh.community.board.model.vo.Board;
+import edu.kh.community.board.model.vo.BoardDetail;
+import edu.kh.community.board.model.vo.BoardImage;
 import edu.kh.community.board.model.vo.Pagination;
 import edu.kh.community.member.model.dao.MemberDAO;
 import static edu.kh.community.common.JDBCTemplate.*;
@@ -55,6 +57,33 @@ public class BoardService {
 		close(conn);
 		
 		return map;
+	}
+
+	/**게시글 상세 조회 Service
+	 * @param boardNo
+	 * @return detail
+	 * @throws Exception
+	 */
+	public BoardDetail selectBoardDetail(int boardNo) throws Exception{
+
+		Connection conn = getConnection();
+		
+		// 1) 게시글(board) 테이블 관련 내용만 조회
+		BoardDetail detail = dao.selectBoardDetail(boardNo, conn);
+		System.out.println(detail);
+		
+		if(detail != null) { //게시글 상세 조회 결과가 있을 경우
+			
+			// 2) 게시글에 첨부된 이미지(BOARD_IMG 테이블) 조회
+			List<BoardImage> imageList = dao.selectBoardImg(boardNo,conn);
+
+			detail.setImageList(imageList);
+			
+		}
+		
+		close(conn);
+		
+		return detail;
 	}
 
 
