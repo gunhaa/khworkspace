@@ -1,6 +1,7 @@
 package edu.kh.community.board.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import edu.kh.community.board.model.service.BoardService;
+import edu.kh.community.board.model.service.ReplyService;
 import edu.kh.community.board.model.vo.BoardDetail;
+import edu.kh.community.board.model.vo.Reply;
 
 @WebServlet("/board/detail")
 public class boardDetail extends HttpServlet{
@@ -29,10 +32,17 @@ public class boardDetail extends HttpServlet{
 			// 게시글 정보 + 이미지리스트 조회
 			BoardDetail detail = service.selectBoardDetail(boardNo);
 			
+			// 게시글 상세 조회된 내용이 있을 경우 댓글 목록 조회
+			if(detail != null) {
+				List<Reply> rList=new ReplyService().selectReplyList(boardNo);
+				req.setAttribute("rList", rList);
+				System.out.println(rList+"121313");
+				
+			}
+			
 			req.setAttribute("detail", detail);
 			HttpSession session = req.getSession();
 			
-
 			
 			req.getRequestDispatcher("/WEB-INF/views/board/boardDetail.jsp").forward(req, resp);
 			
