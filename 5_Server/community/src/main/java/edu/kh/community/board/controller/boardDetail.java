@@ -36,7 +36,6 @@ public class boardDetail extends HttpServlet{
 			if(detail != null) {
 				List<Reply> rList=new ReplyService().selectReplyList(boardNo);
 				req.setAttribute("rList", rList);
-				System.out.println(rList+"121313");
 				
 			}
 			

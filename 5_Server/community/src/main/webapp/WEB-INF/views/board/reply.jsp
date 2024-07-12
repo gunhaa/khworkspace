@@ -39,7 +39,7 @@
                                 <c:if test="${loginMember.memberNo == rList[i].memberNo}">
                                     <div class="reply-btn-area">
                                         <button>수정</button>
-                                        <button>삭제</button>
+                                        <button onclick="deleteReply(${rList[i].replyNo})">삭제</button>
                                     </div>
                                 </c:if>
                             </li>
