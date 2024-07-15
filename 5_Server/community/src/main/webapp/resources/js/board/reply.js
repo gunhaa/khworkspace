@@ -101,18 +101,20 @@ function selectReplyList() {
                     // 수정 버튼
                     const updateBtn = document.createElement("button");
                     updateBtn.innerText = "수정";
+                    updateBtn.setAttribute("onclick", "showUpdateReply(" + reply.replyNo + ", this)");
 
                     const deleteBtn = document.createElement("button");
                     deleteBtn.innerText = "삭제";
-                    
+
+
                     // 삭제 버튼에 onclick 이벤트 속성 추가
-                    deleteBtn.onclick= function(){
+                    deleteBtn.onclick = function () {
                         deleteReply(reply.replyNo);
                     };
 
                     // 위와 같은 코드
                     // deleteBtn.setAttribute("onclick", "deleteReply("+reply.replyNo +")");
-                    
+
 
                     // 버튼 영역 마지막 자식으로 수정/삭제 버튼 추가
                     replyBtnArea.append(updateBtn, deleteBtn);
@@ -242,4 +244,120 @@ function deleteReply(replyNo) {
 
         });
     }
+}
+
+
+
+
+//----------------------------------------------------------------------------------
+
+// 댓글 수정 화면 전환
+
+let beforeReplyRow; // 수정 전 원래 행의 상태를 저장할 변수
+
+function showUpdateReply(replyNo, btn) {
+    // 해당 댓글 번호, // 이벤트 발생한 요소
+
+
+    // 1. 댓글 수정이 클릭된 행을 선택
+    const replyRow = btn.parentElement.parentElement; //수정 버튼의 부모의 부모 
+    // 2. 행 내용 삭제 전 현재 상태를 저장(백업)
+    beforeReplyRow = replyRow.innerHTML;
+    //취소 버튼 동작 코드
+    // replyRow.innerHTML = beforeReplyRow;
+
+    // 3. 댓글에 작성되어 있던 내용만 얻어오기(replyRow 이용) -> 새롭게 생성된 textarea 에 추가 예정
+    //console.log(replyRow.children);
+    // console.log(replyRow.children[1].innerHTML); // <br> 태그 유지를 위해 innerHTML 사용
+    // let beforeContent = replyRow.children[1].innerHTML;
+
+    // btn 이용
+    let beforeContent = btn.parentElement.previousElementSibling.innerHTML;
+    // 4. 댓글 행 내부 내용 모두 삭제
+    replyRow.innerHTML = "";
+    // 5. textarea 요소 생성 + 클래스 추가 + ** 내용 추가 **
+
+    const textarea = document.createElement("textarea");
+    textarea.classList.add("update-textarea");
+
+    //***************************/
+    // XSS 방지 처리 해제
+    beforeContent = beforeContent.replaceAll("&amp;", "&");
+    beforeContent = beforeContent.replaceAll("&lt;", "<");
+    beforeContent = beforeContent.replaceAll("&gt;", ">");
+    beforeContent = beforeContent.replaceAll("&quot;", "\"");
+    // 개행 문자 처리 해제
+    beforeContent = beforeContent.replaceAll("<br>", "\n");
+    //***************************/
+
+
+    textarea.value = beforeContent;
+    // 6. replyRow에 생성된 textarea추가
+    replyRow.append(textarea);
+    // 7. 버튼 영역 + 수정/취소 버튼 생성
+    const div = document.createElement("div");
+    div.classList.add("reply-btn-area");
+    const button1 = document.createElement("button");
+    const button2 = document.createElement("button");
+    button1.innerText = "수정";
+    // button2.onclick = function(){
+    //     replyRow.innerHTML=beforeReplyRow;
+    // } 
+    button1.setAttribute("onclick", "updateReply(" + replyNo + ", this)");
+    button2.innerText = "취소";
+    button2.setAttribute("onclick", "updateCancel(this)");
+    // 8. 버튼 영역에 버튼 추가 후 replyRow에 버튼 영역 추가
+
+    div.append(button1, button2);
+
+    replyRow.append(div);
+
+}
+
+
+// ------------------------------------------------------------------
+
+// 댓글 수정 취소
+
+function updateCancel(btn) {
+    // 매개변수 btn : 클릭 된 취소 버튼(이벤트가 일어난 객체)
+    // 전역 변수 beforeReplyRow : 수정 전 원래 행(댓글)을 저장한 변수
+    if (confirm("댓글 수정을 취소 하시겠습니까?")) {
+        const replyRow = btn.parentElement.parentElement;
+        
+        btn.parentElement.parentElement.innerHTML = beforeReplyRow;
+        // replyRow.innerHTML = beforeReplyRow;
+    }
+}
+
+// 댓글 수정(AJAX)
+
+function updateReply(replyNo, btn) {
+    // console.log(btn.parentElement.previousElementSibling.value);
+    const replyContent = btn.parentElement.previousElementSibling.value;
+    
+    $.ajax({
+
+        url: contextPath + "/reply/update",
+        data: {
+            "replyNo": replyNo,
+            "content": replyContent,
+        },
+        type: "POST",
+        success(res) {
+
+            if (res == 1) {
+                alert("댓글 수정 성공");
+                selectReplyList();
+
+            } else {
+                alert("댓글 수정 실패");
+            }
+
+        },
+        error() {
+
+        }
+
+    });
 }

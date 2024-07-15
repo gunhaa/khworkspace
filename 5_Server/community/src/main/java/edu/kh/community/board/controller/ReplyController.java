@@ -87,6 +87,18 @@ public class ReplyController extends HttpServlet{
 			}
 			
 			
+			if(command.equals("update")) {
+				
+				int replyNo = Integer.parseInt(req.getParameter("replyNo"));
+				
+				String content = req.getParameter("content");
+				
+				int result = service.updateReply(replyNo, content);
+				
+				resp.getWriter().print(result);
+			}
+			
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -64,6 +64,7 @@ public class ReplyDAO {
 				reply.setProfileImage(rs.getString(7));
 				
 				replyList.add(reply);
+				
 			}
 			
 			
@@ -123,6 +124,34 @@ public class ReplyDAO {
 			result = pstmt.executeUpdate();
 			
 		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	/**
+	 * @param conn
+	 * @param replyNo
+	 * @param content
+	 * @throws Exception
+	 * @return result
+	 */
+	public int updateReply(Connection conn, int replyNo, String content) throws Exception {
+		
+		int result = 0;
+		try {
+			
+			String sql = prop.getProperty("updateReply");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, content);
+			pstmt.setInt(2, replyNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
 			close(pstmt);
 		}
 		

@@ -91,4 +91,32 @@ public class ReplyService {
 		return result;
 	}
 
+
+
+
+	/** 댓글 수정 서비스
+	 * @param replyNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateReply(int replyNo , String Content) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		Content = Util.XSSHandling(Content);
+		Content = Util.newLineHandling(Content);
+		
+		int result = dao.updateReply(conn, replyNo, Content);
+		
+		if(result==0) {
+			rollback(conn);
+		} else {
+			commit(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
 }

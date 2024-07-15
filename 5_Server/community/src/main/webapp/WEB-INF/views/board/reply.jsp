@@ -32,19 +32,27 @@
                                     <span>${rList[i].memberNick}</span>
                                     <span class="reply-date">(${rList[i].createDate})</span>
                                 </p>
-                                <p class="reply-content">
-                                    ${rList[i].replyContent}
-                                </p>
+                                <p class="reply-content">${rList[i].replyContent}</p>
 
                                 <c:if test="${loginMember.memberNo == rList[i].memberNo}">
                                     <div class="reply-btn-area">
-                                        <button>수정</button>
+                                        <button onclick="showUpdateReply(${rList[i].replyNo}, this)">수정</button>
                                         <button onclick="deleteReply(${rList[i].replyNo})">삭제</button>
                                     </div>
                                 </c:if>
                             </li>
 
                         </c:forEach>
+
+<!-- 
+                        <li class="reply-row">
+                            <textarea class="update-textarea">기존 댓글 내용</textarea>
+                            <div class="reply-btn-area">
+                                <button>수정</button>
+                                <button>삭제</button>
+                            </div>
+                        </li> -->
+
 
                         <!-- 
             <li class="reply-row">
