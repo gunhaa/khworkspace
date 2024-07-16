@@ -16,15 +16,15 @@
                             <li class="reply-row">
                                 <p class="reply-writer">
 
-                                    <c:if test="${empty reply.profileImage}">
+                                    <c:if test="${empty rList[i].profileImage}">
 
                                         <img src="${contextPath}/resources/images/user.png">
 
                                     </c:if>
 
-                                    <c:if test="${!empty reply.profileImage}">
+                                    <c:if test="${!empty rList[i].profileImage}">
 
-                                        <img src="${contextPath}${reply.profileImage}">
+                                        <img src="${contextPath}${rList[i].profileImage}">
 
                                     </c:if>
 

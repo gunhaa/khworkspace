@@ -254,14 +254,36 @@ function deleteReply(replyNo) {
 // 댓글 수정 화면 전환
 
 let beforeReplyRow; // 수정 전 원래 행의 상태를 저장할 변수
-
+let beforeReply;
 function showUpdateReply(replyNo, btn) {
     // 해당 댓글 번호, // 이벤트 발생한 요소
+
+    // ** 댓글 수정이 한개만 열릴 수 있도록 만들기
+
+    const temp = document.getElementsByClassName("update-textarea");
+
+    if(temp.length > 0){ // 수정 화면이 한개 이상 열려있는 경우
+        
+        if(confirm("다른 댓글이 수정 중 입니다. 현재 댓글을 수정하시겠습니까?")){
+
+            temp[0].parentElement.innerHTML=beforeReplyRow;
+            //reply-row                     // 백업한 댓글
+            //백업 한 내용으로 덮어 씌워 지면서 textarea 사라짐
+
+        } else {
+            return;
+        }
+
+
+    }
 
 
     // 1. 댓글 수정이 클릭된 행을 선택
     const replyRow = btn.parentElement.parentElement; //수정 버튼의 부모의 부모 
     // 2. 행 내용 삭제 전 현재 상태를 저장(백업)
+    beforeReply=replyRow;
+    // 이 경우 console.log replyRow가 무엇을 가르키는지 알아야 한다.
+    // console.log(replyRow);
     beforeReplyRow = replyRow.innerHTML;
     //취소 버튼 동작 코드
     // replyRow.innerHTML = beforeReplyRow;
@@ -335,7 +357,7 @@ function updateCancel(btn) {
 function updateReply(replyNo, btn) {
     // console.log(btn.parentElement.previousElementSibling.value);
     const replyContent = btn.parentElement.previousElementSibling.value;
-    
+    console.log(beforeReply);
     $.ajax({
 
         url: contextPath + "/reply/update",

@@ -77,6 +77,6 @@
         </section>
     </main>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-    <script src="${contextPath}/resources/js/mypage.js"></script>
+    <script src="${contextPath}/resources/js/member/mypage.js"></script>
 </body>
 </html>
