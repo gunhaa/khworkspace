@@ -132,10 +132,11 @@ if (inputImage != null) { //inputImage요소가 화면에 존재할 때
                 // 프로필 이미지의 src속성의 값을 FileReader가 읽어온 파일의 URL로 변경
                 const profileImage = document.getElementById("profile-image");
                 profileImage.setAttribute("src", e.target.result);
-                console.log(this.result);
                 // ->setAttribute() 호출 시 중복된느 속성이 존재하면 덮어쓰기
                 //event.target: 이벤트가 실제로 발생한 요소를 가리킵니다.
                 //this: 이벤트 리스너가 부착된 요소를 가리킵니다.
+                document.getElementById("delete").value=0;
+                // 새로운 이미지가 선택 되었기 때문에 1(X눌러짐) -> (X안눌러짐 상태)으로 변경
             };
         };
     });
@@ -145,8 +146,11 @@ if (inputImage != null) { //inputImage요소가 화면에 존재할 때
 function  profileValidate(){
 
     const inputImage = document.getElementById("input-image");
+    const del = document.querySelector("#delete"); //input type="hidden"
 
-    if(inputImage.value == ""){ //파일 선택 X
+    if(inputImage.value == "" && del.value == 0){
+        //파일 선택 X == 빈 문자열 / del의 값이 0 == x를 누르지도 않았다
+        // --> 아무것도 안하고 변경 버튼을 클릭한 경우
         alert("이미지를 선택한 후 변경 버튼을 클릭해주세요.");
         return false;
     } else {
@@ -154,3 +158,22 @@ function  profileValidate(){
     }
 
 }
+
+// 프로필 이미지 옆 X 버튼 클릭 시
+
+document.getElementById("delete-image").addEventListener("click", ()=>{
+
+    // 0 : 안눌러짐
+    // 1 : 눌러짐
+
+    const del = document.querySelector("#delete");
+
+
+    // 1) 프로필 이미지를 기본 이미지로 변경
+    document.querySelector("#profile-image").src=`${contextPath}/resources/images/user.png`;
+
+    // 2) input type="file"에 저장된 값(value)에 "" 대입
+    document.getElementById("input-image").value="";
+
+    del.value=1; //눌러진걸로 인식
+});

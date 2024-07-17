@@ -22,13 +22,13 @@
         </head>
 
         <body>
-
+            ${loginMember}
 
             <main>
 
                 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
-                
+
 
                 <section class="board-list">
                     <h1 class="board-name">${boardName}</h1>
@@ -71,7 +71,8 @@
                                             <tr>
                                                 <td>${board.boardNo}</td>
                                                 <td>
-                                                    <a href="detail?no=${board.boardNo}&cp=${pagination.currentPage}&type=${param.type}">${board.boardTitle}</a>
+                                                    <a
+                                                        href="detail?no=${board.boardNo}&cp=${pagination.currentPage}&type=${param.type}">${board.boardTitle}</a>
                                                 </td>
                                                 <td>${board.memberNickname}</td>
                                                 <td>${board.createDate}</td>
@@ -84,11 +85,13 @@
                             </tbody>
                         </table>
                     </div>
-
                     <div class="btn-area">
-                        <button id="insertBtn">글쓰기</button>
-                    </div>
 
+                        <c:if test="${!empty loginMember}">
+                            <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}'">글쓰기</button>
+                        </c:if>
+
+                    </div>
                     <div class="pagination-area">
 
                         <!-- 페이지네이션 a태그에 사용될 공통 주소를 저장할 변수 선언 -->

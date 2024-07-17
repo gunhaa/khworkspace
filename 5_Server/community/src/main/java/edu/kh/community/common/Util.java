@@ -5,7 +5,10 @@ public class Util {
 	// 개행 문자-> <br> 변경 메소드
 	
 	public static String newLineHandling(String content) {		
-		return content.replaceAll("(\n|\r|\r\n|\n\r)", "<br>");
+		return content.replaceAll("(\r\n|\n\r|\n|\r)", "<br>");
+		//textarea의 엔터 : \r\n
+		// \r : 캐리지 리턴(첫 번째로 돌아가기)
+		// \n : new line(다음줄로 이동)
 	}
 	
 	// Cross Site Scripting(XSS , 크로스 사이트 스크립팅) 공격 방지 메소드

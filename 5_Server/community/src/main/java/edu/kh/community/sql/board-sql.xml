@@ -31,4 +31,15 @@ WHERE RNUM BETWEEN ? AND ?
 		SELECT * FROM BOARD_IMG WHERE BOARD_NO = ? ORDER BY IMG_LEVEL
 	</entry>	
 
+	<entry key="nextBoardNo">
+		SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+	</entry>
+	
+	<entry key="insertBoard">
+		INSERT INTO BOARD VALUES (? , ? , ? , DEFAULT, DEFAULT, DEFAULT, DEFAULT, ?, ?)
+	</entry>
+	
+	<entry key="insertBoardImage">
+		INSERT INTO BOARD_IMG VALUES (SEQ_IMG_NO.NEXTVAL, ?, ?, ?, ?)
+	</entry>
 </properties>

@@ -55,6 +55,9 @@
                         <c:if test="${empty loginMember.profileImage}">
                             <img src="${contextPath}/resources/images/user.png" id="profile-image">
                         </c:if>
+
+                        <!-- 이미지 삭제 버튼 -->
+                        <span id="delete-image">X</span>
                     </div>
 
                     <div class="profile-btn-area">
@@ -77,8 +80,9 @@
                         <span>${loginMember.enrollDate}</span>
                     </div>
 
-
-
+                    <!-- 삭제 버튼(X)이 눌려졌는지를 기록하는 숨겨진 input 태그 -->
+                    <!-- 0: 안눌러짐/ 1: 눌러짐 -->
+                    <input type="text" name="delete" id="delete" value="0" hidden>
                 </form>
 
             </section>
@@ -86,7 +90,10 @@
         </section>
     </main>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-
+    <script>
+        const contextPath="${contextPath}";
+        // 최상위 경로를 JS 전역 변수로 선언
+    </script>
     <script src="${contextPath}/resources/js/member/mypage.js"></script>
 </body>
 
