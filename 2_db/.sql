@@ -1,0 +1,951 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 목요일-7월-18-2024   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table BOARD
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."BOARD" 
+   (	"BOARD_NO" NUMBER, 
+	"BOARD_TITLE" VARCHAR2(150 BYTE), 
+	"BOARD_CONTENT" VARCHAR2(4000 BYTE), 
+	"CREATED_DT" DATE DEFAULT SYSDATE, 
+	"UPDATE_DT" DATE DEFAULT SYSDATE, 
+	"READ_COUNT" NUMBER DEFAULT 0, 
+	"BOARD_ST" NUMBER DEFAULT '1', 
+	"MEMBER_NO" NUMBER, 
+	"BOARD_CD" NUMBER
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."BOARD"."BOARD_NO" IS '게시글번호(시퀀스)';
+   COMMENT ON COLUMN "SEMI"."BOARD"."BOARD_TITLE" IS '게시글제목';
+   COMMENT ON COLUMN "SEMI"."BOARD"."BOARD_CONTENT" IS '게시글내용';
+   COMMENT ON COLUMN "SEMI"."BOARD"."CREATED_DT" IS '작성일';
+   COMMENT ON COLUMN "SEMI"."BOARD"."UPDATE_DT" IS '마지막수정일';
+   COMMENT ON COLUMN "SEMI"."BOARD"."READ_COUNT" IS '조회수';
+   COMMENT ON COLUMN "SEMI"."BOARD"."BOARD_ST" IS '게시글상태(정상1,삭제2,비밀글3)';
+   COMMENT ON COLUMN "SEMI"."BOARD"."MEMBER_NO" IS '회원번호(시퀀스)';
+   COMMENT ON COLUMN "SEMI"."BOARD"."BOARD_CD" IS '게시판코드';
+--------------------------------------------------------
+--  DDL for Table BOARD_TYPE
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."BOARD_TYPE" 
+   (	"BOARD_CD" NUMBER, 
+	"BOARD_NM" VARCHAR2(20 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."BOARD_TYPE"."BOARD_CD" IS '게시판코드';
+   COMMENT ON COLUMN "SEMI"."BOARD_TYPE"."BOARD_NM" IS '게시판이름';
+--------------------------------------------------------
+--  DDL for Table CATEGORY
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."CATEGORY" 
+   (	"CATEGORY_MAIN" VARCHAR2(100 BYTE), 
+	"CATEGORY_SUB" VARCHAR2(50 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."CATEGORY"."CATEGORY_MAIN" IS '대분류';
+   COMMENT ON COLUMN "SEMI"."CATEGORY"."CATEGORY_SUB" IS '소분류';
+--------------------------------------------------------
+--  DDL for Table CHATTING
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."CHATTING" 
+   (	"CHAT_ROOM" NUMBER, 
+	"CHAT_FROM" NUMBER, 
+	"CHAT_TO" NUMBER, 
+	"CHAT_MESSAGE" VARCHAR2(1000 BYTE), 
+	"CHAT_TIMESTAMP" DATE
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."CHATTING"."CHAT_ROOM" IS '채팅방번호';
+   COMMENT ON COLUMN "SEMI"."CHATTING"."CHAT_FROM" IS '회원번호(시퀀스)';
+   COMMENT ON COLUMN "SEMI"."CHATTING"."CHAT_TO" IS '회원번호(시퀀스)';
+   COMMENT ON COLUMN "SEMI"."CHATTING"."CHAT_MESSAGE" IS '메시지';
+   COMMENT ON COLUMN "SEMI"."CHATTING"."CHAT_TIMESTAMP" IS '보낸시간';
+--------------------------------------------------------
+--  DDL for Table CLASS
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."CLASS" 
+   (	"CLASS_NO" NUMBER, 
+	"CLASS_NAME" VARCHAR2(100 BYTE), 
+	"CLASS_INTRO" VARCHAR2(3000 BYTE), 
+	"CLASS_PHOTO" VARCHAR2(200 BYTE), 
+	"CLASS_URL" VARCHAR2(100 BYTE), 
+	"CLASS_CREATE_DT" DATE DEFAULT SYSDATE, 
+	"CLASS_STATUS" NUMBER DEFAULT 1, 
+	"CLASS_PRICE" NUMBER, 
+	"MEMBER_NO" NUMBER, 
+	"CATEGORY_MAIN" VARCHAR2(100 BYTE), 
+	"CATEGORY_SUB" VARCHAR2(50 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."CLASS"."CLASS_NO" IS '강의 번호';
+   COMMENT ON COLUMN "SEMI"."CLASS"."CLASS_NAME" IS '클래스명';
+   COMMENT ON COLUMN "SEMI"."CLASS"."CLASS_INTRO" IS '클래스 설명';
+   COMMENT ON COLUMN "SEMI"."CLASS"."CLASS_PHOTO" IS '클래스 사진';
+   COMMENT ON COLUMN "SEMI"."CLASS"."CLASS_URL" IS '클래스 동영상 주소';
+   COMMENT ON COLUMN "SEMI"."CLASS"."CLASS_CREATE_DT" IS '클래스 개설일';
+   COMMENT ON COLUMN "SEMI"."CLASS"."CLASS_STATUS" IS '운영중 1, 삭제 2';
+   COMMENT ON COLUMN "SEMI"."CLASS"."CLASS_PRICE" IS '금액';
+   COMMENT ON COLUMN "SEMI"."CLASS"."MEMBER_NO" IS '튜터 번호';
+   COMMENT ON COLUMN "SEMI"."CLASS"."CATEGORY_MAIN" IS '대분류';
+   COMMENT ON COLUMN "SEMI"."CLASS"."CATEGORY_SUB" IS '소분류';
+--------------------------------------------------------
+--  DDL for Table COURSE
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."COURSE" 
+   (	"CLASS_NO" NUMBER, 
+	"MEMBER_NO" NUMBER, 
+	"CLASS_LAST_INFO" VARCHAR2(100 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."COURSE"."CLASS_NO" IS '강의 번호';
+   COMMENT ON COLUMN "SEMI"."COURSE"."MEMBER_NO" IS '수강생 번호';
+   COMMENT ON COLUMN "SEMI"."COURSE"."CLASS_LAST_INFO" IS '마지막 영상 정보(없어도 무방)';
+--------------------------------------------------------
+--  DDL for Table HASHTAG
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."HASHTAG" 
+   (	"TAG_NO" NUMBER, 
+	"TAG_NAME" VARCHAR2(100 BYTE), 
+	"TAG_IMG" VARCHAR2(100 BYTE), 
+	"BOARD_NO" NUMBER
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."HASHTAG"."TAG_NO" IS '태그 번호';
+   COMMENT ON COLUMN "SEMI"."HASHTAG"."TAG_NAME" IS '태그이름';
+   COMMENT ON COLUMN "SEMI"."HASHTAG"."TAG_IMG" IS '태그 이미지';
+   COMMENT ON COLUMN "SEMI"."HASHTAG"."BOARD_NO" IS '게시글번호(시퀀스)';
+--------------------------------------------------------
+--  DDL for Table MEMBER
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."MEMBER" 
+   (	"MEMBER_NO" NUMBER, 
+	"MEMBER_EMAIL" VARCHAR2(50 BYTE), 
+	"MEMBER_NM" VARCHAR2(30 BYTE), 
+	"MEMBER_PW" VARCHAR2(30 BYTE), 
+	"ENROLL_DT" DATE DEFAULT SYSDATE, 
+	"SECESSION_FL" CHAR(1 BYTE) DEFAULT 'N', 
+	"MEMBER_ST" NUMBER, 
+	"MEMBER_PROFILE" VARCHAR2(100 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."MEMBER"."MEMBER_NO" IS '회원번호(시퀀스)';
+   COMMENT ON COLUMN "SEMI"."MEMBER"."MEMBER_EMAIL" IS '회원 이메일(아이디)';
+   COMMENT ON COLUMN "SEMI"."MEMBER"."MEMBER_NM" IS '회원 이름(닉네임)';
+   COMMENT ON COLUMN "SEMI"."MEMBER"."MEMBER_PW" IS '회원 비밀번호';
+   COMMENT ON COLUMN "SEMI"."MEMBER"."ENROLL_DT" IS '회원가입일';
+   COMMENT ON COLUMN "SEMI"."MEMBER"."MEMBER_ST" IS '회원(1), 튜터(2), 관리자(3), 정지(4)';
+   COMMENT ON COLUMN "SEMI"."MEMBER"."MEMBER_PROFILE" IS '회원 프로필 사진';
+--------------------------------------------------------
+--  DDL for Table PAID
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."PAID" 
+   (	"MEMBER_NO" NUMBER, 
+	"PAYMENT" VARCHAR2(100 BYTE), 
+	"PAYMENT_STATUS" CHAR(1 BYTE) DEFAULT 'N', 
+	"START_DATE" DATE DEFAULT SYSDATE
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."PAID"."MEMBER_NO" IS '수강생 번호';
+   COMMENT ON COLUMN "SEMI"."PAID"."PAYMENT" IS '결제수단';
+   COMMENT ON COLUMN "SEMI"."PAID"."PAYMENT_STATUS" IS '결제상태(미결제 N, 결제 Y)';
+   COMMENT ON COLUMN "SEMI"."PAID"."START_DATE" IS '결제일';
+--------------------------------------------------------
+--  DDL for Table QUALIFICATION
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."QUALIFICATION" 
+   (	"MEMBER_NO" NUMBER, 
+	"TUTOR_QUALIFICATION" VARCHAR2(500 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."QUALIFICATION"."MEMBER_NO" IS '회원번호(시퀀스)';
+   COMMENT ON COLUMN "SEMI"."QUALIFICATION"."TUTOR_QUALIFICATION" IS '자격증(이미지, pdf)';
+--------------------------------------------------------
+--  DDL for Table REPORT
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."REPORT" 
+   (	"REPORT_NO" NUMBER, 
+	"REPORT_TYPE" VARCHAR2(200 BYTE), 
+	"REPORT_CONTENT" VARCHAR2(1000 BYTE), 
+	"BOARD_NO" NUMBER
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."REPORT"."REPORT_NO" IS '신고번호';
+   COMMENT ON COLUMN "SEMI"."REPORT"."REPORT_TYPE" IS '신고유형';
+   COMMENT ON COLUMN "SEMI"."REPORT"."REPORT_CONTENT" IS '신고내용';
+   COMMENT ON COLUMN "SEMI"."REPORT"."BOARD_NO" IS '게시글번호(시퀀스)';
+--------------------------------------------------------
+--  DDL for Table REVIEW
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."REVIEW" 
+   (	"BOARD_NO" NUMBER, 
+	"REVIEW_TAG" NUMBER, 
+	"REIVEW_STAR" VARCHAR2(15 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."REVIEW"."BOARD_NO" IS '게시글번호(시퀀스)';
+   COMMENT ON COLUMN "SEMI"."REVIEW"."REVIEW_TAG" IS '수강후기 태그(1~9)';
+   COMMENT ON COLUMN "SEMI"."REVIEW"."REIVEW_STAR" IS '수강후기 별점';
+--------------------------------------------------------
+--  DDL for Table SETTLE
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."SETTLE" 
+   (	"MEMBER_NO" NUMBER, 
+	"COMMISSION" NUMBER, 
+	"SETTLE_DATE" DATE, 
+	"SETTLE_STATUS" CHAR(1 BYTE) DEFAULT 1
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."SETTLE"."MEMBER_NO" IS '튜터';
+   COMMENT ON COLUMN "SEMI"."SETTLE"."COMMISSION" IS '결제 수수료율';
+   COMMENT ON COLUMN "SEMI"."SETTLE"."SETTLE_DATE" IS '정산신청날자';
+   COMMENT ON COLUMN "SEMI"."SETTLE"."SETTLE_STATUS" IS '정산 가능(1)  정산진행중(2) 정산 완료(3)';
+--------------------------------------------------------
+--  DDL for Table SETTLE_ACCOUNT
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."SETTLE_ACCOUNT" 
+   (	"MEMBER_NO" NUMBER, 
+	"TUTOR_ACCOUNT" VARCHAR2(20 BYTE), 
+	"BANK_NAME" VARCHAR2(50 BYTE), 
+	"ACCOUNT_NAME" VARCHAR2(30 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."SETTLE_ACCOUNT"."MEMBER_NO" IS '회원번호(시퀀스)';
+   COMMENT ON COLUMN "SEMI"."SETTLE_ACCOUNT"."TUTOR_ACCOUNT" IS '튜터계좌';
+   COMMENT ON COLUMN "SEMI"."SETTLE_ACCOUNT"."BANK_NAME" IS '은행명';
+   COMMENT ON COLUMN "SEMI"."SETTLE_ACCOUNT"."ACCOUNT_NAME" IS '예금주명';
+--------------------------------------------------------
+--  DDL for Table STUDYBOARD
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."STUDYBOARD" 
+   (	"BOARD_NO" NUMBER, 
+	"STUDY_NM" NUMBER DEFAULT 2, 
+	"STUDY_START" DATE, 
+	"STUDY_END" DATE, 
+	"STUDY_ TYPE" CHAR(1 BYTE) DEFAULT 'N', 
+	"STUDY_ADDRESS" VARCHAR2(500 BYTE), 
+	"STUDY_STATUS" CHAR(1 BYTE) DEFAULT 'N', 
+	"STUDY_COST" VARCHAR2(150 BYTE), 
+	"STUDY_COMMUMITY" VARCHAR2(150 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."STUDYBOARD"."BOARD_NO" IS '게시글번호(시퀀스)';
+   COMMENT ON COLUMN "SEMI"."STUDYBOARD"."STUDY_NM" IS '모임인원';
+   COMMENT ON COLUMN "SEMI"."STUDYBOARD"."STUDY_START" IS '모임시작일(시간, 분까지 기입)';
+   COMMENT ON COLUMN "SEMI"."STUDYBOARD"."STUDY_END" IS '모임종료일(시간, 분까지 기입)';
+   COMMENT ON COLUMN "SEMI"."STUDYBOARD"."STUDY_ TYPE" IS '오프라인(N) 온라인(Y)';
+   COMMENT ON COLUMN "SEMI"."STUDYBOARD"."STUDY_ADDRESS" IS '모임 상세 주소';
+   COMMENT ON COLUMN "SEMI"."STUDYBOARD"."STUDY_STATUS" IS '모집중(N) 모집 완료(Y)';
+   COMMENT ON COLUMN "SEMI"."STUDYBOARD"."STUDY_COST" IS '모임시 필요비용';
+   COMMENT ON COLUMN "SEMI"."STUDYBOARD"."STUDY_COMMUMITY" IS '오픈카톡/이메일 등 기입';
+--------------------------------------------------------
+--  DDL for Table THUMBS
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."THUMBS" 
+   (	"BOARD_NO" NUMBER, 
+	"THUMBS_UP" NUMBER DEFAULT 0
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."THUMBS"."BOARD_NO" IS '게시글번호(시퀀스)';
+   COMMENT ON COLUMN "SEMI"."THUMBS"."THUMBS_UP" IS '추천수';
+--------------------------------------------------------
+--  DDL for Table TUTOR
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."TUTOR" 
+   (	"MEMBER_NO" NUMBER, 
+	"TUTOR_EDUCATION" VARCHAR2(500 BYTE), 
+	"TUTOR_TEL" CHAR(11 BYTE), 
+	"TUTOR_PROFILE" VARCHAR2(100 BYTE), 
+	"TUTOR_INTRODUCER" VARCHAR2(900 BYTE), 
+	"SAVE_STATUS" CHAR(1 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."TUTOR"."MEMBER_NO" IS '회원번호(시퀀스)';
+   COMMENT ON COLUMN "SEMI"."TUTOR"."TUTOR_EDUCATION" IS '학력';
+   COMMENT ON COLUMN "SEMI"."TUTOR"."TUTOR_TEL" IS '전화번호';
+   COMMENT ON COLUMN "SEMI"."TUTOR"."TUTOR_PROFILE" IS '튜터 프로필(증명사진)';
+   COMMENT ON COLUMN "SEMI"."TUTOR"."TUTOR_INTRODUCER" IS '튜터 소개';
+   COMMENT ON COLUMN "SEMI"."TUTOR"."SAVE_STATUS" IS '저장(1) 임시저장(2)';
+--------------------------------------------------------
+--  DDL for Table WONDER_ANSER
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."WONDER_ANSER" 
+   (	"ANSER_NO" NUMBER, 
+	"ANSER_CONTENT" VARCHAR2(4000 BYTE), 
+	"ANSER_ST" CHAR(1 BYTE) DEFAULT 'N', 
+	"ANSER_DT" DATE DEFAULT SYSDATE, 
+	"BOARD_NO" NUMBER
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."WONDER_ANSER"."ANSER_NO" IS '답변번호(시퀀스)';
+   COMMENT ON COLUMN "SEMI"."WONDER_ANSER"."ANSER_CONTENT" IS '답변내용';
+   COMMENT ON COLUMN "SEMI"."WONDER_ANSER"."ANSER_ST" IS '삭제Y 기본 N';
+   COMMENT ON COLUMN "SEMI"."WONDER_ANSER"."ANSER_DT" IS '답변작성일';
+   COMMENT ON COLUMN "SEMI"."WONDER_ANSER"."BOARD_NO" IS '게시글번호(시퀀스)';
+--------------------------------------------------------
+--  DDL for Table WONDER_BOARD
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."WONDER_BOARD" 
+   (	"BOARD_NO" NUMBER, 
+	"QA_STATUS" CHAR(1 BYTE) DEFAULT 'N'
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SEMI"."WONDER_BOARD"."BOARD_NO" IS '게시글번호(시퀀스)';
+   COMMENT ON COLUMN "SEMI"."WONDER_BOARD"."QA_STATUS" IS '해결(Y)_미해결(N)';
+REM INSERTING into SEMI.BOARD
+SET DEFINE OFF;
+REM INSERTING into SEMI.BOARD_TYPE
+SET DEFINE OFF;
+REM INSERTING into SEMI.CATEGORY
+SET DEFINE OFF;
+REM INSERTING into SEMI.CHATTING
+SET DEFINE OFF;
+REM INSERTING into SEMI.CLASS
+SET DEFINE OFF;
+REM INSERTING into SEMI.COURSE
+SET DEFINE OFF;
+REM INSERTING into SEMI.HASHTAG
+SET DEFINE OFF;
+REM INSERTING into SEMI.MEMBER
+SET DEFINE OFF;
+REM INSERTING into SEMI.PAID
+SET DEFINE OFF;
+REM INSERTING into SEMI.QUALIFICATION
+SET DEFINE OFF;
+REM INSERTING into SEMI.REPORT
+SET DEFINE OFF;
+REM INSERTING into SEMI.REVIEW
+SET DEFINE OFF;
+REM INSERTING into SEMI.SETTLE
+SET DEFINE OFF;
+REM INSERTING into SEMI.SETTLE_ACCOUNT
+SET DEFINE OFF;
+REM INSERTING into SEMI.STUDYBOARD
+SET DEFINE OFF;
+REM INSERTING into SEMI.THUMBS
+SET DEFINE OFF;
+REM INSERTING into SEMI.TUTOR
+SET DEFINE OFF;
+REM INSERTING into SEMI.WONDER_ANSER
+SET DEFINE OFF;
+REM INSERTING into SEMI.WONDER_BOARD
+SET DEFINE OFF;
+--------------------------------------------------------
+--  DDL for Index PK_BOARD
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_BOARD" ON "SEMI"."BOARD" ("BOARD_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_BOARD_TYPE
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_BOARD_TYPE" ON "SEMI"."BOARD_TYPE" ("BOARD_CD") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_CATEGORY
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_CATEGORY" ON "SEMI"."CATEGORY" ("CATEGORY_MAIN", "CATEGORY_SUB") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_CHATTING
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_CHATTING" ON "SEMI"."CHATTING" ("CHAT_ROOM") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_CLASS
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_CLASS" ON "SEMI"."CLASS" ("CLASS_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_COURSE
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_COURSE" ON "SEMI"."COURSE" ("CLASS_NO", "MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_HASHTAG
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_HASHTAG" ON "SEMI"."HASHTAG" ("TAG_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_MEMBER
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_MEMBER" ON "SEMI"."MEMBER" ("MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_PAID
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_PAID" ON "SEMI"."PAID" ("MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_QUALIFICATION
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_QUALIFICATION" ON "SEMI"."QUALIFICATION" ("MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_REPORT
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_REPORT" ON "SEMI"."REPORT" ("REPORT_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_REVIEW
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_REVIEW" ON "SEMI"."REVIEW" ("BOARD_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_SETTLE
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_SETTLE" ON "SEMI"."SETTLE" ("MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_SETTLE_ACCOUNT
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_SETTLE_ACCOUNT" ON "SEMI"."SETTLE_ACCOUNT" ("MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_STUDYBOARD
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_STUDYBOARD" ON "SEMI"."STUDYBOARD" ("BOARD_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_THUMBS
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_THUMBS" ON "SEMI"."THUMBS" ("BOARD_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_TUTOR
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_TUTOR" ON "SEMI"."TUTOR" ("MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_WONDER_ANSER
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_WONDER_ANSER" ON "SEMI"."WONDER_ANSER" ("ANSER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_WONDER_BOARD
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_WONDER_BOARD" ON "SEMI"."WONDER_BOARD" ("BOARD_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_BOARD
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_BOARD" ON "SEMI"."BOARD" ("BOARD_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_BOARD_TYPE
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_BOARD_TYPE" ON "SEMI"."BOARD_TYPE" ("BOARD_CD") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_CATEGORY
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_CATEGORY" ON "SEMI"."CATEGORY" ("CATEGORY_MAIN", "CATEGORY_SUB") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_CHATTING
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_CHATTING" ON "SEMI"."CHATTING" ("CHAT_ROOM") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_CLASS
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_CLASS" ON "SEMI"."CLASS" ("CLASS_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_COURSE
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_COURSE" ON "SEMI"."COURSE" ("CLASS_NO", "MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_HASHTAG
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_HASHTAG" ON "SEMI"."HASHTAG" ("TAG_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_MEMBER
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_MEMBER" ON "SEMI"."MEMBER" ("MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_PAID
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_PAID" ON "SEMI"."PAID" ("MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_QUALIFICATION
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_QUALIFICATION" ON "SEMI"."QUALIFICATION" ("MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_REPORT
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_REPORT" ON "SEMI"."REPORT" ("REPORT_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_REVIEW
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_REVIEW" ON "SEMI"."REVIEW" ("BOARD_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_SETTLE
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_SETTLE" ON "SEMI"."SETTLE" ("MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_SETTLE_ACCOUNT
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_SETTLE_ACCOUNT" ON "SEMI"."SETTLE_ACCOUNT" ("MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_STUDYBOARD
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_STUDYBOARD" ON "SEMI"."STUDYBOARD" ("BOARD_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_THUMBS
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_THUMBS" ON "SEMI"."THUMBS" ("BOARD_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_TUTOR
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_TUTOR" ON "SEMI"."TUTOR" ("MEMBER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_WONDER_ANSER
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_WONDER_ANSER" ON "SEMI"."WONDER_ANSER" ("ANSER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index PK_WONDER_BOARD
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SEMI"."PK_WONDER_BOARD" ON "SEMI"."WONDER_BOARD" ("BOARD_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  Constraints for Table BOARD
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."BOARD" MODIFY ("BOARD_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."BOARD" MODIFY ("BOARD_TITLE" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."BOARD" MODIFY ("BOARD_CONTENT" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."BOARD" MODIFY ("CREATED_DT" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."BOARD" MODIFY ("UPDATE_DT" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."BOARD" MODIFY ("READ_COUNT" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."BOARD" MODIFY ("MEMBER_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."BOARD" MODIFY ("BOARD_CD" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."BOARD" ADD CONSTRAINT "PK_BOARD" PRIMARY KEY ("BOARD_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table BOARD_TYPE
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."BOARD_TYPE" MODIFY ("BOARD_CD" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."BOARD_TYPE" MODIFY ("BOARD_NM" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."BOARD_TYPE" ADD CONSTRAINT "PK_BOARD_TYPE" PRIMARY KEY ("BOARD_CD")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CATEGORY
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."CATEGORY" MODIFY ("CATEGORY_MAIN" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CATEGORY" MODIFY ("CATEGORY_SUB" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CATEGORY" ADD CONSTRAINT "PK_CATEGORY" PRIMARY KEY ("CATEGORY_MAIN", "CATEGORY_SUB")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CHATTING
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."CHATTING" MODIFY ("CHAT_ROOM" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CHATTING" MODIFY ("CHAT_FROM" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CHATTING" MODIFY ("CHAT_TO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CHATTING" MODIFY ("CHAT_TIMESTAMP" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CHATTING" ADD CONSTRAINT "PK_CHATTING" PRIMARY KEY ("CHAT_ROOM")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CLASS
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."CLASS" MODIFY ("CLASS_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CLASS" MODIFY ("CLASS_NAME" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CLASS" MODIFY ("CLASS_INTRO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CLASS" MODIFY ("CLASS_PHOTO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CLASS" MODIFY ("CLASS_URL" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CLASS" MODIFY ("CLASS_CREATE_DT" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CLASS" MODIFY ("CLASS_STATUS" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CLASS" MODIFY ("CLASS_PRICE" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CLASS" MODIFY ("MEMBER_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CLASS" MODIFY ("CATEGORY_MAIN" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CLASS" MODIFY ("CATEGORY_SUB" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."CLASS" ADD CONSTRAINT "PK_CLASS" PRIMARY KEY ("CLASS_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COURSE
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."COURSE" MODIFY ("CLASS_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."COURSE" MODIFY ("MEMBER_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."COURSE" ADD CONSTRAINT "PK_COURSE" PRIMARY KEY ("CLASS_NO", "MEMBER_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table HASHTAG
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."HASHTAG" MODIFY ("TAG_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."HASHTAG" MODIFY ("TAG_NAME" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."HASHTAG" MODIFY ("BOARD_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."HASHTAG" ADD CONSTRAINT "PK_HASHTAG" PRIMARY KEY ("TAG_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table MEMBER
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."MEMBER" MODIFY ("MEMBER_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."MEMBER" MODIFY ("MEMBER_EMAIL" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."MEMBER" MODIFY ("MEMBER_NM" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."MEMBER" MODIFY ("MEMBER_PW" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."MEMBER" MODIFY ("ENROLL_DT" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."MEMBER" MODIFY ("SECESSION_FL" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."MEMBER" MODIFY ("MEMBER_ST" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."MEMBER" ADD CONSTRAINT "PK_MEMBER" PRIMARY KEY ("MEMBER_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PAID
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."PAID" MODIFY ("MEMBER_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."PAID" MODIFY ("PAYMENT" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."PAID" MODIFY ("PAYMENT_STATUS" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."PAID" MODIFY ("START_DATE" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."PAID" ADD CONSTRAINT "PK_PAID" PRIMARY KEY ("MEMBER_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table QUALIFICATION
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."QUALIFICATION" MODIFY ("MEMBER_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."QUALIFICATION" MODIFY ("TUTOR_QUALIFICATION" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."QUALIFICATION" ADD CONSTRAINT "PK_QUALIFICATION" PRIMARY KEY ("MEMBER_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table REPORT
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."REPORT" MODIFY ("REPORT_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."REPORT" MODIFY ("REPORT_TYPE" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."REPORT" MODIFY ("REPORT_CONTENT" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."REPORT" MODIFY ("BOARD_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."REPORT" ADD CONSTRAINT "PK_REPORT" PRIMARY KEY ("REPORT_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table REVIEW
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."REVIEW" MODIFY ("BOARD_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."REVIEW" MODIFY ("REVIEW_TAG" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."REVIEW" MODIFY ("REIVEW_STAR" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."REVIEW" ADD CONSTRAINT "PK_REVIEW" PRIMARY KEY ("BOARD_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table SETTLE
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."SETTLE" MODIFY ("MEMBER_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."SETTLE" MODIFY ("COMMISSION" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."SETTLE" MODIFY ("SETTLE_DATE" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."SETTLE" MODIFY ("SETTLE_STATUS" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."SETTLE" ADD CONSTRAINT "PK_SETTLE" PRIMARY KEY ("MEMBER_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table SETTLE_ACCOUNT
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."SETTLE_ACCOUNT" MODIFY ("MEMBER_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."SETTLE_ACCOUNT" MODIFY ("TUTOR_ACCOUNT" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."SETTLE_ACCOUNT" MODIFY ("BANK_NAME" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."SETTLE_ACCOUNT" MODIFY ("ACCOUNT_NAME" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."SETTLE_ACCOUNT" ADD CONSTRAINT "PK_SETTLE_ACCOUNT" PRIMARY KEY ("MEMBER_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table STUDYBOARD
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."STUDYBOARD" MODIFY ("BOARD_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."STUDYBOARD" MODIFY ("STUDY_NM" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."STUDYBOARD" MODIFY ("STUDY_START" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."STUDYBOARD" MODIFY ("STUDY_END" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."STUDYBOARD" MODIFY ("STUDY_ TYPE" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."STUDYBOARD" MODIFY ("STUDY_STATUS" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."STUDYBOARD" MODIFY ("STUDY_COMMUMITY" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."STUDYBOARD" ADD CONSTRAINT "PK_STUDYBOARD" PRIMARY KEY ("BOARD_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table THUMBS
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."THUMBS" MODIFY ("BOARD_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."THUMBS" MODIFY ("THUMBS_UP" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."THUMBS" ADD CONSTRAINT "PK_THUMBS" PRIMARY KEY ("BOARD_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table TUTOR
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."TUTOR" MODIFY ("MEMBER_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."TUTOR" MODIFY ("TUTOR_EDUCATION" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."TUTOR" MODIFY ("TUTOR_TEL" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."TUTOR" MODIFY ("TUTOR_PROFILE" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."TUTOR" MODIFY ("TUTOR_INTRODUCER" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."TUTOR" MODIFY ("SAVE_STATUS" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."TUTOR" ADD CONSTRAINT "PK_TUTOR" PRIMARY KEY ("MEMBER_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table WONDER_ANSER
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."WONDER_ANSER" MODIFY ("ANSER_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."WONDER_ANSER" MODIFY ("ANSER_CONTENT" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."WONDER_ANSER" MODIFY ("ANSER_ST" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."WONDER_ANSER" MODIFY ("ANSER_DT" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."WONDER_ANSER" MODIFY ("BOARD_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."WONDER_ANSER" ADD CONSTRAINT "PK_WONDER_ANSER" PRIMARY KEY ("ANSER_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table WONDER_BOARD
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."WONDER_BOARD" MODIFY ("BOARD_NO" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."WONDER_BOARD" MODIFY ("QA_STATUS" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."WONDER_BOARD" ADD CONSTRAINT "PK_WONDER_BOARD" PRIMARY KEY ("BOARD_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table COURSE
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."COURSE" ADD CONSTRAINT "FK_CLASS_TO_COURSE_1" FOREIGN KEY ("CLASS_NO")
+	  REFERENCES "SEMI"."CLASS" ("CLASS_NO") ENABLE;
+  ALTER TABLE "SEMI"."COURSE" ADD CONSTRAINT "FK_PAID_TO_COURSE_1" FOREIGN KEY ("MEMBER_NO")
+	  REFERENCES "SEMI"."PAID" ("MEMBER_NO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PAID
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."PAID" ADD CONSTRAINT "FK_MEMBER_TO_PAID_1" FOREIGN KEY ("MEMBER_NO")
+	  REFERENCES "SEMI"."MEMBER" ("MEMBER_NO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table QUALIFICATION
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."QUALIFICATION" ADD CONSTRAINT "FK_TUTOR_TO_QUALIFICATION_1" FOREIGN KEY ("MEMBER_NO")
+	  REFERENCES "SEMI"."TUTOR" ("MEMBER_NO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table REVIEW
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."REVIEW" ADD CONSTRAINT "FK_BOARD_TO_REVIEW_1" FOREIGN KEY ("BOARD_NO")
+	  REFERENCES "SEMI"."BOARD" ("BOARD_NO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table SETTLE
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."SETTLE" ADD CONSTRAINT "FK_TUTOR_TO_SETTLE_1" FOREIGN KEY ("MEMBER_NO")
+	  REFERENCES "SEMI"."TUTOR" ("MEMBER_NO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table SETTLE_ACCOUNT
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."SETTLE_ACCOUNT" ADD CONSTRAINT "FK_MEMBER_TO_SETTLE_ACCOUNT_1" FOREIGN KEY ("MEMBER_NO")
+	  REFERENCES "SEMI"."MEMBER" ("MEMBER_NO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table STUDYBOARD
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."STUDYBOARD" ADD CONSTRAINT "FK_BOARD_TO_STUDYBOARD_1" FOREIGN KEY ("BOARD_NO")
+	  REFERENCES "SEMI"."BOARD" ("BOARD_NO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table THUMBS
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."THUMBS" ADD CONSTRAINT "FK_BOARD_TO_THUMBS_1" FOREIGN KEY ("BOARD_NO")
+	  REFERENCES "SEMI"."BOARD" ("BOARD_NO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table TUTOR
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."TUTOR" ADD CONSTRAINT "FK_MEMBER_TO_TUTOR_1" FOREIGN KEY ("MEMBER_NO")
+	  REFERENCES "SEMI"."MEMBER" ("MEMBER_NO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table WONDER_BOARD
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."WONDER_BOARD" ADD CONSTRAINT "FK_BOARD_TO_WONDER_BOARD_1" FOREIGN KEY ("BOARD_NO")
+	  REFERENCES "SEMI"."BOARD" ("BOARD_NO") ENABLE;
