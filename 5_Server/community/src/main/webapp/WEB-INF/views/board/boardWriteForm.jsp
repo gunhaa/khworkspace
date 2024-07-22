@@ -21,7 +21,7 @@
     <main>
         <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
         <!--  -->
-        <form action="write" enctype="multipart/form-data" method="POST" class="board-write">
+        <form action="write" enctype="multipart/form-data" method="POST" class="board-write" onsubmit="return writeValidate()">
 
             <!-- 제목 -->
             <h1 class="board-title">

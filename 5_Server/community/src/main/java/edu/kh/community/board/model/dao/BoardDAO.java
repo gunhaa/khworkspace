@@ -137,6 +137,7 @@ public class BoardDAO {
 				board.setMemberNickname(rs.getString("MEMBER_NICK"));
 				board.setCreateDate(rs.getString("CREATE_DT"));
 				board.setReadCount(rs.getInt("READ_COUNT"));
+				board.setThumbnail(rs.getString("THUMBNAIL"));
 				
 				boardList.add(board);
 			}
@@ -323,4 +324,32 @@ public class BoardDAO {
 		
 		return result;
 	}
+	
+	
+	/** 게시판 삭제
+	 * @param conn
+	 * @param boardNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int deleteBoard(Connection conn, int boardNo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("deleteBoard");
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
 }
