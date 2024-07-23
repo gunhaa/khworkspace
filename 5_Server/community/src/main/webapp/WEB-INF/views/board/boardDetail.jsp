@@ -23,7 +23,6 @@
 
                     ${detail}
 
-                    ${loginMember}
 
 
                     <section class="board-detail">
@@ -134,8 +133,21 @@
 
                         <div class="board-btn-area">
 
+
+                            <!--  본인이 작성한 게시글일 경우 -->
                             <c:if test="${detail.memberNo==loginMember.memberNo}">
-                                <button id="updateBtn">수정</button>
+                                <!-- 파라미터 cp가 없을 경우 -->
+                                <c:if test="${empty param.cp}">
+                                    <c:set var="cp" value="1"></c:set>
+                                </c:if>
+
+                                <!-- 파라미터 cp가 있을 경우 해당 파라미터로 세팅 -->
+
+                                <c:if test="${!empty param.cp}">
+                                    <c:set var="cp" value="${param.cp}"></c:set>
+                                </c:if>
+
+                                <button id="updateBtn" onclick="location.href='write?mode=update&no=${param.no}&type=${param.type}&cp=${cp}'">수정</button>
                                 <button id="deleteBtn">삭제</button>
                             </c:if>
                             <!-- dom 과 bom에 대해서

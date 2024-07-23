@@ -323,4 +323,18 @@ select * from board;
 -- 게시글 삭제
 UPDATE BOARD SET BOARD_ST='Y' WHERE BOARD_NO=1;
 
-SELECT * 
+select * from board_img;
+-- 이미지 삭제 구문, IN 안에 넣어야 여러개 삭제가능
+DELETE FROM BOARD_IMG WHERE IMG_LEVEL IN ( ? ) AND BOARD_NO=?;
+
+-- 게시글 수정 SQL 문
+SELECT * FROM BOARD;
+UPDATE SET BOARD BOARD_TITLE=?, BOARD_CONTENT=?, UPDATE_DT=SYSDATE WHERE BOARD_NO=?;
+
+-- 게시글 이미지 수정
+select * from board_img;
+
+UPDATE SET BOARD_IMG IMG_RENAME=?, IMG_ORIGINAL=? WHERE IMG_LEVEL=? AND BOARD_NO=?;
+
+-- 게시글 이미지 삭제
+DELETE FROM BOARD_IMG WHERE BOARD_NO=? AND IMG_LEVEL IN (

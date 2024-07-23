@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.oreilly.servlet.MultipartRequest;
 
 import edu.kh.community.board.model.service.BoardService;
@@ -31,15 +32,24 @@ public class BoardWriteController extends HttpServlet{
 		try {
 			
 			String mode = req.getParameter("mode");
-			
-			// insert는 별도 처리 없이 jsp로 위임
-			
 
+			BoardService service = new BoardService();
+			// insert는 별도 처리 없이 jsp로 위임
 			
 			// update는 기존 게시글 내용을 조회하는 처리가 필요함
 			
 			if(mode.equals("update")) {
 				
+				int boardNo= Integer.parseInt(req.getParameter("no"));
+				
+				BoardDetail detail = service.selectBoardDetail(boardNo);
+
+				// 개행문자 처리 해제( <br> -> \n)
+				
+				detail.setBoardContent(detail.getBoardContent().replaceAll("<br>", "\n"));
+				
+				// jsp에서 사용할 수 있도록 req에 값 세팅
+				req.setAttribute("detail", detail);
 			}
 			
 			String path="/WEB-INF/views/board/boardWriteForm.jsp";
@@ -70,6 +80,7 @@ public class BoardWriteController extends HttpServlet{
 			String encoding = "UTF-8";	// 파라미터 중 파일 제외 파라미터(문자열)의 인코딩 지정
 			
 			// **MultipartRequest 객체 생성 **
+			// -> 객체가 생성됨과 동시에 파라미터로 전달한 파일이 지정된 겨올에 저장된다!
 			MultipartRequest mpReq = new MultipartRequest(req, filePath, maxSize, encoding, new MyRenamePolicy());
 			
 			// MultipartRequest.getFileNames()
@@ -153,6 +164,43 @@ public class BoardWriteController extends HttpServlet{
 				}
 				
 				resp.sendRedirect(path); //리다이렉트 요청 경로
+			}
+			
+			if(mode.equals("update")) { // 수정
+				
+				// 업로드된 이미지 저장, imageList 생성, 제목/ 내용 파라미터는 동일
+				
+				// +update일 때 추가된 내용
+				// 어떤 게시글을 수정? -> 파라미터 no
+				int boardNo = Integer.parseInt(mpReq.getParameter("no"));
+				// 나중에 목록으로 버튼 만들 때 사용할 현재 페이지 -> 파라미터 cp
+				int cp = Integer.parseInt(mpReq.getParameter("cp"));
+				// 이미지 중 X버튼 눌러서 삭제할 이미지 레벨 목록-> 파라미터 deleteList
+				String deleteList = mpReq.getParameter("deleteList");
+				
+				// 게시글 수정 서비스 호출 후 결과 반환 받기
+				// imageList, detail, boardNo, deleteList
+				detail.setBoardNo(boardNo);
+				int result = service.updateBoard(detail, imageList, deleteList);
+				String path = "";
+				if(result>0) { //성공
+					// 상세 조회 페이지로
+					
+					path = "detail?no="+boardNo+"&type="+boardCode+"&cp="+cp;
+					session.setAttribute("message", "게시글이 수정 되었습니다.");
+				} else {
+					// 수정화면으로 이동
+
+					// 상세 조회-> 수정화면 -> 수정 -> (성공) 상세 조회
+					//                        -> (실패) 수정 화면
+					path=req.getHeader("referer");
+					// referer : HTTP 요청 흔적(요청 바로 이전 페이지 주소)
+					session.setAttribute("message", "게시글 수정이 실패하였습니다.");
+					//path = "write?mode="+mode+"&type="+boardCode+"&cp="+cp+"&no="+boardNo;
+					
+				}
+				
+				resp.sendRedirect(path);
 			}
 			
 			

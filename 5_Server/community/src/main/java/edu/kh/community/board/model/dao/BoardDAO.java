@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -346,6 +347,89 @@ public class BoardDAO {
 			result = pstmt.executeUpdate();
 			
 		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	/** 내용 수정 제목/내용
+	 * @param conn
+	 * @param detail
+	 * @return result
+	 */
+	public int updateBoard(Connection conn, BoardDetail detail) throws SQLException {
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("updateBoard");
+			
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, detail.getBoardTitle());
+			pstmt.setString(2, detail.getBoardContent());
+			pstmt.setInt(3, detail.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+	/** 게시글 사진 파일 수정
+	 * @param conn
+	 * @param img
+	 * @return result
+	 */
+	public int updateBoardImage(Connection conn, BoardImage img) throws SQLException{
+		
+		int result = 0;
+		try {
+			
+			String sql = prop.getProperty("updateBoardImage");
+			
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, img.getImageRename());
+			pstmt.setString(2, img.getImageOriginal());
+			pstmt.setInt(3, img.getImageLevel());
+			pstmt.setInt(4, img.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally{
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	/** 게시글 수정- 이미지 삭제
+	 * @param conn
+	 * @param deleteList
+	 * @param boardNo
+	 * @return result
+	 */
+	public int deleteBoardImage(Connection conn, String deleteList, int boardNo) throws SQLException {
+		
+		int result = 0;
+		
+		try {
+								// 완성되지 않은 SQL
+			String sql = prop.getProperty("deleteBoardImage")+deleteList+")";
+			
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			
+			result=pstmt.executeUpdate();
+			
+		}finally {
 			close(pstmt);
 		}
 		

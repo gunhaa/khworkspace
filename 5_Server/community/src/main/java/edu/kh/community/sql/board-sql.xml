@@ -45,4 +45,16 @@ WHERE RNUM BETWEEN ? AND ?
 	<entry key="deleteBoard">
 		UPDATE BOARD SET BOARD_ST='Y' WHERE BOARD_NO=?
 	</entry>
+	
+	<entry key="updateBoard">
+		UPDATE BOARD SET BOARD_TITLE=?, BOARD_CONTENT=?, UPDATE_DT=SYSDATE WHERE BOARD_NO=?
+	</entry>
+	
+	<entry key="updateBoardImage">
+		UPDATE BOARD_IMG SET IMG_RENAME=?, IMG_ORIGINAL=? WHERE IMG_LEVEL=? AND BOARD_NO=?
+	</entry>
+	
+	<entry key="deleteBoardImage">
+		DELETE FROM BOARD_IMG WHERE BOARD_NO=? AND IMG_LEVEL IN (
+	</entry>
 </properties>
