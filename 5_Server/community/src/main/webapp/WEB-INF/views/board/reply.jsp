@@ -20,7 +20,7 @@
                         <c:if test="${empty reply.profileImage}">
                             <img src="${contextPath}/resources/images/user.png">
                         </c:if>
-                        <span>${reply.memberNickname}</span>
+                        <span>${reply.memberNick}</span>
                         <span class="reply-date">${reply.createDate}</span>
                     </p>
                     <p class="reply-content">${reply.replyContent}</p>

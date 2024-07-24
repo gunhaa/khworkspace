@@ -45,6 +45,20 @@ public class BoardListServlet extends HttpServlet{
 			// 게시판 이름, 페이지네이션 객체, 게시글 리스트를 한번에 반환하면 Service 호출
 			Map<String, Object> map = service.selectBoardList(type, cp);
 			
+			
+			if(req.getParameter("key")==null) { //일반 목록 조회
+				
+				map = service.selectBoardList(type, cp);
+				
+			} else { //검색 목록조회
+				
+				String key =req.getParameter("key");
+				String query = req.getParameter("query");
+				
+				map=service.searchBoardList(type, cp , key, query);
+				
+			}
+			
 			//requset 범위로 map 을 세팅
 			req.setAttribute("map", map);
 			
