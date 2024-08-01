@@ -1,0 +1,159 @@
+연습문제 1
+
+public class A {
+	private B b;
+}
+
+public class B{
+	private String f1;
+	private int f2;
+}
+
+
+연습문제2
+
+public class Test1{
+	private Test2 t2;
+	public Test3 method1(){
+		Test3 t3 = new Test3();
+		return t3;
+	}
+}
+
+public class Test2{
+	private int f1;
+}
+
+public class Test3{
+	private String str;
+	public String getStr(){
+		return str;
+	}
+	
+	public void setStr(String str){
+		this.str = str;
+	}	
+}
+
+
+연습문제 3
+
+public abstract class Parent{
+	public void parentMethod(){}
+	protected void print();
+}
+
+public class Child extends Parent{
+	private String name;
+	public void childMethod(){}
+
+	protected void print(){...}
+}
+
+연습문제 4
+
+public abstract class Shape{
+	public void draw(){...}
+	public void erase(){...}
+	public int getLength(){...}
+	protected double getArea();
+}
+
+public interface Resizable{
+	public void resize();
+}
+
+public class Triangle extends Shape implements Resizable{
+	public boolean isEquilateral(){....};
+	public void resize(){...};
+	protected double getArea(){...}
+}
+
+public class Rectangle  extends Shape implements Resizable{
+	public boolean isSquare(){};
+	public void resize(){};
+	protected double getArea(){...}
+}
+
+
+
+연습문제 5
+
+public class ClassRoom(){
+	private Student std;
+	public ClassRoom(Student student){
+		this.student = student;
+	}
+}
+
+public class Student(){
+	private String name;
+	private int age;
+}
+
+연습문제 5
+
+public class Library(){
+	private Book book;
+	public Library(){
+		this.book = new Book;
+	}
+}
+
+public class Book(){
+	private String title;
+	private String author;
+}
+
+연습문제 6
+
+public class Shop(){
+	private Product product;
+	private Employee emp;
+	public Shop(Product p){
+		this.employee = new Employee;
+		this.p = p;
+	}
+}
+
+public class Employee(){
+	private String name;
+}
+
+public class Product(){
+	private String pName;
+	private int price;
+}
+
+연습문제 7
+
+public abstract class Coffee(){
+	public String beans;
+}
+
+public class CafeLatte() extends Coffee{
+	private String temperature;
+	private int price;
+
+	public void drink(){
+		Option op = new Option();
+	}
+}
+
+public class Option(){
+	private int shot;
+	private String ice;
+	private int syrup;
+}
+
+
+public class Cafe(){
+	private String name;
+	private String address;
+	private CafeLatte latte;
+
+	public Cafe(CafeLatte latte){
+		this.latte = latte;
+	}	
+}
+
