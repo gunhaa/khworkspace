@@ -268,6 +268,86 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
+
+	// 로그인 전용 화면 이동
+	@GetMapping("login")
+	public String login() {
+		return "member/login";
+	}
+	
+	// 회원 가입 페이지 이동
+	@GetMapping("signUp")
+	public String signUp() {
+		return "member/signUp";
+	}
+	
+	@PostMapping("signUp")
+	// RequestParam은 생략 가능
+	public String signUp(Member inputMember, @RequestParam String[] memberAddress, Model model, RedirectAttributes ra) {
+		// ------ 매개변수 설명 --------
+		// Member inputMember : 커맨드 객체(제출된 파라미터가 저장된 객체)
+		
+		// String[] memberAddress
+		// input name="memberAddress" 3개가 저장된 배열
+		
+		// RedirectAttributes ra :
+		// 리다이렉트 시 데이터를 request scope로 전달하는 객체
+		
+		// -------------------------
+		
+		// 1234, 서울시 강남구, kh정보교육원
+		// 주소 구분자, -> ^^^로 변경
+		
+//		String addr = inputMember.getMemberAddress().replaceAll("," , "^^^");
+//		inputMember.setMemberAddress(addr);
+		// -> 클라이언트가 ,를 직접 입력하면 문제 발생
+		System.out.println(inputMember.getMemberAddress());
+		// 만약 주소를 입력하지 안은 경우(,,) null로 변경
+		
+		if(inputMember.getMemberAddress().equals(",,")) {
+			inputMember.setMemberAddress(null);
+		} else {
+			// String.join("구분자", String[])
+			// 배열의 요소를 하나의 문자열로 변경
+			// 단, 요소 사이에 "구분자"추가
+			String addr = String.join("^^^", memberAddress);
+			inputMember.setMemberAddress(addr);
+		}
+		System.out.println(inputMember.getMemberAddress());
+//		for(String mem : memberAddress) {
+//			if(mem.equals(",,")) {
+//				mem=null;
+//			}
+//		}
+		
+		System.out.println(memberAddress[0]);
+		System.out.println(memberAddress[1]);
+		System.out.println(memberAddress[2]);
+		
+		
+		// 회원 가입 서비스 호출 
+		int result = service.signUp(inputMember);
+		
+		
+		if(result>0) { // 가입 성공
+			inputMember.setMemberPw(null);
+			model.addAttribute("loginMember", inputMember);
+			// 000님의 가입을 환영합니다
+			ra.addFlashAttribute("message", inputMember.getMemberNickname()+"님의 가입을 환영합니다");
+			// 메인 페이지
+			return "redirect:/";
+		} else { //가입 실패
+			
+			// 회원 가입 실패
+			ra.addFlashAttribute("message", "가입이 실패 되었습니다.");
+			// 회원 가입 페이지
+			return "redirect:/member/signUp";
+			// 상대 경로
+			// return "redirect:signUp";
+		}
+		
+
+	}
 	
 	/* 스프링 예외 처리 방법(3종류, 우선 순위, 중복 사용)
 	 * 
