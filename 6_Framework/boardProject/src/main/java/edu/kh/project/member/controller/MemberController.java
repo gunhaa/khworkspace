@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -31,13 +32,13 @@ import edu.kh.project.member.model.service.MemberService;
 // @RequestMapping(value="요청주소", method=RequestMethod.POST) 
 // -> GET / POST 방식을 구분
 
-
 @Controller // 요청/응답 클래스 + bean 등록(spring이 관리하는 객체)
 @RequestMapping("/member") // 공통된 주소 앞부분 작성
 						   // member로 시작하는 요청은 해당 컨트롤러에서 처리
 @SessionAttributes("loginMember") // Model의 이름(key)를 적으면 session 으로 추가
 public class MemberController {
-	
+
+
 	// 등록된 Bean 중에서 필드와 타입이 일치하는 Bean을 주입
 	// -> MemberService를 구현한 memberServiceImpl의 Bean 주입
 	@Autowired
@@ -53,7 +54,6 @@ public class MemberController {
 		
 		// 파라미터 전달 방법 1 : HttpServletRequest를 이용
 		// -> Controller 메소드의 매개변수로 HttpServletRequest 작성
-		
 		
 		String inputEmail=req.getParameter("inputEmail");
 		System.out.println("inputEmail : "+inputEmail);
@@ -92,8 +92,7 @@ public class MemberController {
 		// ** 만약에 name 속성 값과 매개변수 명이 같으면 
 		// @RequestParam 생략 가능 !! ** 
 		
-		
-		
+
 		System.out.println(inputEmail);
 		System.out.println(inputPw);
 		
@@ -139,10 +138,10 @@ public class MemberController {
 						, @RequestHeader(value="referer") String referer
 						, @RequestParam(value="saveId", required=false) String saveId
 						, HttpServletResponse resp
-						, RedirectAttributes ra
-						) {
+						, RedirectAttributes ra) {
 		
 		System.out.println(saveId);
+		
 		// Member inputMember : 커맨드 객체(필드에 파라미터 담겨있음)
 		
 		// @RequestHeader(value="referer") String referer
@@ -165,26 +164,23 @@ public class MemberController {
 		
 		//로그인 결과에 따라서 리다이렉트 경로를 다르게 지정
 		String path = "redirect:";
-		
-		
-	
+
 		if(loginMember!=null) { // 로그인 성공 시
 			path += "/";
-			
+
 			// session에 로그인한 회원 정보 추가
 			// Servlet -> HttpSession.setAttribute(key,value)
 			// Spring -> Model + @SessionAttribute
-			
+
 			// 1) model에 로그인한 회원 정보 추가
 			model.addAttribute("loginMember", loginMember);
 			// -> 현재는 request scope
-			
+
 			// 2) 클래스 위에 @SessionAttributes 추가
 			// -> session scope로 변경
-			
+
 			//-------------- 아이디 저장 ------------------------
-	
-			
+
 			/* Cookie 란?
 			 * - 클라이언트 측(브라우저)에서 관리하는 파일
 			 * 
@@ -195,30 +191,28 @@ public class MemberController {
 			 *   다시 클라이언트에게 반환
 			 *   쿠키는 클라이언트가, 세션은 브라우저가 관리한다.
 			 */
-			
+
 			// 쿠키 생성 (해당 쿠키에 담을 데이터를 K:V로 지정)
 			Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
-			
+
 			if(saveId != null) { // 체크 되었을 때
 				// 한 달(30일) 동안 유지되는 쿠키 생성
 				cookie.setMaxAge(60*60*24*30); // 초 단위 지정
-				
-				
+
 			} else { // 체크 안되어 있을때
 				// 기존 쿠키 삭제
 				cookie.setMaxAge(0);
 			}
-			
+
 			// 클라이언트가 어떤 요청을 할 때 쿠키가 첨부될지 경로(주소)를 지정
 			cookie.setPath("/"); // localhost/ 이하의 모든 주소
 								 // ex) / , /member/login, /member/logout
 			  					 // 모든 요청에 쿠키 첨부
-			
+
 			// 응답 객체(HttpServletResponse)를 이용해서
 			// 만들어진 쿠키를 클라이언트에게 전달
 			resp.addCookie(cookie);
-			
-			
+
 			
 		}else { // 로그인 실패 시
 			path+=referer; // HTTP Header - referer(이전 주소)
@@ -248,6 +242,7 @@ public class MemberController {
 		}
 		
 		return "redirect:/";
+		
 	}
 	
 	// 로그아웃
@@ -259,13 +254,13 @@ public class MemberController {
 		
 		// Spring
 		// 1) HttpSession을 이용한 경우
-//		session.invalidate();
-		
+		// session.invalidate();
+
 		// 2) Model + @SessionAttributes 이용한 경우
 		// -> SessionStatus.setComplete()
 		// SessionStatus : 세션 상태를 관리하는 객체
 		status.setComplete();
-		
+
 		return "redirect:/";
 	}
 
@@ -314,6 +309,7 @@ public class MemberController {
 			inputMember.setMemberAddress(addr);
 		}
 		System.out.println(inputMember.getMemberAddress());
+		
 //		for(String mem : memberAddress) {
 //			if(mem.equals(",,")) {
 //				mem=null;
@@ -324,7 +320,7 @@ public class MemberController {
 		System.out.println(memberAddress[1]);
 		System.out.println(memberAddress[2]);
 		
-		
+
 		// 회원 가입 서비스 호출 
 		int result = service.signUp(inputMember);
 		

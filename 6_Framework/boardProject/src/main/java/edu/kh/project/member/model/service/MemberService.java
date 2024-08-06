@@ -1,5 +1,7 @@
 package edu.kh.project.member.model.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import edu.kh.project.member.model.dto.Member;
 
 // Service interface 사용 이유
@@ -11,6 +13,8 @@ import edu.kh.project.member.model.dto.Member;
 // 3. Spring AOP 사용을 위해서
 public interface MemberService {
 
+	
+	
 	/** 로그인 서비스
 	 * @param inputMember
 	 * @return email,pw가 일치하는 회원 정보 또는 null 반환

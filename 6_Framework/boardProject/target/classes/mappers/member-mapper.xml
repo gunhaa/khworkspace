@@ -10,8 +10,8 @@
       - SELECT 조회 결과(ResultSet) 컬럼명과
         컬럼 값을 옮겨 담을 DTO의 필드명이 같지 않을 때
         이를 매핑 시켜 SELECT시 자동으로 담기게하는 역할
-    
-    
+
+
        -속성
        type : 연결할 DTO (패키지명 + 클래스명 또는 별칭)
        id : 만들어진 resultMap을 지칭할 식별명(이름)
@@ -21,7 +21,7 @@
     -->
     
    <resultMap type="Member" id="member_rm">
-   
+
       <!-- DB의 기본 키(복합키면 여러 개 작성) -->
       <id property="memberNo" column="MEMBER_NO" />
 
@@ -30,17 +30,13 @@
       <result property="memberPw" column="MEMBER_PW" />
       <result property="memberNickname" column="MEMBER_NICKNAME" />
       <result property="memberTel" column="MEMBER_TEL" />
-      
       <result property="memberAddress" column="MEMBER_ADDR" />
-      
       <result property="profileImage" column="PROFILE_IMG" />
       <result property="enrollDate" column="ENROLL_DATE" />
       <result property="memberDeleteFlag" column="MEMBER_DEL_FL" />
       <result property="authority" column="AUTHORITY" />
    </resultMap>
-	
-	
-	
+
 	<!--   <cache-ref namespace=""/> -->
 	
 	<!--
@@ -87,6 +83,7 @@
 	</select>
 	
 	
+	
 	<!-- 
 			insert, update, delete와 같은 DML 구문은
 			수행 결과가 항상 성공한 행의 개수(int)로 고정
@@ -101,5 +98,5 @@
 			, #{memberNickname}, #{memberTel}, #{memberAddress},
 			NULL, DEFAULT, DEFAULT, DEFAULT)
 	</insert>
-	
+
 </mapper>

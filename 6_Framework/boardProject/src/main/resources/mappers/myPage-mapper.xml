@@ -1,5 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="myPageMapper">
+	
+   <resultMap type="Member" id="member_rm">
 
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="memberNo" column="MEMBER_NO" />
+
+      <!-- DB의 일반 컬럼들 -->
+      <result property="memberEmail" column="MEMBER_EMAIL" />
+      <result property="memberPw" column="MEMBER_PW" />
+      <result property="memberNickname" column="MEMBER_NICKNAME" />
+      <result property="memberTel" column="MEMBER_TEL" />
+      <result property="memberAddress" column="MEMBER_ADDR" />
+      <result property="profileImage" column="PROFILE_IMG" />
+      <result property="enrollDate" column="ENROLL_DATE" />
+      <result property="memberDeleteFlag" column="MEMBER_DEL_FL" />
+      <result property="authority" column="AUTHORITY" />
+   </resultMap>
+   
+   
+   <!-- 회원 정보 수정 -->
+   <update id="updateInfo" parameterType="Member">
+		UPDATE MEMBER SET
+		MEMBER_NICKNAME = #{memberNickname},
+		MEMBER_ADDR = #{memberAddress},
+		MEMBER_TEL= #{memberTel}
+		WHERE MEMBER_NO = #{memberNo}
+   </update>
+   
+   <!-- 비밀번호 검색 -->
+   <!--  
+      마이바티스 기본 별칭
+      java      mybatis
+      int         _int
+      Integer      int
+      String      string
+   -->
+   
+   <!-- 조회 결과가 1개인 경우(int,string 등)
+   	  또는 조회 결과를 모두 Map에 담는 경우
+   	  resultType을 사용
+    -->
+   <select id="nowPw" parameterType="_int" resultType="string">
+   	SELECT MEMBER_PW FROM MEMBER WHERE MEMBER_NO=#{memberNo}
+   </select>
+   
+   <update id="changePw" parameterType="Member">
+		UPDATE MEMBER SET MEMBER_PW=#{memberPw} WHERE MEMBER_NO=#{memberNo}
+   </update>
+   
+   <update id="secession" parameterType="_int">
+		UPDATE MEMBER SET MEMBER_DEL_FL='Y' WHERE MEMBER_NO=#{memberNo}  
+   </update>
+   
 </mapper>

@@ -28,7 +28,7 @@
                 <span class="myPage-subject">원하는 회원 정보를 수정할 수 있습니다.</span>
 
                 <form action="info" method="POST" name="myPageFrm">
-
+            
                     <div class="myPage-row">
                         <label>닉네임</label>
                         <input type="text" name="memberNickname"  maxlength="10" value="${loginMember.memberNickname}">
@@ -46,18 +46,26 @@
                     </div>
 
 
+                    <%-- ${fn:split(문자열, 구분자)} : 문자열을 구분자로 나누어 배열 형태로 반환
+                        <c:set var="addr" value="${fn:split(loginMember.memberAddress,'^^^')}" />
+                        ${addr[0]}   
+                        ${addr[1]}   
+                        ${addr[2]} 도 가능하다.. 
+                     --%>
+
+
 
                     <div class="myPage-row info-address">
-                        <input type="text" name="memberAddress" placeholder="우편번호" value="${fn:split(loginMember.memberAddress,'^^^')[0]}">
-                        <button type="button">검색</button>
+                        <input type="text" name="memberAddress" placeholder="우편번호" id="sample6_postcode" value="${fn:split(loginMember.memberAddress,'^^^')[0]}">
+                        <button type="button" onclick="sample6_execDaumPostcode()">검색</button>
                     </div>
 
                     <div class="myPage-row info-address">
-                        <input type="text" name="memberAddress"  placeholder="도로명/지번 주소" value="${fn:split(loginMember.memberAddress,'^^^')[1]}">                
+                        <input type="text" name="memberAddress"  placeholder="도로명/지번 주소" id="sample6_address" value="${fn:split(loginMember.memberAddress,'^^^')[1]}">                
                     </div>
 
                     <div class="myPage-row info-address">
-                        <input type="text" name="memberAddress"  placeholder="상세 주소" value="${fn:split(loginMember.memberAddress,'^^^')[2]}">                
+                        <input type="text" name="memberAddress"  placeholder="상세 주소" id="sample6_detailAddress" value="${fn:split(loginMember.memberAddress,'^^^')[2]}">                
                     </div>
 
                     <button class="myPage-submit">수정하기</button>
@@ -69,7 +77,33 @@
 
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+            <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+            <script>
+                function sample6_execDaumPostcode() {
+                    new daum.Postcode({
+                        oncomplete: function (data) {
+                            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
+                            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                            var addr = ''; // 주소 변수
+
+                            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                                addr = data.roadAddress;
+                            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                                addr = data.jibunAddress;
+                            }
+
+                            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                            document.getElementById('sample6_postcode').value = data.zonecode;
+                            document.getElementById("sample6_address").value = addr;
+                            // 커서를 상세주소 필드로 이동한다.
+                            document.getElementById("sample6_detailAddress").focus();
+                        }
+                    }).open();
+                }
+            </script>
     <!-- 다음 주소 api 추가 -->
     
 </body>

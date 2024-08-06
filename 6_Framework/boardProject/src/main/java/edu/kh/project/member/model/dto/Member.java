@@ -1,12 +1,20 @@
 package edu.kh.project.member.model.dto;
 
+import org.springframework.stereotype.Component;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @Setter
 @ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Member {
 
 	private int memberNo;
@@ -19,4 +27,6 @@ public class Member {
 	private String enrollDate;
 	private String memberDeleteFlag;
 	private int authority;
+	
+
 }
