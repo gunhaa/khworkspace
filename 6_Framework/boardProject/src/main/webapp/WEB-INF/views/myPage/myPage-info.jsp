@@ -31,12 +31,12 @@
             
                     <div class="myPage-row">
                         <label>닉네임</label>
-                        <input type="text" name="memberNickname"  maxlength="10" value="${loginMember.memberNickname}">
+                        <input type="text" name="memberNickname" id="memberNickname" maxlength="10" value="${loginMember.memberNickname}">
                     </div>
 
                     <div class="myPage-row">
                         <label>전화번호</label>
-                        <input type="text" name="memberTel"  maxlength="11" value="${loginMember.memberTel}">
+                        <input type="text" name="memberTel" id="memberTel" maxlength="11" value="${loginMember.memberTel}">
                     </div>
 
                     <div class="myPage-row info-title">
@@ -68,7 +68,7 @@
                         <input type="text" name="memberAddress"  placeholder="상세 주소" id="sample6_detailAddress" value="${fn:split(loginMember.memberAddress,'^^^')[2]}">                
                     </div>
 
-                    <button class="myPage-submit">수정하기</button>
+                    <button class="myPage-submit" id="updateinfo">수정하기</button>
                 </form>
 
             </section>
@@ -105,6 +105,7 @@
                 }
             </script>
     <!-- 다음 주소 api 추가 -->
+    <script src="/resources/js/myPage/myPage.js"></script>
     
 </body>
 </html>

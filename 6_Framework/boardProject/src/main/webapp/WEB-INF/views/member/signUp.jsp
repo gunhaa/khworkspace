@@ -178,7 +178,10 @@
                     }).open();
                 }
             </script>
-
+            <script src="https://cdn.jsdelivr.net/npm/verbal-expressions@1.0.2/dist/verbalexpressions.min.js"></script>
+            
+            <script src="/resources/js/member/signUp.js"></script>
         </body>
+
 
         </html>

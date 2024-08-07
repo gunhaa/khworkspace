@@ -50,11 +50,12 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.changePw", mem);
 	}
 
-	/**
+	/** 회원 탈퇴
 	 * @param memberNo
 	 * @return 회원 탈퇴
 	 */
 	public int secession(int memberNo) {
+		// sqlSessionTemplate : 마이바티스 + DBCP + close 자동 + 트랜잭션 처리
 		return sqlSession.update("myPageMapper.secession", memberNo);
 	}
 	

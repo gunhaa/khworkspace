@@ -241,3 +241,7 @@ form[name='myPage-frm']{position: relative;}
     color : white;
     margin-left: 2px;
 }
+
+/* 메세지 색상 지정 */
+.confirm{ color : green; }
+.error{ color : red; }

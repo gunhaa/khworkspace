@@ -65,9 +65,11 @@ public class MyPageServiceImpl implements MyPageService{
 
 	@Override
 	public int secession(int memberNo, String memberPw) {
-		
+
+		// 1. 회원 번호가 일치하는 회원의 비밀번호 조회
 		String encpw=dao.nowPw(memberNo);
 		
+		// 2. 비밀번호가 일치하면
 		if(bcrypt.matches(memberPw, encpw)) {
 			return dao.secession(memberNo);
 		}

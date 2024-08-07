@@ -1,5 +1,8 @@
 package edu.kh.project.myPage.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +21,12 @@ import edu.kh.project.myPage.model.service.MyPageService;
 
 @Controller // 요청/응답 제어 클래스 + Bean 등록
 @RequestMapping("/myPage")
-@SessionAttributes("loginMember")
+@SessionAttributes({"loginMember"})
+// 1) Model에 시팅된 값의 key와 {} 작성된 값이 일치하면 session scope로 이동시킨다.
+// 2) session으로 올려둔 값을 해당 클래스에서 얻어와 사용 가능
 public class MyPageController {
 
-	@Autowired //MyPageService의 자식 MyPageServiceImple 의존성 주입(DI)받고있음
+	@Autowired //MyPageService의 자식 MyPageServiceImpl 의존성 주입(DI)받고있음
 	private MyPageService service;
 	
 	
@@ -138,7 +143,17 @@ public class MyPageController {
 
 	// 회원 탈퇴
 	@PostMapping("/secession")
-	public String secession(String memberPw, @SessionAttribute("loginMember") Member loginMember, RedirectAttributes ra,SessionStatus status) {
+	public String secession(String memberPw, @SessionAttribute("loginMember") Member loginMember, RedirectAttributes ra, SessionStatus status, HttpServletResponse resp) {
+		
+		
+		//------------매개변수 설명----------
+		//String memberPw : 입력한 비밀 번호
+		//@SessionAttribute("loginMember") Member loginMember : 로그인한 회원
+		// SessionStatus status : 세션 관리 객체
+		// RedirectAttributes ra : 리다이렉트 시 request scope 전달
+		// HttpServletResponse resp : 서버 -> 클라이언트 응답하는 방법 제공 객체
+		//---------------------------
+		
 		
 		int result = service.secession(loginMember.getMemberNo(), memberPw);
 		
@@ -150,6 +165,13 @@ public class MyPageController {
 			path+="secession";
 		} else {
 			status.setComplete();
+			
+			// 쿠키 삭제
+		    Cookie c = new Cookie("saveId", null);
+		    // 같은 쿠키가 이미 존재한다면 덮어쓰기 된다.
+		    c.setMaxAge(0); // 쿠키의 expiration 타임을 0으로 하여 없앤다.
+		    c.setPath("/"); // 모든 경로에서 삭제 됬음을 알린다.
+		    resp.addCookie(c); // 응답 객체를 통해서 클라이언트에게 전달한다.
 			ra.addFlashAttribute("message", "회원 탈퇴가 성공하였습니다.");
 			path+="/";
 			

@@ -31,6 +31,8 @@
 			<item value="org.eclipse.wst.XMLCategory"/>
 			<item value="org.eclipse.ui.Examples"/>
 		</list>
+		<section name="NewWizard.dialogBounds">
+		</section>
 	</section>
 	<section name="ImportExportAction">
 		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.eclipse.ui.wizards.export.ZipFile"/>

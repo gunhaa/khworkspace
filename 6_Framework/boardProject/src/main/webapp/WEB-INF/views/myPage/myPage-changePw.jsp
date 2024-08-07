@@ -51,7 +51,7 @@
                         <input type="password" name="newPwConfirm" id="newPwConfirm" maxlength="30">              
                     </div>
 
-                    <button class="myPage-submit">변경하기</button>
+                    <button class="myPage-submit2">변경하기</button>
 
                 </form>
 
@@ -60,7 +60,7 @@
         </section>
 
     </main>
-
+    <script src="/resources/js/myPage/myPage.js"></script>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 </body>

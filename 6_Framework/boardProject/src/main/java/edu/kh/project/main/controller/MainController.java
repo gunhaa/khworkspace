@@ -2,6 +2,7 @@ package edu.kh.project.main.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 
 // @Controller : 현재 클래스가 컨트롤러임을 명시 -> 요청, 응답 처리
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 // -> 프레임워크(Spring Container)가 객체를 생성하고 관리
 // --> 이 때 생성된 객체 == Bean
 @Controller
+@SessionAttributes("loginMember")
 public class MainController {
 
 //	@RequestMapping("/") : 요청 주소가 "/"인 경우 해당 메소드와 연결
