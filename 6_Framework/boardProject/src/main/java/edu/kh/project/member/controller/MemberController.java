@@ -1,5 +1,6 @@
 package edu.kh.project.member.controller;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -260,7 +261,11 @@ public class MemberController {
 		// -> SessionStatus.setComplete()
 		// SessionStatus : 세션 상태를 관리하는 객체
 		status.setComplete();
+//		model.addAttribute("loginMember", "");
 
+		//session.removeAttribute("loginMember");
+
+		
 		return "redirect:/";
 	}
 

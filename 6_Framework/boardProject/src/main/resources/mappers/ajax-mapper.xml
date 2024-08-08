@@ -24,7 +24,29 @@
 		SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_EMAIL=#{email} AND MEMBER_DEL_FL = 'N'
 	</select>
 	
-	<select id="selectTel" parameterType="String" resultType="String">
+	
+	<!-- parameterType : 전달 받은 파라미터의 자료형 작성(선택사항)
+							   -> 생략 시 TypeHandler가 알아서 처리
+	 -->
+	
+	<select id="selectTel" resultType="String"> <!-- parameterType="String"  -->
 		SELECT MEMBER_TEL FROM MEMBER WHERE MEMBER_NICKNAME=#{nickname} AND MEMBER_DEL_FL = 'N'
 	</select>
+	<!-- 왜 인트로 내보내면 안됨? -->
+	<select id="selectEmail" parameterType="String" resultType="_int">
+		SELECT count(MEMBER_email) FROM MEMBER WHERE MEMBER_EMAIL=#{email} AND MEMBER_DEL_FL = 'N'
+	</select>
+	
+	<select id="selectNick" parameterType="String" resultType="String">
+		SELECT count(*) FROM MEMBER WHERE MEMBER_NICKNAME=#{nick} AND MEMBER_DEL_FL = 'N'
+	</select>
+
+	<select id="selectMember" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_TEL, NVL(MEMBER_ADDR, '미작성') AS MEMBER_ADDR, TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE FROM MEMBER WHERE MEMBER_EMAIL=#{email} AND MEMBER_DEL_FL='N'
+	</select>
+	
+	<select id="selectMemberEmail" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_EMAIL LIKE '%${email}%' AND MEMBER_DEL_FL = 'N'
+	</select>
+	
 </mapper>
