@@ -31,13 +31,16 @@ ${param.cp}
         <section class="board-list">
 
             <h1 class="board-name">
-                <c:forEach var="list" items="${boardTypeList}">
+                <%-- <c:forEach var="list" items="${boardTypeList}">
 
                     <c:if test="${list.BOARD_CODE==boardCode}">
                         ${list.BOARD_NAME}
                     </c:if>
 
-                 </c:forEach>
+                 </c:forEach> --%>
+                <%-- 두 가지 모두 가능하다. --%>
+                ${boardTypeList[boardCode-1].BOARD_NAME}
+
             </h1>
             
 

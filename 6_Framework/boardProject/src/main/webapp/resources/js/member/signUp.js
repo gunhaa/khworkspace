@@ -562,3 +562,25 @@ function selectNick(nick) {
         })
 
 }
+
+
+const curry = fn => fn2 => a => b => fn(a, b) + fn2(a, b);
+
+const curry$1 =
+ function(fn) {
+    return function (fn2) {
+        return function (a) {
+            return function (b) {
+                return fn(a, b) + fn2(a, b)
+            }
+        }
+    }
+}
+
+
+const add = (a, b) => a + b;
+
+const multiply = (a, b) => a * b;
+
+console.log(curry(add)(multiply)(3)(5));
+console.log("$1 : " + curry$1(add)(multiply)(3)(5));

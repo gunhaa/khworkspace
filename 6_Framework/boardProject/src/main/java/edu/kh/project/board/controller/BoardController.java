@@ -1,5 +1,6 @@
 package edu.kh.project.board.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.project.board.model.dto.Board;
 import edu.kh.project.board.model.service.BoardService;
 
 
@@ -64,12 +67,49 @@ public class BoardController {
 		
 		// 게시글 목록 조회 서비스 호출
 		Map<String, Object> map = service.selectBoardList(boardCode , cp);
-		
+		System.out.println(map);
 		// 조회 결과를 request scope에 세팅 후 forward
 		// 기본적으로 request scope,sessionAttributes 를 써야 세션스코프로 간다.
 		model.addAttribute("map", map);
 		
 		return "board/boardList";
 	}
+	
+	// 상세 조회 : /board/1/1500?cp=1
+	// 게시글 상세 조회
+	@GetMapping("/{boardCode}/{boardNo}") 																	//데이터 전달용 객체 // 리다이렉트 시 데이터 전달용 객체
+	public String boardDetail(@PathVariable("boardCode") int boardCode, @PathVariable("boardNo") int boardNo, Model model,RedirectAttributes ra ) {
+				
+//		System.out.println("boardCode : " + boardCode);
+//		System.out.println("boardNo : "+ boardNo);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("boardCode", boardCode);
+		map.put("boardNo", boardNo);
+		
+		//게시글 상세 조회 서비스 호출
+		Board board = service.selectBoard(map);
+		
+		String path = null;
+		if(board != null) { // 조회된 결과가 있을 경우
+			
+			
+			path = "board/boardDetail";
+			model.addAttribute("board", board);
+			
+			
+		} else { // 조회된 결과가 없을 경우
+			
+			// 게시판 첫 페이지로 리다이렉트
+			path = "redirect:/board/" + boardCode;
+			
+			// 해당 게시글이 존재하지 않습니다. 알림창 출력
+			ra.addFlashAttribute("message", "해당 게시글이 존재하지 않습니다.");
+		}
+		
+		return path;
+	}
+	
 	
 }
