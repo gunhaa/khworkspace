@@ -6,7 +6,6 @@
     <fullyQualifiedTypeName name="edu.kh.inheritance.model.vo.Person"/>
     <fullyQualifiedTypeName name="edu.kh.inheritance.model.vo.Student"/>
     <fullyQualifiedTypeName name="edu.kh.inheritance.model.vo.Employee"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="edu.kh.inheritance.model.vo.Parent"/>
     <fullyQualifiedTypeName name="edu.kh.inheritance.model.vo.Child"/>
     <fullyQualifiedTypeName name="edu.kh.inheritance.run.inheritanceRun"/>
@@ -50,8 +49,6 @@
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="edu.kh.io.model.vo.Student"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.net.ServerSocket"/>
@@ -60,4 +57,7 @@
     <fullyQualifiedTypeName name="java.io.BufferedReader"/>
     <fullyQualifiedTypeName name="java.io.OutputStream"/>
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

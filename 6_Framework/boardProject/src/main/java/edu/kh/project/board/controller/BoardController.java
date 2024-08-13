@@ -67,7 +67,7 @@ public class BoardController {
 		
 		// 게시글 목록 조회 서비스 호출
 		Map<String, Object> map = service.selectBoardList(boardCode , cp);
-		System.out.println(map);
+		//System.out.println(map);
 		// 조회 결과를 request scope에 세팅 후 forward
 		// 기본적으로 request scope,sessionAttributes 를 써야 세션스코프로 간다.
 		model.addAttribute("map", map);
