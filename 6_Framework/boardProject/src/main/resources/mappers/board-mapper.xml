@@ -139,4 +139,29 @@
 		ORDER BY COMMENT_NO
 	</select>
 
+
+	<!-- 좋아요 조회 -->
+	<select id="boardLikeCheck" resultType="_int">
+		SELECT COUNT(*) FROM BOARD_LIKE
+		WHERE BOARD_NO=#{boardNo}
+		AND MEMBER_NO=#{memberNo}
+	</select>
+	
+	<!-- 좋아요 삽입 -->
+	<!-- resultType을 쓰지 않아도 된다. -->
+	<select id="boardLikeInsert" resultType="_int">
+		INSERT INTO BOARD_LIKE VALUES(#{boardNo}, #{memberNo})
+	</select>
+
+
+	<!-- 좋아요 삭제 -->
+	<!-- resultType을 쓰지 않아도 된다. -->
+	<select id="boardLikeDelete" resultType="_int">
+		DELETE FROM BOARD_LIKE WHERE BOARD_NO=#{boardNo} AND MEMBER_NO=#{memberNo}
+	</select>
+	
+	<!-- 좋아요 개수 조회 -->
+	<select id="countBoardLike" resultType="_int">
+		SELECT COUNT(*) FROM BOARD_LIKE WHERE BOARD_NO=#{boardNo}
+	</select>
 </mapper>

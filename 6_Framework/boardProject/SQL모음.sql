@@ -525,3 +525,6 @@ ORDER BY COMMENT_NO;
 -- 회원 프로필 이미지 변경
 UPDATE MEMBER SET PROFILE_IMG='/resources/images/member/loofy1.jpg';
 select * from member;
+
+
+-- 좋아요 여부 확인

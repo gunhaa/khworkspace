@@ -54,7 +54,7 @@ public class AirPollutionJavaAppRun {
 		//System.out.println(urlConn.getInputStream());
 		
 		while((line=br.readLine())!=null) { // 한 줄씩 읽어올 데이터가 존재하는 동안만 반복
-		
+			//System.out.println(line);
 			responseText+=line;
 			
 		}
@@ -166,7 +166,7 @@ public class AirPollutionJavaAppRun {
 		//System.out.println("list : "+ list);
 		
 		for(Air air : list) {
-			System.out.println(air);
+			//System.out.println(air);
 		}
 		
 		

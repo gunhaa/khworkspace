@@ -60,9 +60,27 @@ public class BoardDAO {
 	 * @return Board
 	 */
 	public Board selectBoard(Map<String, Object> map) {
-		
-		
-		
+
 		return sqlSession.selectOne("boardMapper.selectBoard" , map);
+	}
+
+	/** 좋아요 조회
+	 * @param map
+	 * @return
+	 */
+	public int boardLikeCheck(Map<String, Object> map) {
+		return sqlSession.selectOne("boardMapper.boardLikeCheck" , map);
+	}
+
+	public int boardLikeInsert(Map<String, Integer> paramMap) {
+		return sqlSession.insert("boardMapper.boardLikeInsert" , paramMap);
+	}
+
+	public int boardLikeDelete(Map<String, Integer> paramMap) {
+		return sqlSession.delete("boardMapper.boardLikeDelete" , paramMap);
+	}
+
+	public int countBoardLike(Map<String, Integer> paramMap) {
+		return sqlSession.selectOne("boardMapper.countBoardLike" , paramMap);
 	}
 }

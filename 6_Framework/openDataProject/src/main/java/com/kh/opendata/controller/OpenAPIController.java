@@ -24,7 +24,7 @@ import com.kh.opendata.model.dto.Air;
 @Controller
 public class OpenAPIController {
 
-	public static final String SERVICEKEY = "tqZII1GM3c%2B9CZUbuTOfaHeO5atCOmkztBy%2BGUNLN5Lm0czg4erwB9wYhL975hTg948uErzh5rGwWGXe%2BEP3LA%3D%3D";
+	private static final String SERVICEKEY = "tqZII1GM3c%2B9CZUbuTOfaHeO5atCOmkztBy%2BGUNLN5Lm0czg4erwB9wYhL975hTg948uErzh5rGwWGXe%2BEP3LA%3D%3D";
 	
 	// json 형식으로 대기오염 OpenAPI 활용
 	
@@ -37,9 +37,7 @@ public class OpenAPIController {
 		String url = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty";
 		
 		url+="?serviceKey="+SERVICEKEY; 
-		
 		url+="&sidoName=" + URLEncoder.encode(location, "UTF-8");
-		
 		url+="&returnType=json";
 		
 		
@@ -181,7 +179,7 @@ public class OpenAPIController {
 
 	   }
 	   
-	   @RequestMapping(value="electric" ,produces="application/json")
+	   @RequestMapping(value="electric" ,produces="application/json; charset=UTF-8")
 	   @ResponseBody
 	   public String electric() throws IOException {
 		   
@@ -208,7 +206,81 @@ public class OpenAPIController {
 		   
 		   return response;
 	   }
+	   
+	   
+	   
+	   
+	   
+	   //-----------------------------------------------------
+	   
+	   @RequestMapping(value="test" , produces="text/xml; charset=UTF-8")
+	   @ResponseBody
+	   public String test() throws IOException {
+		   
+		      String url = "http://apis.data.go.kr/1741000/TsunamiShelter4/getTsunamiShelter4List";
+		      url += "?serviceKey=" + SERVICEKEY;
+		      url += "&pageNo=1"; 
+		      url += "&type=xml";
+		      url += "&numOfRows=2";
+		      
+		      URL requrl = new URL(url);
+		      
+		      HttpURLConnection urlConnection = (HttpURLConnection)requrl.openConnection();
+		      
+			   BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+			   String line;
+			   String body="";
+			   
+			   while((line=br.readLine())!=null) {
+				   body+=line;
+			   }
+		   
+		   return body;
+	   }
 	
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   //-----------------------------------
+		@RequestMapping(value="test2" , produces="application/json; charset=UTF-8")
+		@ResponseBody
+		public String test2(@RequestParam String location) throws IOException {
+			
+			// OpenAPI 서버로 요청하고자하는 url 작성
+			
+			String url = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty";
+			
+			url+="?serviceKey="+SERVICEKEY; 
+			url+="&sidoName=" + URLEncoder.encode(location, "UTF-8");
+			url+="&returnType=json";
+			
+			// http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?serviceKey=tqZII1GM3c%2B9CZUbuTOfaHeO5atCOmkztBy%2BGUNLN5Lm0czg4erwB9wYhL975hTg948uErzh5rGwWGXe%2BEP3LA%3D%3D&sidoName=서울&returnType=json
+			URL requestUrl = new URL(url);
+			
+			HttpURLConnection urlConn = (HttpURLConnection)requestUrl.openConnection();
+			
+			urlConn.setRequestMethod("GET");
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(urlConn.getInputStream()));
+			
+			String responseText = "";
+			String line;
+			
+			while((line=br.readLine())!=null) {
+				responseText += line;
+			}
+			
 
+			br.close();
+			urlConn.disconnect();
+			
+			return responseText;
+		}
 	
 }

@@ -59,6 +59,29 @@ public class BoardServiceImpl implements BoardService {
 		
 		return dao.selectBoard(map);
 	}
+	
+	@Override
+	public int boardLikeCheck(Map<String, Object> map) {
+		return dao.boardLikeCheck(map);
+	}
+
+	
+	
+	@Override
+	public int boardLikeInsert(Map<String, Integer> paramMap) {
+		return dao.boardLikeInsert(paramMap);
+	}
+
+	@Override
+	public int boardLikeDelete(Map<String, Integer> paramMap) {
+		return dao.boardLikeDelete(paramMap);
+	}
+
+	@Override
+	public int countBoardLike(Map<String, Integer> paramMap) {
+		return dao.countBoardLike(paramMap);
+	}
+
 }
 
 

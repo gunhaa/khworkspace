@@ -293,22 +293,22 @@
 		</table>
 
 		<script>
-			$("#btn3").click(function(){
+			$("#btn3").click(function () {
 
 				$.ajax({
 
-					url:"electric",
-					data:{
-						"HELLO" : "HI"
+					url: "electric",
+					data: {
+						"HELLO": "HI"
 					},
-					success: function(res){
+					success: function (res) {
 						console.log(res);
 						console.log(typeof res);
 						console.log(res.response.body.items);
 						//console.log(res.body.items);
 						res.response.body.items.item.forEach(item => {
 							document.querySelector("#tbr3").insertAdjacentHTML("beforeend",
-							`<tr>
+								`<tr>
 								<th>\${item.date}</th>
 								<th>\${item.hour}</th>
 								<th>\${item.areaName}</th>
@@ -318,16 +318,187 @@
 								<th>\${item.smp}</th>
 								<th>\${item.rn}</th>
 							</tr>`
-						)
+							)
 						});
 					},
-					error:function(){
+					error: function () {
 						console.log("전력공사 오류났음");
 					}
 
 				})
 			});
 		</script>
+
+
+		<!-- -------------------------------------------------  -->
+
+
+		<h1>행정안전부 지진 해일 대피소 정보</h1>
+
+		<button id="btntest">행정안전부 지진 해일 대피소 정보</button>
+		<br><br>
+
+		<table border="1">
+			<thead>
+				<tr>
+					<th>시도명</th>
+					<th>시군구명</th>
+					<th>대피지구명</th>
+					<th>대피장소명</th>
+					<th>주소</th>
+					<th>경도</th>
+					<th>위도</th>
+					<th>수용가능인원수</th>
+					<th>대피소 분류명</th>
+				</tr>
+			</thead>
+			<tbody id="bodytest">
+
+			</tbody>
+		</table>
+
+		<script>
+			$("#btntest").click(function () {
+
+				$.ajax({
+
+					url: "test",
+					data: {
+						"HELLO": "HI"
+					},
+					success: function (res) {
+						console.log(res);
+
+						const testArr = $(res).find("row");
+
+						testArr.each((index, item) => {
+							document.querySelector("#bodytest").insertAdjacentHTML("beforeend",
+								`<tr>
+									<th>\${$(item).find("sido_name").text()}</th>
+									<th>\${$(item).find("sigungu_name").text()}</th>
+									<th>\${$(item).find("remarks").text()}</th>
+									<th>\${$(item).find("shel_nm").text()}</th>
+									<th>\${$(item).find("address").text()}</th>
+									<th>\${$(item).find("lon").text()}</th>
+									<th>\${$(item).find("lat").text()}</th>
+									<th>\${$(item).find("shel_av").text()}</th>
+									<th>\${$(item).find("shel_div_type").text()}</th>
+							</tr>`)
+						})
+					},
+					error: function () {
+						console.log("행정안전부 지진 해일 대피소 정보 오류났음");
+					}
+
+				})
+			});
+		</script>
+
+		<h2>test text 실시간 대기오염 정보</h2>
+
+		지역 :
+
+		<select id="location">
+
+			<option>서울</option>
+
+			<option>부산</option>
+
+			<option>대전</option>
+
+		</select> <%-- 내용이 많아 3개만 option 지정 --%>
+
+			<button id="btntest2">해당 지역 대기오염 정보</button>
+
+			<br><br>
+
+			<table id="resulttest2" border="1">
+
+				<thead>
+
+					<tr>
+
+						<th>측정소명</th>
+
+						<th>측정일시</th>
+
+						<th>통합대기환경수치</th>
+
+						<th>미세먼지농도</th>
+
+						<th>일산화탄소농도</th>
+
+						<th>이산화질소농도</th>
+
+						<th>아황산가스농도</th>
+
+						<th>오존농도</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody>
+
+				</tbody>
+
+			</table>
+
+			<script>
+
+				$(function () {
+
+					$("#btntest2").click(function () {
+						console.log("11");
+						$.ajax({
+
+							url: "test2",
+							data: { 
+								location: $("#location").val() 
+							},
+							success: function (data) {
+
+								const itemArr = data.response.body.items;
+								console.log(itemArr)
+								let value = "";
+
+								for (let i in itemArr) {
+
+									// for문 안에 있는 내용을 코딩하시오.
+									value+=
+										`<tr>
+											<td>\${itemArr[i].stationName}</td>
+											<td>\${itemArr[i].dataTime}</td>
+											<td>\${itemArr[i].khaiValue}</td>
+											<td>\${itemArr[i].pm10Value}</td>
+											<td>\${itemArr[i].coValue}</td>
+											<td>\${itemArr[i].no2Value}</td>
+											<td>\${itemArr[i].so2Value}</td>
+											<td>\${itemArr[i].o3Value}</td>
+										`
+
+
+								}
+
+								$("#resulttest2 tbody").html(value);
+
+							},
+							error:function(){
+								console.log("에러임");	
+							}
+
+						})
+
+					})
+
+				})
+
+
+				let ary = [1,2,3]
+				console.log(ary+true); //error
+			</script>
+
+
 
 
 	</body>

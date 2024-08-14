@@ -26,4 +26,17 @@ public interface BoardService {
 	 */
 	Board selectBoard(Map<String, Object> map);
 
+	
+	
+	int boardLikeCheck(Map<String, Object> map);
+
+	
+	int boardLikeInsert(Map<String, Integer> paramMap);
+
+	
+	int boardLikeDelete(Map<String, Integer> paramMap);
+
+	
+	int countBoardLike(Map<String, Integer> paramMap);
+
 }

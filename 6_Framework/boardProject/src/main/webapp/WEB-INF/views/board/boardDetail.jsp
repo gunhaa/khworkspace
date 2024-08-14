@@ -20,11 +20,11 @@
 
     <link rel="stylesheet" href="/resources/css/board/boardDetail-style.css">
     <link rel="stylesheet" href="/resources/css/board/comment-style.css">
-
-    <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4bef400c33.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <main>
+        ${loginMember}
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
         <section class="board-detail">  
@@ -50,10 +50,15 @@
                     
                     <!-- 좋아요 하트 -->
                     <span class="like-area">
-                        <i class="fa-regular fa-heart" id="boardLike"></i>
-                        <%-- <i class="fa-solid fa-heart" id="boardLike"></i> --%>
+                    <%-- 좋아요누른적이 없거나 로그인X --%>
+                        <c:if test="${empty likeCheck}">
+                            <i class="fa-regular fa-heart" id="boardLike"></i>
+                        </c:if>
 
-                        <span>${board.likeCount}</span>
+                        <c:if test="${!empty likeCheck}">
+                            <i class="fa-solid fa-heart" id="boardLike"></i>
+                        </c:if>
+                        <span id="likeCount">${board.likeCount}</span>
                     </span>
 
                 </div>
@@ -173,6 +178,33 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+    <%-- 누가(로그인한 회원 번호) 어떤 게시글(현재 게시글 번호)에 좋아요를 클릭/취소 
+        로그인한 회원 번호 얻어오기 
+        1) jsp 파일 제일 위에 있는 script태그에 JS + EL 이용해서 전역 변수로 선언
+        2) HTML 요소에 로그인한 회원의 번호를 숨겨 놓고 JS로 얻어오기
+        <div data-type="value"></div>
+        3) ajax로 session에 있는 loginMember의 memberNo 반환
+
+        세션 - 서버가 관리한다
+        세션 스토리지 - 브라우저가 관리한다.
+    --%>
+    <script>
+
+        // JSP 해석 우선 순위 : Java/EL/JSTL > html/CSS/JS
+
+        // 작성한 el 구문이 null 일 경우 빈칸으로 출력되서
+        // 변수에 작성된 값이 대입되지 않는 문제가 발생할 수 있다.
+        // 해결 방법 : EL 구문을 '', "" 문자열로 감싸면 해결
+        // why? EL 값이 null 이여도 ""(빈문자열)로 출력
+
+        //로그인한 회원 번호 변수로 선언 
+        const loginMemberNo = "${loginMember.memberNo}";
+        //게시글 번호 변수로 선언
+        const boardNo = "${board.boardNo}";
+        console.log(`멤버번호 : \${loginMemberNo} / 보드번호 : \${boardNo}`);
+    </script>
+
+    <script src="/resources/js/board/boardDetail.js"></script>
 
 </body>
 </html>

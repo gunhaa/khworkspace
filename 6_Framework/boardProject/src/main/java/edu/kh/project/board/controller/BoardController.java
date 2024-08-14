@@ -8,13 +8,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.board.model.dto.Board;
 import edu.kh.project.board.model.service.BoardService;
+import edu.kh.project.member.model.dto.Member;
 
 
 @SessionAttributes("loginMember")
@@ -54,11 +59,23 @@ public class BoardController {
 	//     -> 삽입이라는 공통된 동작 수행
 	//        단, code에 따라 어디에 삽입할지 지정(필터링)
 	
+	
 	// ex) /board/list?order=recent(최신순)
 	// ex) /board/list?order=popular(인기순)
 	
+	
+	// ** @PathVariable 사용 시 문제점과 해결 방법 **
+	// 문제점 : 요청 주소와 @PathVariable로 가져다 쓸 주소의 레벨이 같다면
+	//         구분하지 않고 모두 매핑되는 문제가 발생
+	//         -> 요청을 했는데 원하는 메소드가 실행 안됨
+	
+	// 해결 방법 : @PathVariable 지정 시 정규 표현식 사용
+	// {키 : 정규표현식}
+	
+	
+	
 	// 게시글 목록 조회
-	@GetMapping("/{boardCode}")
+	@GetMapping("/{boardCode:[0-9]+}") // boardCode는 한자리 이상 숫자
 	public String selectBoardList(@PathVariable("boardCode") int boardCode , @RequestParam(value="cp", required=false, defaultValue="1") int cp, Model model) {
 		
 		
@@ -77,8 +94,8 @@ public class BoardController {
 	
 	// 상세 조회 : /board/1/1500?cp=1
 	// 게시글 상세 조회
-	@GetMapping("/{boardCode}/{boardNo}") 																	//데이터 전달용 객체 // 리다이렉트 시 데이터 전달용 객체
-	public String boardDetail(@PathVariable("boardCode") int boardCode, @PathVariable("boardNo") int boardNo, Model model,RedirectAttributes ra ) {
+	@GetMapping("/{boardCode}/{boardNo}") 																	//데이터 전달용 객체 // 리다이렉트 시 데이터 전달용 객체    // 세션값을 매개변수로 가져온다.
+	public String boardDetail(@PathVariable("boardCode") int boardCode, @PathVariable("boardNo") int boardNo, Model model,RedirectAttributes ra, @SessionAttribute(value= "loginMember" , required = false) Member loginMember ) {
 				
 //		System.out.println("boardCode : " + boardCode);
 //		System.out.println("boardNo : "+ boardNo);
@@ -93,6 +110,28 @@ public class BoardController {
 		
 		String path = null;
 		if(board != null) { // 조회된 결과가 있을 경우
+			
+			//-----------------------------------------
+			// 현재 로그인한 상태인 경우
+			// 로그인한 회원이 해당 게시글에 좋아요를 눌렀는지 확인
+			//-----------------------------------------
+			
+			
+			
+			if(loginMember != null) { // 로그인 상태인 경우
+				// 회원 번호를 map 추가.
+				// map(boardCode, boardNo, memberNo)
+				map.put("memberNo", loginMember.getMemberNo() );
+				
+				// 좋아요 여부 확인 서비스 호출
+				
+				int result = service.boardLikeCheck(map);
+				
+				// 누른적이 있을 경우
+				if(result>0) {
+					model.addAttribute("likeCheck", "on");
+				}
+			} 
 			
 			
 			path = "board/boardDetail";
@@ -109,6 +148,40 @@ public class BoardController {
 		}
 		
 		return path;
+	}
+	
+	
+	
+	@PostMapping("/like")
+	@ResponseBody // 반한되는 값이 비동기 요청한 곳으로 돌아가게함
+	public int boardLike(@RequestBody Map<String, Integer> paramMap, RedirectAttributes ra) {
+		
+		System.out.println(paramMap);
+		int result;
+		if(paramMap.get("check")==0) {
+			// 0 이라면, insert해야한다.
+			result = service.boardLikeInsert(paramMap);
+			
+			
+			
+		} else {
+			// 1이라면, delete 해야한다.
+			result = service.boardLikeDelete(paramMap);
+
+			// SQL 수행 결과가 0이라면 DB 또는 파라미터에 문제가 있다.
+			// -> 에러를 나타내는 임의의 값을 반환한다.(-1) 보통 음수를 많이 사용한다.
+			
+		}
+		
+		if(result==0) {
+			return -1;
+		}
+		
+		// 현재 게시글의 좋아요 개수 조회
+		int count = service.countBoardLike(paramMap);
+		
+
+		return count;
 	}
 	
 	
