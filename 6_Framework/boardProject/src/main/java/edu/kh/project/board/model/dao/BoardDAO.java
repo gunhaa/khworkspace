@@ -83,4 +83,8 @@ public class BoardDAO {
 	public int countBoardLike(Map<String, Integer> paramMap) {
 		return sqlSession.selectOne("boardMapper.countBoardLike" , paramMap);
 	}
+	
+	public int updateReadCount(int boardNo) {
+		return sqlSession.update("boardMapper.updateReadCount" , boardNo);
+	}
 }

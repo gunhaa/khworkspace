@@ -3,6 +3,7 @@ package edu.kh.project.myPage.model.dao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.project.member.model.dto.Member;
 
@@ -57,6 +58,10 @@ public class MyPageDAO {
 	public int secession(int memberNo) {
 		// sqlSessionTemplate : 마이바티스 + DBCP + close 자동 + 트랜잭션 처리
 		return sqlSession.update("myPageMapper.secession", memberNo);
+	}
+
+	public int updateProfile(Member loginMember) {
+		return sqlSession.update("myPageMapper.updateProfile", loginMember);
 	}
 	
 }

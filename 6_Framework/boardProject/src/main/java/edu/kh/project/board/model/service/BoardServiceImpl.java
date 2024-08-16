@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.project.board.model.dao.BoardDAO;
 import edu.kh.project.board.model.dto.Board;
@@ -80,6 +81,14 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int countBoardLike(Map<String, Integer> paramMap) {
 		return dao.countBoardLike(paramMap);
+	}
+
+	
+	
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int updateReadCount(int boardNo) {
+		return  dao.updateReadCount(boardNo);
 	}
 
 }

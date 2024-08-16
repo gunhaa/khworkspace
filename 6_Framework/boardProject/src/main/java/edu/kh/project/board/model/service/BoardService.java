@@ -39,4 +39,7 @@ public interface BoardService {
 	
 	int countBoardLike(Map<String, Integer> paramMap);
 
+	
+	int updateReadCount(int boardNo);
+
 }

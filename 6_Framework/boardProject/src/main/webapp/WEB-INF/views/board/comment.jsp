@@ -16,12 +16,12 @@
                         
                         <!-- 있을 경우 프로필 이미지 -->
                         <c:if test="${empty comment.profileImage}">
-                            <img src="/resources/images/user.png">
+                            <img src="/resources/images/user.png" class="radius">
                         </c:if>
                         
                         <!-- 있을 경우 기본 이미지 -->
                         <c:if test="${!empty comment.profileImage}">
-                            <img src="${comment.profileImage}">
+                            <img src="${comment.profileImage}" class="radius">
                         </c:if>
 
                         <!-- 닉네임 -->

@@ -528,3 +528,10 @@ select * from member;
 
 
 -- 좋아요 여부 확인
+
+SELECT * FROM BOARD ORDER BY BOARD_NO DESC;
+COMMIT;
+-- 조회수
+UPDATE BOARD SET READ_COUNT=BOARD.READ_COUNT+1 WHERE BOARD_NO=1488;
+
+-- 프로필 이미지 수정 SQL 문

@@ -48,10 +48,10 @@ let likeCount=document.querySelector("#likeCount").innerText;
             } else {
 
                 if(result==likeCount){
-                    alert("좋아요가 눌러졌습니다.");
+                    // alert("좋아요가 눌러졌습니다.");
                     document.querySelector("#likeCount").innerText=result;
                 } else{
-                    alert("좋아요가 취소되었습니다.");
+                    // alert("좋아요가 취소되었습니다.");
                     document.querySelector("#likeCount").innerText=result;
                 }
 
@@ -66,11 +66,4 @@ let likeCount=document.querySelector("#likeCount").innerText;
         }).catch(e=>{
             console.log("예외 발생");
         })
-
-            
-        
-
-
-
-
     });
