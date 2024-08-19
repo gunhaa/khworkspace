@@ -100,7 +100,10 @@ ${param.cp}
             <div class="btn-area">
 
 				<!-- 로그인 상태일 경우 글쓰기 버튼 노출 -->
-                <button id="insertBtn">글쓰기</button>                     
+
+                <c:if test="${!empty loginMember}">
+                    <button id="insertBtn">글쓰기</button>                     
+                </c:if>
 
             </div>
 
@@ -186,6 +189,6 @@ Pagination [currentPage=12, listCount=328, limit=10, pageSize=10, maxPage=33, st
 
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-
+    <script src="/resources/js/board/boardList.js"></script>
 </body>
 </html>
