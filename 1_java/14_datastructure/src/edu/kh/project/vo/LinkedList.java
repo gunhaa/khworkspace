@@ -7,12 +7,17 @@ import java.util.List;
 
 public class LinkedList {
 	public static void main(String[] args) {
-		int[] intArr = new int[5];
 
-		List<Integer> intList = new ArrayList<Integer>();
+		Solution sol = new Solution();
 		
-		
-		System.out.println(intList instanceof List<Integer>);
+		sol.solution1();
+	}
+	
+	public class Solution {
+
+		public String solution1() {
+			return "";
+		}
 		
 	}
 }

@@ -4,13 +4,12 @@
 <div id="commentArea">
     <!-- 댓글 목록 -->
     <div class="comment-list-area">
-        
         <ul id="commentList">
             ${board.commentList}
             <!-- 부모 댓글 -->
             <c:forEach items="${board.commentList}" var="comment">
 
-                <li class="comment-row">
+                <li class="comment-row <c:if test='${comment.parentNo!=0}'>child-comment</c:if>">
                     <p class="comment-writer">
                         <!-- 프로필 이미지 -->
                         
@@ -37,11 +36,11 @@
 
                     <!-- 버튼 영역 -->
                     <div class="comment-btn-area">
-                        <button>답글</button>   
+                        <button onclick="showInsertComment(${comment.commentNo}, this)">답글</button>   
                         <c:if test="${comment.memberNo==loginMember.memberNo}">
                             <!-- 로그인 회원과 댓글 작성자가 같은 경우 -->  
-                            <button>수정</button>     
-                            <button>삭제</button>
+                            <button onclick="showUpdateComment(${comment.commentNo}, this)">수정</button>     
+                            <button onclick="deleteComment(${comment.commentNo})">삭제</button>
                         </c:if>
                     </div>
                 </li>
