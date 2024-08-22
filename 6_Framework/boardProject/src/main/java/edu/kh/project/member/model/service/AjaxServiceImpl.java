@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.kh.project.board.model.dto.Board;
 import edu.kh.project.member.model.dao.AjaxDAO;
 import edu.kh.project.member.model.dto.Member;
 
@@ -48,6 +49,12 @@ public class AjaxServiceImpl implements AjaxService {
 	@Override
 	public List<Member> selectMemberEmail(String email) {
 		return dao.selectMemberEmail(email);
+	}
+
+
+	@Override
+	public List<Board> boardSearch(String query) {
+		return dao.selectBoardSearch(query);
 	}
 	
 	

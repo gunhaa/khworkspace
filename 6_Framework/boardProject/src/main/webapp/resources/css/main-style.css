@@ -160,7 +160,7 @@ nav{
 
     background-color: white;
     border-bottom: 2px solid black;
-    z-index: 1000;
+    z-index: 100;
 }
 
 nav > ul{
@@ -435,3 +435,19 @@ a{
     color : gray;
 }
 
+
+/* 찾기 div*/
+#searchBox{
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    right: 320px;
+    top: 120px;
+    z-index: 300;
+    border: 1px solid grey;
+    background-color: white;
+}
+
+#item {
+    font-size: 20pt;
+}

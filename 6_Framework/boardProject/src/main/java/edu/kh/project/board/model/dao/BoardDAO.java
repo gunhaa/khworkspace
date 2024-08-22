@@ -87,4 +87,19 @@ public class BoardDAO {
 	public int updateReadCount(int boardNo) {
 		return sqlSession.update("boardMapper.updateReadCount" , boardNo);
 	}
+
+	public int getListCount(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("boardMapper.getListCountForSearch", paramMap);
+	}
+
+	
+	public List<Board> selectBoardList(Map<String, Object> paramMap, Pagination pagination) {
+		// 1) offset 계산
+		int offset = (pagination.getCurrentPage()-1)*pagination.getLimit();
+		
+		// 2) RowBounds 객체 생성
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("boardMapper.selectBoardListForSearch" , paramMap, rowBounds);
+	}
 }

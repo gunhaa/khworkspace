@@ -201,7 +201,7 @@
         const loginMemberNo = "${loginMember.memberNo}";
         //게시글 번호 변수로 선언
         const boardNo = "${board.boardNo}";
-
+        const boardCode = "${boardCode}";
         console.log(`멤버번호 : \${loginMemberNo} / 보드번호 : \${boardNo}`);
     </script>
 

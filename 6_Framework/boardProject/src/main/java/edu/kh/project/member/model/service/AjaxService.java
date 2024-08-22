@@ -2,6 +2,7 @@ package edu.kh.project.member.model.service;
 
 import java.util.List;
 
+import edu.kh.project.board.model.dto.Board;
 import edu.kh.project.member.model.dto.Member;
 
 public interface AjaxService {
@@ -29,6 +30,9 @@ public interface AjaxService {
 	 * @return 리스트
 	 */
 	List<Member> selectMemberEmail(String email);
+
+	
+	List<Board> boardSearch(String query);
 
 	
 }

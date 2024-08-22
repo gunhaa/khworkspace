@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import edu.kh.project.board.model.dto.Board;
 import edu.kh.project.member.model.dto.Member;
 import edu.kh.project.member.model.service.AjaxService;
 
@@ -119,5 +120,14 @@ public class AjaxController {
      jackson => 자바에서 JSON을 쓰기위한 라이브러리
      * */   
 
+	
+	@PostMapping(value="/search", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List<Board> boardSearch(@RequestBody String query) {
+		
+		List<Board> boardList =service.boardSearch(query);
+		//System.out.println(boardList);
+		return boardList;
+	}
 	
 }

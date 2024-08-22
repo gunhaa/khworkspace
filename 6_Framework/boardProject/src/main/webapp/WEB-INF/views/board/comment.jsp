@@ -36,7 +36,9 @@
 
                     <!-- 버튼 영역 -->
                     <div class="comment-btn-area">
-                        <button onclick="showInsertComment(${comment.commentNo}, this)">답글</button>   
+                        <c:if test="${!empty loginMember.memberNo}">
+                            <button onclick="showInsertComment(${comment.commentNo}, this)">답글</button>   
+                        </c:if>
                         <c:if test="${comment.memberNo==loginMember.memberNo}">
                             <!-- 로그인 회원과 댓글 작성자가 같은 경우 -->  
                             <button onclick="showUpdateComment(${comment.commentNo}, this)">수정</button>     

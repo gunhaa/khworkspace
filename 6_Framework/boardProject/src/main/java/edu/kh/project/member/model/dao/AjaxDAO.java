@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.project.board.model.dto.Board;
 import edu.kh.project.member.model.dto.Member;
 
 @Repository
@@ -36,5 +37,12 @@ public class AjaxDAO {
 
 	public List<Member> selectMemberEmail(String email) {
 		return sqlSession.selectList("ajaxMapper.selectMemberEmail", email);
+	}
+
+	public List<Board> selectBoardSearch(String query) {
+		System.out.println(query);
+		List<Board> boardList= sqlSession.selectList("ajaxMapper.selectBoardSearch", query);
+		System.out.println(boardList);
+		return boardList;
 	}
 }

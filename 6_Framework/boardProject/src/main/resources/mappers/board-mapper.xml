@@ -14,8 +14,12 @@
       <result property="boardUpdateDate" column="B_UPDATE_DATE"/>
       <result property="readCount" column="READ_COUNT"/>
       <result property="commentCount" column="COMMENT_COUNT"/>
+      <result property="boardName" column="BOARD_NAME"/>
+      <result property="boardCode" column="BOARD_CODE" />
+            
       <result property="likeCount" column="LIKE_COUNT"/>
       <result property="memberNickname" column="MEMBER_NICKNAME"/>
+
       
       <result property="memberNo" column="MEMBER_NO"/>
       <result property="profileImage" column="PROFILE_IMG"/>
@@ -270,8 +274,102 @@
 		INSERT INTO BOARD_IMG VALUES(SEQ_IMG_NO.NEXTVAL, #{imagePath}, #{imageReName}, #{imageOriginal}, #{imageOrder} , #{boardNo})
 	</insert>
 	
-	<delete id="boardDelete">
+	<update id="boardDelete">
 		UPDATE BOARD SET BOARD_DEL_FL = 'Y' WHERE BOARD_NO=#{boardNo} AND BOARD_CODE=#{boardCode}
-	</delete>
+	</update>
+	
+<!-- 		JOIN MEMBER USING(MEMBER_NO)
+		WHERE BOARD_CODE =1
+		AND BOARD_DEL_FL = 'N' -->
+	
+	<!-- 특정 게시판의 삭제되지 않고 검색 조건이 일치하는 게시글 수 조회 -->
+	<select id="getListCountForSearch" resultType="_int">
+		SELECT COUNT(*)
+		FROM BOARD
+
+		<!-- 작성자 -->
+		<if test='key == "w"'>
+			JOIN MEMBER USING(MEMBER_NO)	
+		</if>
+			WHERE BOARD_CODE =#{boardCode}
+			AND BOARD_DEL_FL = 'N'
+		<choose>
+			
+				<!-- 제목 -->
+			<when test='key == "t"'>
+				AND BOARD_TITLE LIKE '%${query}%'			
+			</when>
+			
+				<!-- 내용 -->
+			<when test='key == "c"'>
+				AND BOARD_CONTENT LIKE '%${query}%'
+			</when>
+			
+				<!-- 제목+내용 -->
+			<when test='key == "tc"'>
+				AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
+			</when>
+			
+			<!-- 작성자 -->
+			<when test='key == "w"'>
+				AND MEMBER_NICKNAME LIKE '%${query}%'
+			</when>
+		</choose>
+
+	</select>
+	
+	<select id="selectBoardListForSearch" resultMap="board_rm">
+		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, READ_COUNT, 
+       
+       	<![CDATA[
+          CASE  
+             WHEN SYSDATE - B_CREATE_DATE < 1/24/60
+             THEN FLOOR( (SYSDATE - B_CREATE_DATE) * 24 * 60 * 60 ) || '초 전'
+             WHEN SYSDATE - B_CREATE_DATE < 1/24
+             THEN FLOOR( (SYSDATE - B_CREATE_DATE) * 24 * 60) || '분 전'
+             WHEN SYSDATE - B_CREATE_DATE < 1
+             THEN FLOOR( (SYSDATE - B_CREATE_DATE) * 24) || '시간 전'
+             ELSE TO_CHAR(B_CREATE_DATE, 'YYYY-MM-DD')
+          END B_CREATE_DATE,
+          ]]>
+         (SELECT COUNT(*) FROM "COMMENT" C
+          WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+          
+         (SELECT COUNT(*) FROM BOARD_LIKE L
+          WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+          
+         (SELECT IMG_PATH || IMG_RENAME FROM BOARD_IMG I
+         WHERE I.BOARD_NO = B.BOARD_NO
+         AND IMG_ORDER = 0) THUMBNAIL
+	      FROM "BOARD" B
+	      JOIN "MEMBER" USING(MEMBER_NO)
+	      WHERE BOARD_DEL_FL = 'N'
+	      AND BOARD_CODE = ${boardCode}
+	      <choose>
+			
+				<!-- 제목 -->
+			<when test='key == "t"'>
+				AND BOARD_TITLE LIKE '%${query}%'			
+			</when>
+			
+				<!-- 내용 -->
+			<when test='key == "c"'>
+				AND BOARD_CONTENT LIKE '%${query}%'
+			</when>
+			
+				<!-- 제목+내용 -->
+			<when test='key == "tc"'>
+				AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
+			</when>
+			
+			<!-- 작성자 -->
+			<when test='key == "w"'>
+				AND MEMBER_NICKNAME LIKE '%${query}%'
+			</when>
+		</choose>
+	      ORDER BY BOARD_NO DESC
+	</select>
+	
+
 	
 </mapper>

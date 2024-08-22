@@ -71,11 +71,11 @@ boardLike.addEventListener("click", e => {
 // 게시글 수정 버튼 클릭 시
 const updateBtn = document.getElementById("updateBtn");
 
-if(updateBtn){
+if (updateBtn) {
 
     updateBtn.addEventListener("click", e => {
-        location.href=`${location.pathname.replace("board", "board2")}/update${location.search}`;
-    
+        location.href = `${location.pathname.replace("board", "board2")}/update${location.search}`;
+
     });
 
 };
@@ -89,9 +89,70 @@ if(updateBtn){
 // 삭제 서비스 호출 성공 시 -> 해당 게시판 목록 / "게시글이 삭제 되었습니다."
 // 삭제 서비스 호출 실패 시 -> 게시글 상세 조회 페이지 "게시글 삭제 실패"
 const deleteBtn = document.querySelector("#deleteBtn");
-if(deleteBtn){
+if (deleteBtn) {
 
-    deleteBtn.addEventListener("click", e=>{
-        location.href=`${location.pathname.replace("board", "board2")}/delete`;
-    })
+    deleteBtn.addEventListener("click", e => {
+        if (confirm("정말 삭제하시겠습니까?")) {
+            location.href = `${location.pathname.replace("board", "board2")}/delete`;
+        }
+    });
+
+}
+
+
+
+
+const goToListBtn = document.querySelector("#goToListBtn");
+
+if (goToListBtn) {
+
+    goToListBtn.addEventListener("click", e => {
+        // console.log("클릭됨");
+        // const params = new URL(location.href).searchParams;
+        // const key = params.get("key"); // t,c,tc,w 중 하나
+        // const query = params.get("query"); // 검색어
+        // const cp = params.get("cp"); // cp
+        // let qs = [];
+        // let str;
+        // (function makeQS(){
+
+        //     if(key!=null){
+        //         qs.push(`key=${key}`)
+        //         console.log("key는" + key);
+        //         console.log(qs);
+        //     }
+        //     if(query!=null){
+        //         qs.push(`query=${query}`)
+        //         console.log("query는" +query);
+        //         console.log(qs);
+        //     }
+        //     if(cp!=null){
+        //         qs.push(`key=${cp}`)
+        //         console.log("cp는"+ cp)
+        //         console.log(qs);
+        //     }
+
+        // if(qs.length==1){
+        //     str+=`?${qs[0]}`
+        // } else if(qs.length==2){
+        //     str+=`?${qs[0]}`
+        //     str+=`&${qs[1]}`
+        // } else if(qs.length==3){
+        //     str+=`?${qs[0]}`
+        //     str+=`&${qs[1]}`
+        //     str+=`&${qs[2]}`
+        // }
+
+        // })(key, query, cp);
+
+
+        // 셋다 같은 결과임
+
+        //history.back();
+        // const referer = document.referrer;
+        // location.href = `${referer}`;
+        location.href = "/board/" + boardCode + location.search;
+        // location.search : 쿼리스트링만 반환
+    });
+
 }

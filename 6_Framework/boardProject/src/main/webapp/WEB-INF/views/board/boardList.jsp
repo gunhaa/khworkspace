@@ -21,13 +21,18 @@
     <link rel="stylesheet" href="/resources/css/board/boardList-style.css">
 
 </head>
-${boardTypeList}
-${param.cp}
+
 <body>
+${pagination}
     <main>
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-        
+        <%-- 검색을 진행한 경우 파라미터(key , query) 를
+        쿼리스트링 형태로 저장한 변수를 선언 --%>
+        <c:if test="${!empty param.key}">
+            <c:set var="qs" value="&key=${param.key}&query=${param.query}"></c:set>
+        </c:if>
+        <%-- 이를 활용할수도있음 --%>
         <section class="board-list">
 
             <h1 class="board-name">
@@ -43,7 +48,9 @@ ${param.cp}
 
             </h1>
             
-
+            <c:if test="${!empty param.query}">
+                <h3>"${param.query}" 검색 결과</h3>
+            </c:if>
             <div class="list-wrapper">
                 <table class="list-table">
                     
@@ -76,7 +83,7 @@ ${param.cp}
                                             <c:if test="${!empty item.thumbnail}">
                                                 <img class="list-thumbnail" src="${item.thumbnail}">
                                             </c:if>
-                                            <a href="/board/${boardCode}/${item.boardNo}?cp=${pagination.currentPage}">${item.boardTitle}[${item.commentCount}]</a>          
+                                            <a href="/board/${boardCode}/${item.boardNo}?cp=${pagination.currentPage}${qs}">${item.boardTitle}[${item.commentCount}]</a>          
                                         </td>
                                         <td>${item.memberNickname}</td>
                                         <td>${item.boardCreateDate}</td>
@@ -114,10 +121,10 @@ ${param.cp}
                 <ul class="pagination">
                 
                     <!-- 첫 페이지로 이동 -->
-                    <li><a href="/board/${boardCode}?cp=${pagination.startPage}">&lt;&lt;</a></li>
+                    <li><a href="/board/${boardCode}?cp=${pagination.startPage}${qs}">&lt;&lt;</a></li>
 
                     <!-- 이전 목록 마지막 번호로 이동 -->
-                    <li><a href="/board/${boardCode}?cp=${pagination.prevPage}">&lt;</a></li>
+                    <li><a href="/board/${boardCode}?cp=${pagination.prevPage}${qs}">&lt;</a></li>
 
 					
                     <!-- 특정 페이지로 이동 -->
@@ -135,7 +142,13 @@ Pagination [currentPage=12, listCount=328, limit=10, pageSize=10, maxPage=33, st
                                 <li><a class="current">${pagination.currentPage}</a></li>    
                             </c:when>
                             <c:otherwise>
-                                <li><a href="/board/${boardCode}?cp=${i}">${i}</a></li>
+                                <c:if test="${empty param.key}">
+                                    <li><a href="/board/${boardCode}?cp=${i}">${i}</a></li>
+                                </c:if>
+                                <c:if test="${!empty param.key}">
+                                    <li><a href="/board/${boardCode}?key=${param.key}&query=${param.query}&cp=${i}">${i}</a></li>
+                                </c:if>
+
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
@@ -153,17 +166,18 @@ Pagination [currentPage=12, listCount=328, limit=10, pageSize=10, maxPage=33, st
                     <li><a href="#">10</a></li> --%>
                     
                     <!-- 다음 목록 시작 번호로 이동 -->
-                    <li><a href="/board/${boardCode}?cp=${pagination.nextPage}">&gt;</a></li>
+                    <%-- ?key=t&query=10 --%>
+                    <li><a href="/board/${boardCode}?cp=${pagination.nextPage}${qs}">&gt;</a></li>
 
                     <!-- 끝 페이지로 이동 -->
-                    <li><a href="/board/${boardCode}?cp=${pagination.maxPage}">&gt;&gt;</a></li>
+                    <li><a href="/board/${boardCode}?cp=${pagination.maxPage}${qs}">&gt;&gt;</a></li>
 
                 </ul>
             </div>
 
 
 			<!-- 검색창 -->
-            <form action="#" method="get" id="boardSearch">
+            <form action="${boardCode}" method="get" id="boardSearch">
 
                 <select name="key" id="searchKey">
                     <option value="t">제목</option>

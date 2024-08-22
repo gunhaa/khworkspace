@@ -80,17 +80,27 @@ public class BoardController {
 	// 게시글 목록 조회
 	@GetMapping("/{boardCode:[0-9]+}") // boardCode는 한자리 이상 숫자
 	public String selectBoardList(@PathVariable("boardCode") int boardCode,
-			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp, Model model) {
-
+			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp, Model model
+			, @RequestParam Map<String, Object> paramMap) { //form태그로 name항목 2개를 받아서, map에 담는 부분
+																											
 		// boardCode 확인
 		// System.out.println(boardCode);
 
-		// 게시글 목록 조회 서비스 호출
-		Map<String, Object> map = service.selectBoardList(boardCode, cp);
-		// System.out.println(map);
-		// 조회 결과를 request scope에 세팅 후 forward
-		// 기본적으로 request scope,sessionAttributes 를 써야 세션스코프로 간다.
-		model.addAttribute("map", map);
+		if(paramMap.get("key")==null) { // 검색어가 없을 때 (검색X)
+			// 게시글 목록 조회 서비스 호출
+			Map<String, Object> map = service.selectBoardList(boardCode, cp);
+			// System.out.println(map);
+			// 조회 결과를 request scope에 세팅 후 forward
+			// 기본적으로 request scope,sessionAttributes 를 써야 세션스코프로 간다.
+			model.addAttribute("map", map);
+		}else {
+
+			paramMap.put("boardCode", boardCode);
+			// 게시글 목록 조회 서비스 호출
+			Map<String, Object> map = service.selectBoardList(paramMap, cp);
+			model.addAttribute("map", map);
+		}
+		
 
 		return "board/boardList";
 	}

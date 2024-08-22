@@ -653,6 +653,76 @@ ORDER SIBLINGS BY COMMENT_NO;
 -- 게시글 삭제
 UPDATE "COMMENT" SET COMMENT_DEL_FL='N' WHERE COMMENT_NO=#{};
 
-select * from "COMMENT";
---게시글 수정
+select * from "COMMENT" order by 1 desc;
+--댓글 수정
+UPDATE "COMMENT" SET COMMENT_CONTENT = 'GD' WHERE COMMENT_NO = 1025 AND MEMBER_NO =1; 
+COMMIT;
 
+
+-- 전체 게시글 수 조회(검색)
+SELECT COUNT(*)
+FROM BOARD
+JOIN MEMBER USING(MEMBER_NO)
+WHERE BOARD_CODE =1
+AND BOARD_DEL_FL = 'N'
+
+-- 제목
+-- AND BOARD_TITLE LIKE '%게시글%';
+
+-- 내용
+-- AND BOARD_CONTENT LIKE '%게시글%';
+
+-- 제목 + 내용
+--AND (BOARD_TITLE LIKE '%게시글%' OR BOARD_CONTENT LIKE '%게시글%');
+
+-- 작성자
+AND MEMBER_NICKNAME LIKE '1675';
+-- 검색어 만들기
+			SELECT BOARD_NO, BOARD_TITLE , BOARD_NAME
+	      FROM "BOARD" B
+	      JOIN "MEMBER" USING(MEMBER_NO)
+          JOIN "BOARD_TYPE" USING(BOARD_CODE)
+	      WHERE BOARD_DEL_FL = 'N'
+            AND
+            (BOARD_TITLE LIKE '%14%'			
+            OR BOARD_CONTENT LIKE '%14%'
+            OR MEMBER_NICKNAME LIKE '%14%')
+	      ORDER BY BOARD_NO DESC;
+          
+-- 검색어
+			SELECT BOARD_TITLE , BOARD_NAME ,BOARD_CODE
+	      FROM "BOARD" B
+	      JOIN "MEMBER" USING(MEMBER_NO)
+          JOIN "BOARD_TYPE" USING(BOARD_CODE)
+	      WHERE BOARD_DEL_FL = 'N' 
+	      AND
+            (BOARD_TITLE LIKE '%13%'			
+            OR BOARD_CONTENT LIKE '%13%'
+            OR MEMBER_NICKNAME LIKE '%13%')
+	      ORDER BY BOARD_NO DESC;
+          
+			SELECT BOARD_TITLE , BOARD_NAME
+	      FROM "BOARD" B
+	      JOIN "MEMBER" USING(MEMBER_NO)
+          JOIN "BOARD_TYPE" USING(BOARD_CODE)
+	      WHERE BOARD_DEL_FL = 'N' 
+	      AND
+            (BOARD_TITLE LIKE '%14%'			
+            OR BOARD_CONTENT LIKE '%14%'
+            OR MEMBER_NICKNAME LIKE '%14%')
+	      ORDER BY BOARD_NO DESC;
+          
+          
+          
+          
+          
+SELECT BOARD_NO,BOARD_NAME
+	      FROM "BOARD" B
+	      JOIN "MEMBER" USING(MEMBER_NO)
+          JOIN "BOARD_TYPE" USING(BOARD_CODE)
+	      WHERE BOARD_DEL_FL = 'N'
+            AND
+            (BOARD_TITLE LIKE '%%'			
+            OR BOARD_CONTENT LIKE '%{"query":"1"}%'
+            OR MEMBER_NICKNAME LIKE '%{"query":"1"}%')
+	      ORDER BY BOARD_NO DESC;
