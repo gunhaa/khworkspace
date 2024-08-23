@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.project.board.model.dao.BoardDAO;
 import edu.kh.project.board.model.dto.Board;
+import edu.kh.project.board.model.dto.BoardImage;
 import edu.kh.project.board.model.dto.Pagination;
 
 
@@ -114,6 +115,11 @@ public class BoardServiceImpl implements BoardService {
 		map.put("boardList", boardList);
 		
 		return map;
+	}
+
+	@Override
+	public List<String> selectImageList() {
+		return dao.selectImageList();
 	}
 
 }

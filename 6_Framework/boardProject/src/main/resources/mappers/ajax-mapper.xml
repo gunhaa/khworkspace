@@ -94,9 +94,7 @@
           JOIN "BOARD_TYPE" USING(BOARD_CODE)
 	      WHERE BOARD_DEL_FL = 'N'
             AND
-            (BOARD_TITLE LIKE '%${query}%'			
-            OR BOARD_CONTENT LIKE '%${query}%'
-            OR MEMBER_NICKNAME LIKE '%${query}%')
+            (BOARD_TITLE LIKE '%${query}%')
 	      ORDER BY BOARD_NO DESC)
 	      
 	      <![CDATA[WHERE ROWNUM <= 8]]>

@@ -80,7 +80,7 @@ header > section:nth-child(2){
 
 /* 검색 버튼 */
 #searchBtn{
-    width: 8%;
+    width: 50px;
     cursor: pointer;
     border : none;
 
@@ -450,4 +450,8 @@ a{
 
 #item {
     font-size: 20pt;
+}
+
+.hover:hover{
+    background-color: yellow;
 }

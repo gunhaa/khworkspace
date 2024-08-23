@@ -707,22 +707,25 @@ AND MEMBER_NICKNAME LIKE '1675';
           JOIN "BOARD_TYPE" USING(BOARD_CODE)
 	      WHERE BOARD_DEL_FL = 'N' 
 	      AND
-            (BOARD_TITLE LIKE '%14%'			
-            OR BOARD_CONTENT LIKE '%14%'
-            OR MEMBER_NICKNAME LIKE '%14%')
+            (BOARD_TITLE LIKE '%1490번째%'			
+            OR BOARD_CONTENT LIKE '%1490번째%'
+            OR MEMBER_NICKNAME LIKE '%1490번째%')
 	      ORDER BY BOARD_NO DESC;
           
           
           
           
-          
-SELECT BOARD_NO,BOARD_NAME
+	      SELECT BOARD_TITLE, BOARD_NAME, BOARD_CODE, BOARD_NO
+	      FROM (SELECT BOARD_TITLE,BOARD_NAME, BOARD_CODE , BOARD_NO
 	      FROM "BOARD" B
 	      JOIN "MEMBER" USING(MEMBER_NO)
           JOIN "BOARD_TYPE" USING(BOARD_CODE)
 	      WHERE BOARD_DEL_FL = 'N'
             AND
-            (BOARD_TITLE LIKE '%%'			
-            OR BOARD_CONTENT LIKE '%{"query":"1"}%'
-            OR MEMBER_NICKNAME LIKE '%{"query":"1"}%')
-	      ORDER BY BOARD_NO DESC;
+            (BOARD_TITLE LIKE '%14%'			
+            OR BOARD_CONTENT LIKE '%14%'
+            OR MEMBER_NICKNAME LIKE '%14%')
+	      ORDER BY BOARD_NO DESC)
+	      WHERE ROWNUM < 10;
+          
+          

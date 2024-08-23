@@ -58,6 +58,8 @@
 
             </section>
             <div id="searchBox" hidden>
+                asdasd
+                <span>asdasd</span>
             </div>
 
             <section></section>

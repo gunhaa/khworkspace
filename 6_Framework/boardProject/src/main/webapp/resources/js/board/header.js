@@ -6,6 +6,10 @@ if (search) {
 
     search.addEventListener("input", e => {
 
+        if (search.value.trim().length == 0) {
+            document.querySelector("#searchBox").hidden = true;
+            return;
+        }
 
         fetch("/search", {
             method: "POST",
@@ -15,7 +19,7 @@ if (search) {
             .then(res => res.json())
             .then(result => {
 
-                document.querySelector("#searchBox").innerHTML="";
+                document.querySelector("#searchBox").innerHTML = "";
                 document.querySelector("#searchBox").hidden = false;
 
                 result.forEach(item => {
@@ -27,13 +31,17 @@ if (search) {
                     //     console.log("non"+item.boardTitle)
                     // }
 
-                    let regTitle = item.boardTitle.replaceAll(regExp, `<span style="color:red" id="item">${search.value}</span>`);
-                    
+                    let regTitle = item.boardTitle.replaceAll(regExp, `<span style="color:red;" id="item">${search.value}</span>`);
+
                     //http://localhost/board/2/1508?cp=1
                     let astr = `http://localhost/board/${item.boardCode}/${item.boardNo}`
+
                     // console.log(astr)
-                    document.querySelector("#searchBox").insertAdjacentHTML("beforeend", `<a href="${astr}">${regTitle}</a><br>`)
-                
+
+                    document.querySelector("#searchBox").insertAdjacentHTML("beforeend", `<a href="${astr}" class="hover">${regTitle} -${item.boardName}</a><br>`)
+
+
+
                 });
 
             })
@@ -44,6 +52,26 @@ if (search) {
     })
 }
 
-window.document.addEventListener("click", function(e){
+window.document.addEventListener("click", function (e) {
     document.querySelector("#searchBox").hidden = true;
 })
+
+
+
+            // []   ,  int
+function dfs(numbers, target) {
+
+    let node = numbers;
+
+
+    let visited = [];
+
+    for (let i = 0; i < node.length; i++) {
+
+        if(node.includes(node[i])){
+
+        }
+
+        dfs(node, target);
+    }
+}

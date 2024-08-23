@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.project.board.model.dto.Board;
+import edu.kh.project.board.model.dto.BoardImage;
 
 public interface BoardService {
 
@@ -51,6 +52,8 @@ public interface BoardService {
 	 * @return boardList
 	 */
 	Map<String, Object> selectBoardList(Map<String, Object> paramMap, int cp);
+
+	List<String> selectImageList();
 
 	
 }

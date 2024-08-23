@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.project.board.model.dto.Board;
+import edu.kh.project.board.model.dto.BoardImage;
 import edu.kh.project.board.model.dto.Pagination;
 
 @Repository
@@ -101,5 +102,9 @@ public class BoardDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		return sqlSession.selectList("boardMapper.selectBoardListForSearch" , paramMap, rowBounds);
+	}
+
+	public List<String> selectImageList() {
+		return sqlSession.selectList("boardMapper.selectImageListAll");
 	}
 }
