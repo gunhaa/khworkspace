@@ -58,20 +58,20 @@ window.document.addEventListener("click", function (e) {
 
 
 
-            // []   ,  int
-function dfs(numbers, target) {
+//             // []   ,  int
+// function dfs(numbers, target) {
 
-    let node = numbers;
+//     let node = numbers;
+//     // [1,2,3,4,5,6,7,8,9,10]
 
+//     let visited = [];
 
-    let visited = [];
+//     for (let i = 0; i < node.length; i++) {
 
-    for (let i = 0; i < node.length; i++) {
+//         if(node.includes(node[i])){
 
-        if(node.includes(node[i])){
+//         }
 
-        }
-
-        dfs(node, target);
-    }
-}
+//         dfs(node, target);
+//     }
+// }
