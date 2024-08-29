@@ -4,6 +4,9 @@ import './App.css';
 import Ex1 from './components/Exam1';
 import Ex2 from './components/Exam2';
 import PropsEx from './components/R01_props'
+import StateEx1 from './components/R02_state1'
+import StateEx2 from './components/R03_state2'
+import StateEx3 from './components/R04_state3'
 
 function App() {
   // 리액트의 컴포넌트는 딱 하나의 요소만을 반환할 수 있다!
@@ -16,13 +19,18 @@ function App() {
       {/* 리액트에서는 class가 아니라 className으로 작성해야함 */}
       <h1 className="test">Hello React</h1>
 
-      <div style={{color:'red', fontSize:'25px'}}>리액트 1일차</div>
+      {/* <div style={{color:'red', fontSize:'25px'}}>리액트 1일차</div> */}
 
       {/* <Ex1 /> */}
       {/* <Ex2 /> */}
-      {<PropsEx name={'gunha'}/>}
-      {<PropsEx name={'insu'} age={'22'}/>}
+      {/* {<PropsEx name={'gunha'}/>} */}
+      {/* {<PropsEx name={'insu'} age={'22'}/>} */}
 
+      {/* {<StateEx1 />} */}
+
+      {/* {<StateEx2 init={50}/>} */}
+
+      {<StateEx3 />}
     </>
   );
 }
