@@ -50,8 +50,8 @@ const StateLiftingUp = () => {
         setPw(e.target.value);
     }
 
-    console.log("id : " + id );
-    console.log("pw : " + pw );
+    // console.log("id : " + id );
+    // console.log("pw : " + pw );
 
     return(
 
@@ -60,7 +60,7 @@ const StateLiftingUp = () => {
             <Pw handler={pwHandler}/>
         
             <div className="wrapper">
-                <button disabled={id.length === 0 && pw.length===0}>Login</button>
+                <button disabled={id.length === 0 || pw.length===0}>Login</button>
             </div>
         </>
 
