@@ -45,9 +45,9 @@ public class ChattingWebsocketHandler extends TextWebSocketHandler{
         // 연결 요청이 접수되면 해당 클라이언트와 통신을 담당하는 WebSocketSession 객체가 전달되어져 옴.
         // 이를 필드에 선언해준sessions에 저장
         sessions.add(session);
-    
+        
         //logger.info("{}연결됨", session.getId());
-//      System.out.println(session.getId() + "연결됨");
+      System.out.println(session.getId() + "연결됨");
     }
     
     
