@@ -5,110 +5,164 @@ import { TodoListContext } from './App';
 
 const TodoList = () => {
 
-    const { todoList, setTodoList, setLoginMember, loginMember } = useContext(TodoListContext);
+    const { todoList, setTodoList, loginMember } = useContext(TodoListContext);
 
-    const [todo , setTodo] = useState("");
+    const [inputTodo, setInputTodo] = useState("");
 
-    const add = () => {
+    let keyIndex = 0;
+
+    //할 일 추가
+    const handleAddTodo = () => {
+
+        // 입력을 안했을 경우
+        if (inputTodo.trim().length === 0) {
+            alert("할 일을 입력해주세요.");
+            return;
+        }
 
         fetch("/todo", {
-            method : "POST",
-            headers : {
+            method: "POST",
+            headers: {
                 // 전달되는 데이터 타입
                 'Content-Type': 'application/json',
                 // 응답 데이터 타입 
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                "title": todo,
+                "title": inputTodo,
                 "todoMemberNo": loginMember.todoMemberNo
             })
         })
-        .then(resp=>resp.text())
-        .then(result => {
-            console.log(result);            
-            if(result > 0){
-                alert("todo 등록에 성공하였습니다.");
-                // let addTodo = [...todoList];
-                // addTodo.push({
+            .then(resp => resp.text())
+            .then(result => {
+                console.log(result);
+                if (result > 0) {
+                    alert("todo 등록에 성공하였습니다.");
+                    let input = {
+                        "title": inputTodo,
+                        "isDone": "X"
+                    }
 
-                // })
-            }
+                    setTodoList([...todoList, input]);
+                    setInputTodo("");
 
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-        
+                } else {
+                    alert("todo 등록 실패");
+                }
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
     }
 
-    const del = (index) => {
-        //console.log(index);
+    // O , X 업데이트
+    const handleToggleTodo = (item, index) => {
+
+        const updatedTodoList = [...todoList];
+        const updatedItem = { ...item };
+
+        if (updatedItem.isDone === "X") {
+            updatedItem.isDone = "O";
+        } else if (updatedItem.isDone === "O") {
+            updatedItem.isDone = "X";
+        }
+
+        updatedTodoList[index] = updatedItem;
+        setTodoList(updatedTodoList);
+
         fetch("/todo", {
-            method : "DELETE",
-            headers : {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "todoNo": updatedItem.todoNo,
+                "isDone": updatedItem.isDone
+            })
+        })
+            .then(resp => resp.text())
+            .then(result => {
+                console.log(result);
+
+                if (result > 0) {
+
+                    alert("상태 변경 완료");
+
+
+                } 
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+    }
+
+    // 삭제
+    const handleDeleteTodo = (todoNo, index) => {
+
+        fetch("/todo", {
+            method: "DELETE",
+            headers: {
                 // 전달되는 데이터 타입
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(index)
+            body: JSON.stringify(todoNo)
         })
-        .then(resp=>resp.text())
-        .then(result=>{
-            console.log(result);
-            alert("todo를 삭제하였습니다.")
+            .then(resp => resp.text())
+            .then(result => {
 
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-    }
+                if (result > 0) {
+                    alert("todo를 삭제하였습니다.")
+                    const updatedTodoList = [...todoList];
+                    updatedTodoList.splice(index, 1);
 
-    const update = (index, isDone) => {
+                    setTodoList(updatedTodoList);
+                }
 
-        if(isDone==="X"){
-            isDone = "O"
-        } else{
-            isDone = "X"
-        }
-
-        fetch("/todo", {
-            method : "PUT",
-            headers : {
-                'Content-Type' : 'application/json'
-            },
-            body : JSON.stringify({
-                "todoNo" : index , 
-                "isDone" : isDone
             })
-        })
-        .then(resp=>resp.text())
-        .then(result=>{
-            console.log(result);
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-
+            .catch(err => {
+                console.log(err);
+            })
     }
 
-    return(
+    return (
+
         <>
             <h1>{loginMember.name}의 TodoList</h1>
+            <div className="todo-container">
 
-            <h3>할 일(Todo) 입력</h3>
-            <input type="text" onChange={e => {setTodo(e.target.value)} } value={todo}></input>
-            <button onClick={add}>Todo추가</button>
-            <ul>
-                {todoList.map((item, index)=>{
 
-                   return <li key={index}>{item.title}<button onClick={()=>update(item.todoNo, item.isDone)}>{item.isDone}</button><button onClick={()=> del(item.todoNo)}>삭제</button></li>
+                <h3>할 일(Todo) 입력</h3>
+                <div>
+                    <input type="text" value={inputTodo} onChange={e => setInputTodo(e.target.value)} />
+                    <button onClick={handleAddTodo}>Todo 추가</button>
+                </div>
 
-                })}
 
-            </ul>
+                <ul>
+                    {todoList.map((todo, index) => (
+                        <li key={keyIndex++}>
+                            <div>
+                                <span className={todo.isDone === 'O' ? 'todo-complete' : ''}> {todo.title} </span>
+
+
+                                <span>
+                                    <button onClick={() => { handleToggleTodo(todo, index) }}>{todo.isDone}</button>
+                                    <button onClick={() => { handleDeleteTodo(todo.todoNo, index) }}>삭제</button>
+                                </span>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+
+
+            </div>
+
         </>
-    );
+    )
+
 
 }
-
 export default TodoList;

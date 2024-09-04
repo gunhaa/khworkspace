@@ -35,6 +35,7 @@ function App() {
       <Login />
       <hr></hr>
       {/* 로그인 시 todolist 출력 */}
+      {/* loginMember 변수가 null이면 false, 아니면 true */}
       {loginMember ? <TodoList></TodoList> : ""}
       
 
