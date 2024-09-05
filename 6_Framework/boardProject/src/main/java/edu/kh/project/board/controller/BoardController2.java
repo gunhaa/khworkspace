@@ -114,8 +114,8 @@ public class BoardController2 {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		map.put("boardCode", boardCode);
-		map.put("boardNo", boardNo);
+	    map.put("boardCode", boardCode); // int는 자동으로 Integer로 변환되어 저장됩니다.
+	    map.put("boardNo", boardNo); // int는 자동으로 Integer로 변환되어 저장됩니다.
 
 		Board board = boardService.selectBoard(map);
 		System.out.println(board);

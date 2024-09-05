@@ -71,6 +71,7 @@ const TodoList = () => {
 
         updatedTodoList[index] = updatedItem;
         setTodoList(updatedTodoList);
+        setInputTodo("");
 
         fetch("/todo", {
             method: "PUT",

@@ -76,15 +76,15 @@ public class MemberController {
 		// 파라미터 전달 방법 2 : @Requestparam 어노테이션 이용
 		
 		// @RequestParam(value="name", required="fasle", defaultValue="1")
-	      // [속성]
-	      // value : 전달 받은 input 태그의 name 속성값
-	      
-	      // required : 입력된 name 속성값 파라미터 필수 여부 지정(기본값 true)
-	      // -> required = true인 파라미터가 존재하지 않는다면 400 Bad Request 에러 발생
-	      // -> required = true인 파라미터가 null인 경우에도 400 Bad Request
+      // [속성]
+      // value : 전달 받은 input 태그의 name 속성값
+      
+      // required : 입력된 name 속성값 파라미터 필수 여부 지정(기본값 true)
+      // -> required = true인 파라미터가 존재하지 않는다면 400 Bad Request 에러 발생
+      // -> required = true인 파라미터가 null인 경우에도 400 Bad Request
 
-	      // defaultValue : 파라미터 중 일치하는 name 속성 값이 없을 경우에 대입할 값 지정.
-	      // -> required = false인 경우 사용
+      // defaultValue : 파라미터 중 일치하는 name 속성 값이 없을 경우에 대입할 값 지정.
+      // -> required = false인 경우 사용
 		
 		// @Requestparam 어노테이션
 		// -> Request 객체를 이용한 파라미터 전달 어노테이션
