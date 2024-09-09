@@ -1,0 +1,45 @@
+
+  /* 메인 목록 */
+  .list{
+    padding: 20px;
+    text-align: left;
+    border-bottom: 1px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* 메인 목록 정보 */
+  .list .content{
+    flex-basis: 100%;
+  }
+  
+  .list p{
+    padding-top: 5px;
+  }
+  
+  
+  /* 메인 목록 버튼영역 */
+  .list .board-btn-area{
+    flex-basis: 15%;
+  }
+  
+  /* 메인 목록 버튼 */
+  .list .board-btn-area > button{
+    width: 80px;
+    height: 30px;
+  
+    font-size: 15px;
+    font-weight: bold;
+    border: 0;
+    background-color: white;
+    color : #455ba8;
+    border: 2px solid #455ba8;
+    cursor: pointer;
+  }
+
+  .modal {
+    background-color: grey;
+    width: 100%;
+    height: 300px;
+  }
