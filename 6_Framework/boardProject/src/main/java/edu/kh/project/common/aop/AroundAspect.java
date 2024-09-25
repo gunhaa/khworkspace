@@ -19,22 +19,21 @@ public class AroundAspect {
 	// proceed() 메소드 호출 후 : @After advice 작성
 	// 메소드 마지막에 proceed()의 반환값을 리턴해야 함
 	@Around("CommonPointcut.ServiceImplPointcut()")
-	   public Object aroundServiceLogs(ProceedingJoinPoint pp) throws Throwable {
-	      // @Around advice는 JoinPoint Interface가 아닌
-	      //  하위 타입인 ProceedingJoinPoint를 사용해야 함.
-	      
-	      
-	      long startMs = System.currentTimeMillis(); // 서비스 시작 시의 ms 값
-	      
-	      Object obj = pp.proceed(); // 여기가 기준
-	      
-	      long endMs = System.currentTimeMillis(); // 서비스 종료 시의 ms 값
-	      
-	      String str = "Running Time : " + (endMs- startMs) + "ms";   
+	public Object aroundServiceLogs(ProceedingJoinPoint pp) throws Throwable {
+		// @Around advice는 JoinPoint Interface가 아닌
+		// 하위 타입인 ProceedingJoinPoint를 사용해야 함.
 
-	      log.info(str);
-	      
-	      return obj;
-	      
-	   }
+		long startMs = System.currentTimeMillis(); // 서비스 시작 시의 ms 값
+
+		Object obj = pp.proceed(); // 여기가 기준
+
+		long endMs = System.currentTimeMillis(); // 서비스 종료 시의 ms 값
+
+		String str = "Running Time : " + (endMs - startMs) + "ms";
+
+		log.info(str);
+
+		return obj;
+
+	}
 }

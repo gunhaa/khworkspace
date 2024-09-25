@@ -49,7 +49,7 @@ public class TestWebsocketHandler extends TextWebSocketHandler {
 	몇번 채팅방
 	어떤 메세지
 	받는 사람    
-	
+
 	*/
 	// WebSocketSession : 클라이언트 - 서버간 전이중 통신을 담당하는 객체
 	//                    클라이언트의 세션을 가로채서 저장하고 있음

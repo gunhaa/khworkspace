@@ -15,47 +15,39 @@ public class AjaxServiceImpl implements AjaxService {
 	@Autowired // DI
 	private AjaxDAO dao;
 
-	
 	@Override
 	public String selectNickname(String email) {
 		return dao.selectNickname(email);
 	}
-
 
 	@Override
 	public String selectTel(String nickname) {
 		return dao.selectTel(nickname);
 	}
 
-
 	@Override
 	public int selectEmail(String email) {
 		return dao.selectEmail(email);
 	}
-
 
 	@Override
 	public String selectNick(String nick) {
 		return dao.selectNick(nick);
 	}
 
-
 	@Override
 	public Member selectMember(String email) {
 		return dao.selectMember(email);
 	}
-
 
 	@Override
 	public List<Member> selectMemberEmail(String email) {
 		return dao.selectMemberEmail(email);
 	}
 
-
 	@Override
 	public List<Board> boardSearch(String query) {
 		return dao.selectBoardSearch(query);
 	}
-	
-	
+
 }
